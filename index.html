@@ -266,19 +266,30 @@
       <!-- Patient Status Banner -->
       <div class="cg-status-banner">
         <div class="cg-patient-profile">
-          <div class="cg-avatar"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div class="cg-avatar-wrapper">
+            <div class="cg-avatar">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <span class="cg-status-dot" title="Active Session"></span>
+          </div>
           <div class="cg-patient-meta">
             <h2 id="cg-patient-name">Eleanor Vance, 74y</h2>
             <p id="cg-patient-stage">Mild Cognitive Impairment • Primary Caretaker: Sarah Vance (+1 555 382-9011)</p>
             <div class="cg-action-buttons">
               <button class="header-action-btn cg-edit-btn" id="btn-edit-profile-cg" title="Edit patient and caretaker data">
-                ✏️ Edit Profile &amp; Caretaker Details
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                <span>Edit Profile</span>
               </button>
               <button class="header-action-btn cg-pin-btn" id="btn-change-pin-cg" title="Change caregiver passcode">
-                🔒 Change Passcode
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span>Change Passcode</span>
               </button>
               <button class="header-action-btn cg-logout-btn" id="btn-logout-cg" title="Log out of caregiver session">
-                🚪 Log Out Caregiver Session
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <span>Log Out Session</span>
               </button>
             </div>
           </div>
@@ -287,73 +298,108 @@
         <div class="cg-status-pills">
           <div class="cg-pill">
             <span class="cg-pill-label">Today's Mood</span>
-            <span class="cg-pill-value" id="cg-today-mood-pill">HAPPY 😊</span>
+            <span class="cg-pill-value" id="cg-today-mood-pill">HAPPY</span>
           </div>
           <div class="cg-pill">
             <span class="cg-pill-label">Today's Activity</span>
             <span class="cg-pill-value" id="cg-today-games-pill">3 / 4 Done</span>
           </div>
           <div class="cg-pill">
-            <span class="cg-pill-label">Status</span>
-            <span class="cg-pill-value" style="color:#34d399;">Active Today</span>
+            <span class="cg-pill-label">Patient Status</span>
+            <span class="cg-pill-value cg-status-active">Active Today</span>
           </div>
         </div>
       </div>
 
       <!-- Top Metric Cards -->
       <div class="cg-metrics-grid">
-        <div class="cg-metric-card">
+        <!-- 1. Overall Index -->
+        <div class="cg-metric-card cg-card-overall">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Overall Cognitive Index</span>
-            <span class="cg-metric-icon">📈</span>
+            <span class="cg-metric-title">Overall Index</span>
+            <div class="cg-metric-icon-badge cg-icon-overall">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            </div>
           </div>
           <div class="cg-metric-value" id="metric-val-overall">88%</div>
+          <div class="cg-metric-progress">
+            <div class="cg-metric-progress-fill fill-overall" style="width: 88%;"></div>
+          </div>
           <div class="cg-metric-trend trend-up">
-            <span>▲ +4% from last week</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            <span>+4% from last week</span>
           </div>
         </div>
 
-        <div class="cg-metric-card">
+        <!-- 2. Memory Recall -->
+        <div class="cg-metric-card cg-card-memory">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Memory Recall (Game 1)</span>
-            <span class="cg-metric-icon">👓</span>
+            <span class="cg-metric-title">Memory Recall</span>
+            <div class="cg-metric-icon-badge cg-icon-memory">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="6" cy="12" r="4"></circle><circle cx="18" cy="12" r="4"></circle><path d="M10 12h4"></path></svg>
+            </div>
           </div>
           <div class="cg-metric-value" id="metric-val-memory">84%</div>
+          <div class="cg-metric-progress">
+            <div class="cg-metric-progress-fill fill-memory" style="width: 84%;"></div>
+          </div>
           <div class="cg-metric-trend trend-stable">
-            <span>● Stable spatial recall</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="4"></circle></svg>
+            <span>Stable spatial recall</span>
           </div>
         </div>
 
-        <div class="cg-metric-card">
+        <!-- 3. Routine Sequencing -->
+        <div class="cg-metric-card cg-card-seq">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Routine Sequencing (Game 2)</span>
-            <span class="cg-metric-icon">📋</span>
+            <span class="cg-metric-title">Routine Sequencing</span>
+            <div class="cg-metric-icon-badge cg-icon-seq">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </div>
           </div>
           <div class="cg-metric-value" id="metric-val-seq">86%</div>
+          <div class="cg-metric-progress">
+            <div class="cg-metric-progress-fill fill-seq" style="width: 86%;"></div>
+          </div>
           <div class="cg-metric-trend trend-up">
-            <span>▲ Strong ADL execution</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            <span>Strong ADL execution</span>
           </div>
         </div>
 
-        <div class="cg-metric-card">
+        <!-- 4. Object Recognition -->
+        <div class="cg-metric-card cg-card-rec">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Object Recognition (Game 3)</span>
-            <span class="cg-metric-icon">💡</span>
+            <span class="cg-metric-title">Object Recognition</span>
+            <div class="cg-metric-icon-badge cg-icon-rec">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+            </div>
           </div>
           <div class="cg-metric-value" id="metric-val-rec">90%</div>
+          <div class="cg-metric-progress">
+            <div class="cg-metric-progress-fill fill-rec" style="width: 90%;"></div>
+          </div>
           <div class="cg-metric-trend trend-up">
-            <span>▲ Sharp item association</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            <span>Sharp item association</span>
           </div>
         </div>
 
-        <div class="cg-metric-card">
+        <!-- 5. Garden Calmness -->
+        <div class="cg-metric-card cg-card-garden">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Garden Calmness (Game 4)</span>
-            <span class="cg-metric-icon">🌸</span>
+            <span class="cg-metric-title">Garden Calmness</span>
+            <div class="cg-metric-icon-badge cg-icon-garden">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+            </div>
           </div>
           <div class="cg-metric-value" id="metric-val-garden">98%</div>
+          <div class="cg-metric-progress">
+            <div class="cg-metric-progress-fill fill-garden" style="width: 98%;"></div>
+          </div>
           <div class="cg-metric-trend trend-stable">
-            <span>● Relaxed attention state</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="4"></circle></svg>
+            <span>Relaxed attention state</span>
           </div>
         </div>
       </div>
@@ -361,18 +407,37 @@
       <!-- MAIN INTERACTIVE BAR GRAPH CARD -->
       <div class="cg-chart-card">
         <div class="cg-chart-header">
-          <div>
-            <h3>📊 Daily Cognitive Score Records (Bar Graph)</h3>
-            <p>Day-by-day performance tracking across all 4 daily life games. Hover or tap bars for detailed notes.</p>
+          <div class="cg-chart-title-group">
+            <div class="cg-chart-icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <div>
+              <h3>Daily Cognitive Score Records</h3>
+              <p>Day-by-day performance tracking across all 4 daily life games. Hover or tap bars for detailed notes.</p>
+            </div>
           </div>
 
           <!-- Metric Filters for the Bar Graph -->
           <div class="cg-chart-filters" role="group" aria-label="Chart Filter">
-            <button class="filter-btn active" data-filter="overall">Overall Index</button>
-            <button class="filter-btn" data-filter="memory">👓 Memory Pairs</button>
-            <button class="filter-btn" data-filter="sequencing">📋 Routine Steps</button>
-            <button class="filter-btn" data-filter="recognition">💡 Object Recall</button>
-            <button class="filter-btn" data-filter="garden">🌸 Garden Calm</button>
+            <button class="filter-btn active" data-filter="overall">
+              <span>Overall Index</span>
+            </button>
+            <button class="filter-btn" data-filter="memory">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="12" r="4"></circle><circle cx="18" cy="12" r="4"></circle></svg>
+              <span>Memory Pairs</span>
+            </button>
+            <button class="filter-btn" data-filter="sequencing">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg>
+              <span>Routine Steps</span>
+            </button>
+            <button class="filter-btn" data-filter="recognition">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>
+              <span>Object Recall</span>
+            </button>
+            <button class="filter-btn" data-filter="garden">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"></circle></svg>
+              <span>Garden Calm</span>
+            </button>
           </div>
         </div>
 
@@ -384,15 +449,15 @@
         <!-- Legend -->
         <div class="chart-legend">
           <div class="legend-item">
-            <span class="legend-color-dot" style="background:#38bdf8;"></span>
+            <span class="legend-color-dot" style="background: var(--primary);"></span>
             <span>Current Daily Score</span>
           </div>
           <div class="legend-item">
-            <span class="legend-color-dot" style="background:#34d399; height:3px; border-radius:0;"></span>
+            <span class="legend-color-dot" style="background: var(--success); height:3px; border-radius:0;"></span>
             <span>Target Cognitive Baseline (75%+)</span>
           </div>
           <div class="legend-item">
-            <span class="legend-color-dot" style="background:#ffffff; border:1px solid #38bdf8;"></span>
+            <span class="legend-color-dot" style="background: var(--bg-card); border:1px solid var(--primary);"></span>
             <span>Interactive Hover / Tap Detail</span>
           </div>
         </div>
@@ -403,7 +468,10 @@
         
         <!-- Score Records Table -->
         <div class="cg-table-card">
-          <h3>📅 Day-by-Day Score Breakdown</h3>
+          <div class="cg-card-title-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <h3>Day-by-Day Score Breakdown</h3>
+          </div>
           <div class="cg-table-wrap">
             <table class="score-table" aria-label="Detailed daily score records table">
               <thead>
@@ -426,7 +494,10 @@
 
         <!-- Caregiver Log & Observations -->
         <div class="cg-notes-card">
-          <h3>📝 Caregiver Daily Observations</h3>
+          <div class="cg-card-title-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <h3>Caregiver Daily Observations</h3>
+          </div>
           
           <form id="caregiver-note-form" class="cg-note-input-form">
             <textarea id="caregiver-note-text" class="cg-textarea" placeholder="Log patient behavior, orientation, meal appetite, or observations..." required></textarea>
@@ -443,7 +514,8 @@
             </div>
 
             <button type="submit" class="cg-submit-btn">
-              ➕ Save Observation
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Save Observation</span>
             </button>
           </form>
 
@@ -457,35 +529,45 @@
       <!-- Emergency and Quick Care Actions -->
       <div class="cg-actions-row">
         <button class="cg-action-btn" id="cg-call-doctor">
-          <span class="cg-action-icon">🩺</span>
+          <div class="cg-action-icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
           <div class="cg-action-text">
             <strong id="cg-doc-title">Contact Neurologist</strong>
             <span id="cg-doc-meta">Dr. Arvind Mehta (Clinic)</span>
           </div>
         </button>
         <button class="cg-action-btn" id="cg-call-caregiver">
-          <span class="cg-action-icon">📞</span>
+          <div class="cg-action-icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
           <div class="cg-action-text">
             <strong id="cg-caregiver-title">Call Primary Caretaker</strong>
             <span id="cg-caregiver-meta">Sarah Vance: +1 (555) 382-9011</span>
           </div>
         </button>
         <button class="cg-action-btn" id="cg-export-report">
-          <span class="cg-action-icon">📄</span>
+          <div class="cg-action-icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
           <div class="cg-action-text">
             <strong>Print Care Report</strong>
             <span>Export printable summary</span>
           </div>
         </button>
         <button class="cg-action-btn" id="cg-backup-json" title="Download persistent JSON file">
-          <span class="cg-action-icon">💾</span>
+          <div class="cg-action-icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </div>
           <div class="cg-action-text">
             <strong>Download Backup (JSON)</strong>
             <span>Save records to disk</span>
           </div>
         </button>
         <button class="cg-action-btn" id="cg-restore-json" title="Restore records from JSON">
-          <span class="cg-action-icon">📤</span>
+          <div class="cg-action-icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          </div>
           <div class="cg-action-text">
             <strong>Restore Backup</strong>
             <span>Load saved file</span>
