@@ -142,13 +142,19 @@
 }
 
 .mood-btn .mood-emoji {
-  font-size: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.mood-btn .mood-emoji svg {
   transition: transform 0.2s ease;
 }
 
 .mood-btn .mood-label {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #1C1B1A;
 }
 
@@ -168,8 +174,31 @@
   color: #ffffff;
 }
 
-.mood-btn.selected .mood-emoji {
-  transform: scale(1.2);
+.mood-btn.selected .mood-emoji svg circle[fill="#FFF0EB"] {
+  fill: rgba(255,255,255,0.15);
+}
+
+.mood-btn.selected .mood-emoji svg circle[fill="#B85241"],
+.mood-btn.selected .mood-emoji svg circle[fill="#F5C4B8"] {
+  fill: #ffffff;
+}
+
+.mood-btn.selected .mood-emoji svg circle[stroke="#B85241"],
+.mood-btn.selected .mood-emoji svg path[stroke="#B85241"],
+.mood-btn.selected .mood-emoji svg line[stroke="#B85241"] {
+  stroke: #ffffff;
+}
+
+.mood-btn.selected .mood-emoji svg text[fill="#B85241"] {
+  fill: #ffffff;
+}
+
+.mood-btn.selected .mood-emoji svg text[fill="#D4735F"] {
+  fill: rgba(255,255,255,0.7);
+}
+
+.mood-btn.selected .mood-emoji svg {
+  transform: scale(1.15);
 }
 
 /* Section Header */

@@ -118,19 +118,53 @@
         </div>
         <div class="mood-options-grid">
           <button class="mood-btn selected" data-mood="happy" aria-label="Feeling Happy">
-            <span class="mood-emoji">😊</span>
+            <span class="mood-emoji">
+              <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
+                <circle cx="32" cy="32" r="30" fill="#FFF0EB" stroke="#B85241" stroke-width="2.5"/>
+                <circle cx="22" cy="26" r="3.5" fill="#B85241"/>
+                <circle cx="42" cy="26" r="3.5" fill="#B85241"/>
+                <path d="M20 38c3 6 9 9 12 9s9-3 12-9" stroke="#B85241" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+                <circle cx="15" cy="34" r="4" fill="#F5C4B8" opacity="0.6"/>
+                <circle cx="49" cy="34" r="4" fill="#F5C4B8" opacity="0.6"/>
+              </svg>
+            </span>
             <span class="mood-label">Happy</span>
           </button>
           <button class="mood-btn" data-mood="calm" aria-label="Feeling Calm &amp; Peaceful">
-            <span class="mood-emoji">😌</span>
+            <span class="mood-emoji">
+              <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
+                <circle cx="32" cy="32" r="30" fill="#FFF0EB" stroke="#B85241" stroke-width="2.5"/>
+                <path d="M18 27c2-2 5-2 7 0" stroke="#B85241" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M39 27c2-2 5-2 7 0" stroke="#B85241" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M22 40c3 4 7 5 10 5s7-1 10-5" stroke="#B85241" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+                <circle cx="15" cy="34" r="4" fill="#F5C4B8" opacity="0.5"/>
+                <circle cx="49" cy="34" r="4" fill="#F5C4B8" opacity="0.5"/>
+              </svg>
+            </span>
             <span class="mood-label">Peaceful</span>
           </button>
           <button class="mood-btn" data-mood="neutral" aria-label="Feeling Okay">
-            <span class="mood-emoji">😐</span>
+            <span class="mood-emoji">
+              <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
+                <circle cx="32" cy="32" r="30" fill="#FFF0EB" stroke="#B85241" stroke-width="2.5"/>
+                <circle cx="22" cy="27" r="3" fill="#B85241"/>
+                <circle cx="42" cy="27" r="3" fill="#B85241"/>
+                <line x1="22" y1="41" x2="42" y2="41" stroke="#B85241" stroke-width="2.8" stroke-linecap="round"/>
+              </svg>
+            </span>
             <span class="mood-label">Just Okay</span>
           </button>
           <button class="mood-btn" data-mood="tired" aria-label="Feeling Tired or Sleepy">
-            <span class="mood-emoji">🥱</span>
+            <span class="mood-emoji">
+              <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
+                <circle cx="32" cy="32" r="30" fill="#FFF0EB" stroke="#B85241" stroke-width="2.5"/>
+                <path d="M18 28c2-2 5-2 7 0" stroke="#B85241" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M39 28c2-2 5-2 7 0" stroke="#B85241" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M24 42c2 3 5 4 8 4s6-1 8-4" stroke="#B85241" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+                <text x="48" y="18" font-size="11" font-weight="700" fill="#B85241" font-family="Plus Jakarta Sans, sans-serif">z</text>
+                <text x="53" y="12" font-size="9" font-weight="700" fill="#D4735F" font-family="Plus Jakarta Sans, sans-serif">z</text>
+              </svg>
+            </span>
             <span class="mood-label">A Bit Tired</span>
           </button>
         </div>
@@ -218,7 +252,7 @@
       <!-- Reassurance Card -->
       <div class="patient-reassurance-card">
         <div class="decorative-quote" aria-hidden="true">“</div>
-        <div class="reassurance-icon">💖</div>
+        <div class="reassurance-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="#B85241" stroke="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
         <p>Remember: You are doing wonderfully. There is no rush with any activity. Take your time, breathe deeply, and smile.</p>
       </div>
 
@@ -232,7 +266,7 @@
       <!-- Patient Status Banner -->
       <div class="cg-status-banner">
         <div class="cg-patient-profile">
-          <div class="cg-avatar">👵</div>
+          <div class="cg-avatar"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           <div class="cg-patient-meta">
             <h2 id="cg-patient-name">Eleanor Vance, 74y</h2>
             <p id="cg-patient-stage">Mild Cognitive Impairment • Primary Caretaker: Sarah Vance (+1 555 382-9011)</p>
