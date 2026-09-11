@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCaregiverDashboard();
     setupProfileManagement();
     setupChatbotAssistant();
+    setupSarvamVoiceAssistant();
     setupNewUserWizard();
     setupCommunityHub();
     setupAccessibilityControls();
@@ -199,14 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (pinViewForgot) pinViewForgot.style.display = subview === 'forgot' ? 'flex' : 'none';
 
       if (subview === 'unlock') {
-        if (pinModalTitle) pinModalTitle.textContent = 'Caregiver Security Access';
+        if (pinModalTitle) pinModalTitle.textContent = '🔒 Caregiver Security Access';
         if (caretakerPinInput) {
           caretakerPinInput.value = '';
           setTimeout(() => caretakerPinInput.focus(), 100);
         }
         if (pinErrorMsg) pinErrorMsg.style.display = 'none';
       } else if (subview === 'change') {
-        if (pinModalTitle) pinModalTitle.textContent = 'Change Caregiver Passcode';
+        if (pinModalTitle) pinModalTitle.textContent = '🔑 Change Caregiver Passcode';
         if (changePinCurrent) changePinCurrent.value = '';
         if (changePinNew) changePinNew.value = '';
         if (changePinConfirm) changePinConfirm.value = '';
@@ -214,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (changePinSuccessMsg) changePinSuccessMsg.style.display = 'none';
         setTimeout(() => changePinCurrent && changePinCurrent.focus(), 100);
       } else if (subview === 'forgot') {
-        if (pinModalTitle) pinModalTitle.textContent = 'Reset Passcode via Phone';
+        if (pinModalTitle) pinModalTitle.textContent = '📱 Reset Passcode via Phone';
         if (forgotStep1) forgotStep1.style.display = 'flex';
         if (forgotStep2) forgotStep2.style.display = 'none';
         // Prefill registered caretaker phone number for user convenience
@@ -628,19 +629,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switch (gameType) {
       case 'memory':
-        gameModalTitle.innerHTML = '<span>Daily Essentials Match</span>';
+        gameModalTitle.innerHTML = '<span>👓 Daily Essentials Match</span>';
         state.activeGame = new window.MemoryGame('game-container', () => closeGameModal());
         break;
       case 'sequencing':
-        gameModalTitle.innerHTML = '<span>Daily Routine Sequencing</span>';
+        gameModalTitle.innerHTML = '<span>📋 Daily Routine Sequencing</span>';
         state.activeGame = new window.SequencingGame('game-container', () => closeGameModal());
         break;
       case 'recognition':
-        gameModalTitle.innerHTML = '<span>Everyday Object Recognition</span>';
+        gameModalTitle.innerHTML = '<span>💡 Everyday Object Recognition</span>';
         state.activeGame = new window.RecognitionGame('game-container', () => closeGameModal());
         break;
       case 'garden':
-        gameModalTitle.innerHTML = '<span>Calming Focus Garden</span>';
+        gameModalTitle.innerHTML = '<span>🌸 Calming Focus Garden</span>';
         state.activeGame = new window.FocusGardenGame('game-container', () => closeGameModal());
         break;
     }
@@ -947,6 +948,227 @@ document.addEventListener('DOMContentLoaded', () => {
         handleUserSend(txt);
       });
     }
+  }
+
+  /* ---------------------------------------------------------
+     Sarvam AI Indic Voice Engine Controller
+     --------------------------------------------------------- */
+  function setupSarvamVoiceAssistant() {
+    const sarvamModal = document.getElementById('sarvam-settings-modal');
+    const btnOpenSarvam = document.getElementById('btn-sarvam-voice-settings');
+    const sarvamClose = document.getElementById('sarvam-modal-close');
+    const keyForm = document.getElementById('form-sarvam-key');
+    const keyInput = document.getElementById('sarvam-key-input');
+    const toggleKeyBtn = document.getElementById('btn-toggle-key-visibility');
+    const testVoiceBtn = document.getElementById('btn-test-sarvam-voice');
+    const resetVoiceBtn = document.getElementById('btn-reset-sarvam');
+    const voiceDot = document.getElementById('sarvam-voice-dot');
+    const voiceLabel = document.getElementById('sarvam-voice-label');
+    const statusBanner = document.getElementById('sarvam-status-banner');
+    const statusIcon = document.getElementById('sarvam-status-icon');
+    const statusHeading = document.getElementById('sarvam-status-heading');
+    const statusDesc = document.getElementById('sarvam-status-desc');
+    const badgePill = document.getElementById('sarvam-badge-pill');
+    const speakerChoices = document.querySelectorAll('.sarvam-voice-choice');
+
+    if (!sarvamModal) return;
+
+    const openModal = () => {
+      refreshSarvamUI();
+      sarvamModal.classList.add('active');
+      if (keyInput && window.smritiSpeech && window.smritiSpeech.sarvamApiKey) {
+        keyInput.value = window.smritiSpeech.sarvamApiKey;
+      }
+    };
+
+    const closeModal = () => {
+      sarvamModal.classList.remove('active');
+    };
+
+    if (btnOpenSarvam) btnOpenSarvam.addEventListener('click', openModal);
+    if (sarvamClose) sarvamClose.addEventListener('click', closeModal);
+
+    // Toggle password visibility
+    if (toggleKeyBtn && keyInput) {
+      toggleKeyBtn.addEventListener('click', () => {
+        keyInput.type = keyInput.type === 'password' ? 'text' : 'password';
+        toggleKeyBtn.textContent = keyInput.type === 'password' ? '👁️' : '🙈';
+      });
+    }
+
+    // Radio choice visual styling
+    speakerChoices.forEach(choice => {
+      const radio = choice.querySelector('input[type="radio"]');
+      choice.addEventListener('click', () => {
+        speakerChoices.forEach(c => {
+          c.classList.remove('active');
+          c.style.borderColor = '#e2e8f0';
+          c.style.borderWidth = '1.5px';
+        });
+        choice.classList.add('active');
+        choice.style.borderColor = '#10b981';
+        choice.style.borderWidth = '2px';
+        if (radio) radio.checked = true;
+      });
+    });
+
+    function getSelectedSpeaker() {
+      const checked = document.querySelector('input[name="sarvam-speaker"]:checked');
+      return checked ? checked.value : (window.smritiSpeech?.sarvamSpeaker || 'priya');
+    }
+
+    function setSelectedSpeaker(speaker) {
+      const radio = document.querySelector(`input[name="sarvam-speaker"][value="${speaker}"]`);
+      if (radio) {
+        radio.checked = true;
+        speakerChoices.forEach(c => {
+          const r = c.querySelector('input[type="radio"]');
+          if (r && r.value === speaker) {
+            c.classList.add('active');
+            c.style.borderColor = '#10b981';
+            c.style.borderWidth = '2px';
+          } else {
+            c.classList.remove('active');
+            c.style.borderColor = '#e2e8f0';
+            c.style.borderWidth = '1.5px';
+          }
+        });
+      }
+    }
+
+    function refreshSarvamUI() {
+      if (!window.smritiSpeech) return;
+      const hasKey = window.smritiSpeech.sarvamActive || !!window.smritiSpeech.sarvamApiKey;
+      const speaker = window.smritiSpeech.sarvamSpeaker || 'priya';
+      setSelectedSpeaker(speaker);
+
+      if (hasKey) {
+        if (voiceDot) {
+          voiceDot.style.background = '#10b981';
+          voiceDot.style.boxShadow = '0 0 8px rgba(16,185,129,0.9)';
+        }
+        if (voiceLabel) {
+          const capSpeaker = speaker.charAt(0).toUpperCase() + speaker.slice(1);
+          voiceLabel.textContent = `🎙️ Sarvam AI: ${capSpeaker} (Active)`;
+        }
+        if (statusBanner) {
+          statusBanner.style.background = '#f0fdf4';
+          statusBanner.style.borderColor = '#86efac';
+        }
+        if (statusIcon) statusIcon.textContent = '🟢';
+        if (statusHeading) statusHeading.textContent = 'Sarvam AI Indic Neural Voice Connected';
+        if (statusDesc) statusDesc.textContent = `Active Speaker: ${speaker.toUpperCase()} | Ultra-natural Indic Hindi & English Voice`;
+        if (badgePill) {
+          badgePill.style.background = '#dcfce7';
+          badgePill.style.color = '#166534';
+          badgePill.textContent = 'CONNECTED & ACTIVE';
+        }
+      } else {
+        if (voiceDot) {
+          voiceDot.style.background = '#f59e0b';
+          voiceDot.style.boxShadow = '0 0 8px rgba(245,158,11,0.8)';
+        }
+        if (voiceLabel) {
+          voiceLabel.textContent = `🎙️ Sarvam Voice: Connect Key`;
+        }
+        if (statusBanner) {
+          statusBanner.style.background = '#fffbeb';
+          statusBanner.style.borderColor = '#fde68a';
+        }
+        if (statusIcon) statusIcon.textContent = '🟡';
+        if (statusHeading) statusHeading.textContent = 'Awaiting Sarvam AI Subscription Key';
+        if (statusDesc) statusDesc.textContent = 'Enter your API key below to activate ultra-natural Indic voices.';
+        if (badgePill) {
+          badgePill.style.background = '#fef3c7';
+          badgePill.style.color = '#92400e';
+          badgePill.textContent = 'SETUP REQUIRED';
+        }
+      }
+    }
+
+    // Save key & config
+    if (keyForm) {
+      keyForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const key = keyInput ? keyInput.value.trim() : '';
+        const speaker = getSelectedSpeaker();
+
+        if (window.smritiSpeech) {
+          showToast('Connecting to Sarvam AI voice engine...');
+          await window.smritiSpeech.saveSarvamConfig(key, speaker);
+          refreshSarvamUI();
+          showToast('✅ Sarvam AI Voice activated successfully!');
+          const isHi = window.smritiI18n && window.smritiI18n.getLanguage() === 'hi';
+          const welcomeMsg = isHi
+            ? `नमस्ते! मैं स्मृति हूँ। सर्वम एआई आवाज़ सक्रिय हो गई है।`
+            : `Hello! I am Smriti. Sarvam AI Voice has been successfully activated.`;
+          window.smritiSpeech.speak(welcomeMsg);
+          setTimeout(() => closeModal(), 1200);
+        }
+      });
+    }
+
+    // Test Voice button
+    if (testVoiceBtn) {
+      testVoiceBtn.addEventListener('click', async () => {
+        const inputKey = keyInput ? keyInput.value.trim() : '';
+        const speaker = getSelectedSpeaker();
+        if (inputKey && window.smritiSpeech) {
+          window.smritiSpeech.sarvamApiKey = inputKey;
+        }
+        testVoiceBtn.disabled = true;
+        testVoiceBtn.innerHTML = '<span>⏳</span> Playing...';
+
+        const isHi = window.smritiI18n && window.smritiI18n.getLanguage() === 'hi';
+        const sampleText = isHi
+          ? 'नमस्ते! मैं स्मृति हूँ, आपकी देखभाल और याददाश्त की साथी। आज आपका दिन कैसा बीत रहा है?'
+          : 'Hello! I am Smriti, your gentle memory and care companion. How are you feeling today?';
+
+        try {
+          if (window.smritiSpeech) {
+            await window.smritiSpeech.speakSarvam(sampleText, isHi ? 'hi-IN' : 'en-IN', speaker);
+          }
+        } finally {
+          testVoiceBtn.disabled = false;
+          testVoiceBtn.innerHTML = '<span>🔊</span> Listen Sample';
+        }
+      });
+    }
+
+    // Reset / fallback button
+    if (resetVoiceBtn) {
+      resetVoiceBtn.addEventListener('click', () => {
+        if (window.smritiSpeech) {
+          window.smritiSpeech.useSarvam = false;
+          showToast('Switched to local device speech voice.');
+          if (voiceLabel) voiceLabel.textContent = '🔊 Local Voice Mode';
+          if (voiceDot) voiceDot.style.background = '#94a3b8';
+          closeModal();
+        }
+      });
+    }
+
+    // Update on Sarvam status events
+    window.addEventListener('sarvam:status', () => {
+      refreshSarvamUI();
+    });
+
+    // Soundwave glow on active speech
+    window.addEventListener('speech:start', () => {
+      if (btnOpenSarvam) {
+        btnOpenSarvam.style.transform = 'scale(1.05)';
+        btnOpenSarvam.style.boxShadow = '0 0 14px rgba(16,185,129,0.7)';
+      }
+    });
+
+    window.addEventListener('speech:end', () => {
+      if (btnOpenSarvam) {
+        btnOpenSarvam.style.transform = 'none';
+        btnOpenSarvam.style.boxShadow = '0 2px 6px rgba(16,185,129,0.15)';
+      }
+    });
+
+    refreshSarvamUI();
   }
 
   /* ---------------------------------------------------------
@@ -1448,11 +1670,13 @@ document.addEventListener('DOMContentLoaded', () => {
       tabBtns.forEach(b => {
         if (b.getAttribute('data-tab') === tabName) {
           b.classList.add('active');
+          b.style.color = '#5b21b6';
+          b.style.borderBottomColor = '#5b21b6';
         } else {
           b.classList.remove('active');
+          b.style.color = '#64748b';
+          b.style.borderBottomColor = 'transparent';
         }
-        b.style.color = '';
-        b.style.borderBottomColor = '';
       });
 
       Object.entries(tabPanels).forEach(([name, panel]) => {
@@ -1565,18 +1789,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       container.innerHTML = contributions.map(item => {
         const tagClass = item.type === 'game' ? 'game' : item.type === 'volunteer' ? 'volunteer' : 'tip';
-        const typeLabel = item.type === 'game' ? 'Game' : item.type === 'volunteer' ? 'Volunteer' : 'Tip';
+        const typeIcon = item.type === 'game' ? '🎮 Game' : item.type === 'volunteer' ? '🙋 Volunteer' : '💡 Tip';
 
         return `
           <div class="community-card" data-id="${item.id}">
             <div class="comm-card-header">
               <div>
-                <span class="comm-card-tag ${tagClass}">${typeLabel} • ${item.category}</span>
+                <span class="comm-card-tag ${tagClass}">${typeIcon} • ${item.category}</span>
                 <h5 class="comm-card-title">${item.title}</h5>
               </div>
               <button type="button" class="btn-upvote" data-id="${item.id}" title="Support this insight">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                <span>${item.upvotes || 0}</span>
+                <span>❤️</span> <span>${item.upvotes || 0}</span>
               </button>
             </div>
             <p class="comm-card-body">${item.content}</p>

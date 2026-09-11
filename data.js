@@ -42,44 +42,67 @@ const DEFAULT_CAREGIVER = {
   notes: "Assisting Eleanor with morning medication and daily cognitive check-ins."
 };
 
+function getLocalDateStr(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 // Seed historical 7 days with realistic, encouraging cognitive score progressions
 function generateInitialHistoricalRecords() {
   const records = [];
   const today = new Date();
   
-  // Create 7 past days + today
+  // Create 6 past days + today
   for (let i = 6; i >= 0; i--) {
     const d = new Date(today);
     d.setDate(today.getDate() - i);
-    const dateStr = d.toISOString().split('T')[0];
+    const dateStr = getLocalDateStr(d);
     
-    // Slight realistic fluctuation across days
+    // Realistic fluctuation across past days
     const baseScores = [
       { memory: 75, sequencing: 80, recognition: 85, garden: 90, mood: 'happy' },
       { memory: 70, sequencing: 85, recognition: 80, garden: 85, mood: 'calm' },
       { memory: 80, sequencing: 75, recognition: 90, garden: 95, mood: 'happy' },
       { memory: 85, sequencing: 90, recognition: 85, garden: 90, mood: 'calm' },
       { memory: 80, sequencing: 85, recognition: 95, garden: 100, mood: 'happy' },
-      { memory: 85, sequencing: 90, recognition: 90, garden: 95, mood: 'neutral' },
-      { memory: 90, sequencing: 95, recognition: 95, garden: 100, mood: 'happy' }
+      { memory: 85, sequencing: 90, recognition: 90, garden: 95, mood: 'neutral' }
     ];
     
-    const dayData = baseScores[6 - i] || baseScores[0];
-    const avgScore = Math.round((dayData.memory + dayData.sequencing + dayData.recognition + dayData.garden) / 4);
+    if (i === 0) {
+      // Today starts fresh so player's live gameplay directly sets today's stats!
+      records.push({
+        date: dateStr,
+        displayDate: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        weekday: d.toLocaleDateString('en-US', { weekday: 'short' }),
+        memoryScore: null,
+        sequencingScore: null,
+        recognitionScore: null,
+        gardenScore: null,
+        averageScore: 0,
+        mood: 'happy',
+        gamesCompleted: 0,
+        notesCount: 1
+      });
+    } else {
+      const dayData = baseScores[6 - i] || baseScores[0];
+      const avgScore = Math.round((dayData.memory + dayData.sequencing + dayData.recognition + dayData.garden) / 4);
 
-    records.push({
-      date: dateStr,
-      displayDate: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-      weekday: d.toLocaleDateString('en-US', { weekday: 'short' }),
-      memoryScore: dayData.memory,
-      sequencingScore: dayData.sequencing,
-      recognitionScore: dayData.recognition,
-      gardenScore: dayData.garden,
-      averageScore: avgScore,
-      mood: dayData.mood,
-      gamesCompleted: 4,
-      notesCount: i === 0 ? 1 : 0
-    });
+      records.push({
+        date: dateStr,
+        displayDate: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        weekday: d.toLocaleDateString('en-US', { weekday: 'short' }),
+        memoryScore: dayData.memory,
+        sequencingScore: dayData.sequencing,
+        recognitionScore: dayData.recognition,
+        gardenScore: dayData.garden,
+        averageScore: avgScore,
+        mood: dayData.mood,
+        gamesCompleted: 4,
+        notesCount: 0
+      });
+    }
   }
   return records;
 }
@@ -351,7 +374,7 @@ class DataStore {
 
   getTodayRecord() {
     const records = this.getRecords();
-    const todayStr = new Date().toISOString().split('T')[0];
+    const todayStr = getLocalDateStr();
     let record = records.find(r => r.date === todayStr);
     
     if (!record) {
@@ -376,7 +399,7 @@ class DataStore {
 
   saveGameScore(gameType, score) {
     const records = this.getRecords();
-    const todayStr = new Date().toISOString().split('T')[0];
+    const todayStr = getLocalDateStr();
     let record = records.find(r => r.date === todayStr);
 
     if (!record) {
@@ -388,10 +411,10 @@ class DataStore {
     if (gameType === 'recognition') record.recognitionScore = score;
     if (gameType === 'garden') record.gardenScore = score;
 
-    // Recalculate average and games completed
+    // Recalculate average and games completed dynamically
     const scores = [record.memoryScore, record.sequencingScore, record.recognitionScore, record.gardenScore].filter(s => s !== null && s !== undefined);
     record.gamesCompleted = scores.length;
-    record.averageScore = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+    record.averageScore = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : score;
     record.mood = this.getCurrentMood();
 
     const idx = records.findIndex(r => r.date === todayStr);
@@ -403,7 +426,7 @@ class DataStore {
     localStorage.setItem(STORAGE_KEYS.DAILY_RECORDS, JSON.stringify(records));
     this.persistToServer();
     
-    // Broadcast event for live UI update
+    // Broadcast event for live UI update across all active portals and charts
     window.dispatchEvent(new CustomEvent('smriti_score_updated', { detail: { gameType, score, record } }));
     return record;
   }
@@ -444,25 +467,38 @@ class DataStore {
   }
 
   getSummaryMetrics() {
+    const today = this.getTodayRecord();
     const records = this.getRecords();
-    if (records.length === 0) return { overall: 85, memory: 80, seq: 85, rec: 90, garden: 95 };
 
-    const validAverages = records.map(r => r.averageScore).filter(s => s > 0);
-    const overall = Math.round(validAverages.reduce((a, b) => a + b, 0) / validAverages.length);
+    // Baseline historical averages for past days
+    const pastRecords = records.filter(r => r.date !== today.date);
+    const avg = (arr, fallback) => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : fallback;
 
-    const memScores = records.map(r => r.memoryScore).filter(s => s != null);
-    const seqScores = records.map(r => r.sequencingScore).filter(s => s != null);
-    const recScores = records.map(r => r.recognitionScore).filter(s => s != null);
-    const garScores = records.map(r => r.gardenScore).filter(s => s != null);
+    const histMem = avg(pastRecords.map(r => r.memoryScore).filter(s => s != null), 80);
+    const histSeq = avg(pastRecords.map(r => r.sequencingScore).filter(s => s != null), 85);
+    const histRec = avg(pastRecords.map(r => r.recognitionScore).filter(s => s != null), 85);
+    const histGar = avg(pastRecords.map(r => r.gardenScore).filter(s => s != null), 90);
 
-    const avg = arr => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : 80;
+    // Prioritize today's live performance immediately when game has been played today
+    const memory = today.memoryScore != null ? today.memoryScore : histMem;
+    const seq = today.sequencingScore != null ? today.sequencingScore : histSeq;
+    const rec = today.recognitionScore != null ? today.recognitionScore : histRec;
+    const garden = today.gardenScore != null ? today.gardenScore : histGar;
+
+    // Active scores calculation
+    const activeTodayScores = [today.memoryScore, today.sequencingScore, today.recognitionScore, today.gardenScore].filter(s => s != null);
+    const overall = activeTodayScores.length > 0
+      ? Math.round(activeTodayScores.reduce((a, b) => a + b, 0) / activeTodayScores.length)
+      : Math.round((memory + seq + rec + garden) / 4);
 
     return {
       overall,
-      memory: avg(memScores),
-      seq: avg(seqScores),
-      rec: avg(recScores),
-      garden: avg(garScores)
+      memory,
+      seq,
+      rec,
+      garden,
+      todayPlayed: activeTodayScores.length,
+      today
     };
   }
 

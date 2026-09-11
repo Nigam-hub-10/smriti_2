@@ -71,60 +71,56 @@ class MemoryGame {
     this.container.innerHTML = `
       <div class="game-arena">
         <div class="game-instruction-banner">
-          <div class="game-instruction-text" style="display:flex; align-items:center; gap:8px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
-            <span>Memory &amp; Cognitive Association Challenge</span>
+          <div class="game-instruction-text">
+            <span>🧠 Memory & Cognitive Association Challenge</span>
           </div>
-          <button class="read-btn" id="mem-speak-config" style="display:flex; align-items:center; gap:6px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-            <span>Read Options</span>
-          </button>
+          <button class="read-btn" id="mem-speak-config">🔊 Read Options</button>
         </div>
 
-        <div class="mem-config-wrapper">
-          <div class="mem-config-header">
-            <h3>Choose Your Cognitive Game Mode</h3>
-            <p>Select standard picture matching or progressive cognitive association.</p>
+        <div style="text-align:center; max-width:760px; margin:16px auto; display:flex; flex-direction:column; gap:22px;">
+          <div>
+            <h3 style="color:#1e3a8a; font-size:1.8rem; font-weight:800; margin-bottom:6px;">Choose Your Cognitive Game Mode</h3>
+            <p style="color:#4b5563; font-size:1.15rem;">Select standard picture matching or progressive cognitive association.</p>
           </div>
 
-          <!-- Mode Toggle Cards -->
-          <div class="mem-modes-grid">
-            <button class="mem-mode-card ${this.mode === 'classic' ? 'active' : ''}" id="mode-classic-btn">
-              <div class="mem-mode-icon-badge">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              </div>
-              <strong class="mem-mode-title">Classic Pairs Mode</strong>
-              <span class="mem-mode-desc">Match identical everyday household items</span>
+          <!-- Mode Toggle -->
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+            <button class="game-play-btn ${this.mode === 'classic' ? 'active-mode' : ''}" id="mode-classic-btn" style="background:#2563eb; padding:22px; flex-direction:column; gap:8px; border:3px solid ${this.mode === 'classic' ? '#60a5fa' : 'transparent'};">
+              <span style="font-size:2.2rem;">✨</span>
+              <strong style="font-size:1.3rem;">Classic Pairs Mode</strong>
+              <span style="font-size:0.95rem; opacity:0.9;">Match identical everyday household items</span>
             </button>
 
-            <button class="mem-mode-card ${this.mode === 'associative' ? 'active' : ''}" id="mode-assoc-btn">
-              <div class="mem-mode-icon-badge">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.5 10.5C19.1 10.5 18 9.4 18 8V6.5C18 5.1 16.9 4 15.5 4H14C14 5.4 12.9 6.5 11.5 6.5C10.1 6.5 9 5.4 9 4H7.5C6.1 4 5 5.1 5 6.5V8C6.4 8 7.5 9.1 7.5 10.5C7.5 11.9 6.4 13 5 13V14.5C5 15.9 6.1 17 7.5 17H9C9 15.6 10.1 14.5 11.5 14.5C12.9 14.5 14 15.6 14 17H15.5C16.9 17 18 15.9 18 14.5V13C19.4 13 20.5 11.9 20.5 10.5Z"></path></svg>
-              </div>
-              <strong class="mem-mode-title">Associative Challenge Mode</strong>
-              <span class="mem-mode-desc">Match related items (Glasses + Book, Key + Door)</span>
+            <button class="game-play-btn ${this.mode === 'associative' ? 'active-mode' : ''}" id="mode-assoc-btn" style="background:#0d9488; padding:22px; flex-direction:column; gap:8px; border:3px solid ${this.mode === 'associative' ? '#5eead4' : 'transparent'};">
+              <span style="font-size:2.2rem;">🧩</span>
+              <strong style="font-size:1.3rem;">Associative Challenge Mode</strong>
+              <span style="font-size:0.95rem; opacity:0.9;">Match related items (Glasses + Book, Key + Door)</span>
             </button>
           </div>
 
           <!-- Complexity Level Grid -->
-          <div class="mem-level-section">
-            <div class="mem-level-label">Select Complexity &amp; Grid Size:</div>
-            <div class="mem-levels-grid">
-              <button class="mem-level-card level-pill-btn ${this.level === 1 ? 'active' : ''}" data-lvl="1">
-                <div class="mem-level-num">Level 1</div>
-                <div class="mem-level-sub">8 Cards (4 Pairs)</div>
+          <div style="margin-top:8px;">
+            <div style="font-weight:700; color:#1e293b; font-size:1.2rem; margin-bottom:12px;">Select Complexity & Grid Size:</div>
+            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px;">
+              <button class="level-pill-btn" data-lvl="1" style="background:#f0f9ff; border:2px solid #38bdf8; border-radius:14px; padding:16px 8px; cursor:pointer;">
+                <span style="font-size:1.4rem;">🌱</span>
+                <div style="font-weight:800; color:#0369a1; font-size:1.05rem;">Level 1</div>
+                <div style="font-size:0.82rem; color:#64748b;">8 Cards (4 Pairs)</div>
               </button>
-              <button class="mem-level-card level-pill-btn ${this.level === 2 ? 'active' : ''}" data-lvl="2">
-                <div class="mem-level-num">Level 2</div>
-                <div class="mem-level-sub">12 Cards (6 Pairs)</div>
+              <button class="level-pill-btn" data-lvl="2" style="background:#eff6ff; border:2px solid #3b82f6; border-radius:14px; padding:16px 8px; cursor:pointer; box-shadow:0 0 0 3px #93c5fd;">
+                <span style="font-size:1.4rem;">🌟</span>
+                <div style="font-weight:800; color:#1d4ed8; font-size:1.05rem;">Level 2</div>
+                <div style="font-size:0.82rem; color:#64748b;">12 Cards (6 Pairs)</div>
               </button>
-              <button class="mem-level-card level-pill-btn ${this.level === 3 ? 'active' : ''}" data-lvl="3">
-                <div class="mem-level-num">Level 3</div>
-                <div class="mem-level-sub">16 Cards (4x4 Grid)</div>
+              <button class="level-pill-btn" data-lvl="3" style="background:#f5f3ff; border:2px solid #8b5cf6; border-radius:14px; padding:16px 8px; cursor:pointer;">
+                <span style="font-size:1.4rem;">🔥</span>
+                <div style="font-weight:800; color:#6d28d9; font-size:1.05rem;">Level 3</div>
+                <div style="font-size:0.82rem; color:#64748b;">16 Cards (4x4 Grid)</div>
               </button>
-              <button class="mem-level-card level-pill-btn ${this.level === 4 ? 'active' : ''}" data-lvl="4">
-                <div class="mem-level-num">Level 4</div>
-                <div class="mem-level-sub">20 Cards (Master)</div>
+              <button class="level-pill-btn" data-lvl="4" style="background:#fff7ed; border:2px solid #f97316; border-radius:14px; padding:16px 8px; cursor:pointer;">
+                <span style="font-size:1.4rem;">👑</span>
+                <div style="font-weight:800; color:#c2410c; font-size:1.05rem;">Level 4</div>
+                <div style="font-size:0.82rem; color:#64748b;">20 Cards (Master)</div>
               </button>
             </div>
           </div>
@@ -188,6 +184,7 @@ class MemoryGame {
 
     // Shuffle deck
     deck.sort(() => Math.random() - 0.5);
+    this.startTime = Date.now();
     this.renderGame(deck);
 
     const modeName = this.mode === 'classic' ? 'Classic matching' : 'Associative concept matching';
@@ -313,9 +310,27 @@ class MemoryGame {
   }
 
   finish() {
-    // Scoring based on efficiency and level
-    const extraAttempts = Math.max(0, this.attempts - this.targetPairsCount);
-    const score = Math.max(75, 100 - (extraAttempts * 4));
+    // Multi-factor dynamic cognitive performance scoring
+    const elapsedSeconds = Math.max(5, Math.round((Date.now() - (this.startTime || Date.now())) / 1000));
+    const optimalAttempts = this.targetPairsCount;
+    const actualAttempts = Math.max(optimalAttempts, this.attempts);
+    
+    // Accuracy factor (optimal vs actual flips)
+    const accuracyRatio = optimalAttempts / actualAttempts;
+    
+    // Pace benchmark (gentle cognitive benchmark: ~7s per pair)
+    const targetSeconds = this.targetPairsCount * 7;
+    let speedScore = 100;
+    if (elapsedSeconds > targetSeconds) {
+      speedScore = Math.max(45, Math.round(100 - (elapsedSeconds - targetSeconds) * 2));
+    } else {
+      speedScore = Math.min(100, Math.round(85 + (targetSeconds - elapsedSeconds) * 1.5));
+    }
+
+    const streakBonus = Math.min(15, (this.maxStreak || 1) * 3.5);
+    const levelWeight = 1 + (this.level - 1) * 0.04;
+    const rawScore = Math.round(((accuracyRatio * 60) + (speedScore * 0.30) + streakBonus) * levelWeight);
+    const score = Math.max(30, Math.min(100, rawScore));
 
     window.smritiData.saveGameScore('memory', score);
     if (window.smritiAudio) window.smritiAudio.playWin();
@@ -323,13 +338,15 @@ class MemoryGame {
     setTimeout(() => {
       this.container.innerHTML = `
         <div class="game-finish-card">
-          <div class="finish-icon">🏆</div>
-          <h3 class="finish-title">Level ${this.level} Conquered!</h3>
+          <div class="finish-icon">${score >= 85 ? '🏆' : (score >= 65 ? '🌟' : '👏')}</div>
+          <h3 class="finish-title">Level ${this.level} Completed!</h3>
           <div class="finish-score">
-            Score: ${score}% • Stars: ⭐⭐⭐ • Max Streak: ${this.maxStreak}
+            Score: ${score}% • Precision: ${Math.round(accuracyRatio * 100)}% • Time: ${elapsedSeconds}s • Streak: ${this.maxStreak}
           </div>
           <p class="finish-msg">
-            You matched all ${this.targetPairsCount} pairs in ${this.mode === 'associative' ? 'Associative Brain Mode' : 'Classic Mode'} with great focus and mental agility!
+            ${score >= 85 
+              ? `Outstanding recall! You solved all ${this.targetPairsCount} pairs in ${this.attempts} attempts (${elapsedSeconds}s) with high precision.` 
+              : `Great focus! You completed all ${this.targetPairsCount} pairs in ${this.attempts} attempts (${elapsedSeconds}s), actively strengthening visual neural recall.`}
           </p>
           <div style="display:flex; gap:14px; margin-top:12px; flex-wrap:wrap; justify-content:center;">
             <button class="header-action-btn" id="mem-next-lvl-btn" style="padding:14px 22px; font-weight:700; background:#3b82f6; color:#ffffff;">
@@ -350,16 +367,19 @@ class MemoryGame {
       const nextBtn = document.getElementById('mem-next-lvl-btn');
       if (nextBtn) {
         nextBtn.addEventListener('click', () => {
+          if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
           this.level = Math.min(4, this.level + 1);
           this.startDeck();
         });
       }
 
       document.getElementById('mem-replay-btn').addEventListener('click', () => {
+        if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
         this.startDeck();
       });
 
       document.getElementById('mem-finish-btn').addEventListener('click', () => {
+        if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
         if (this.onComplete) this.onComplete(score);
       });
     }, 700);

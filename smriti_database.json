@@ -7,7 +7,7 @@
     "stage": "Mild Cognitive Impairment (Early Stage)",
     "caregiverName": "Amit Sharma",
     "caregiverRelation": "Son",
-    "emergencyPhone": "+91 9997264193",
+    "emergencyPhone": "+91  9638527419",
     "doctorName": "Family Physician",
     "doctorPhone": "",
     "homeAddress": "Home",
@@ -16,12 +16,12 @@
   "caregiverProfile": {
     "name": "Amit Sharma",
     "relation": "Son",
-    "phone": "+91 9997264193",
+    "phone": "+91  9638527419",
     "email": "",
-    "pin": "2468",
+    "pin": "12345",
     "notes": "Care journey initiated for Ramesh Sharma."
   },
-  "caregiverPin": "2468",
+  "caregiverPin": "12345",
   "dailyRecords": [
     {
       "date": "2026-09-05",
@@ -105,14 +105,26 @@
       "date": "2026-09-11",
       "displayDate": "Sep 12",
       "weekday": "Sat",
-      "memoryScore": 90,
+      "memoryScore": 75,
       "sequencingScore": 95,
-      "recognitionScore": 95,
+      "recognitionScore": 75,
       "gardenScore": 100,
-      "averageScore": 95,
-      "mood": "happy",
+      "averageScore": 86,
+      "mood": "calm",
       "gamesCompleted": 4,
       "notesCount": 1
+    },
+    {
+      "date": "2026-09-12",
+      "displayDate": "Sep 12",
+      "weekday": "Sat",
+      "memoryScore": 67,
+      "sequencingScore": null,
+      "recognitionScore": 54,
+      "gardenScore": null,
+      "averageScore": 61,
+      "mood": "calm",
+      "gamesCompleted": 2
     }
   ],
   "caregiverNotes": [
@@ -126,7 +138,7 @@
       ]
     }
   ],
-  "todayMood": "happy",
+  "todayMood": "calm",
   "userRole": "patient",
   "communityContributions": [
     {
@@ -174,5 +186,5 @@
       "content": "Available for 15-minute soothing video calls or tele-poetry reading for patients feeling lonely during late afternoons."
     }
   ],
-  "lastSaved": "2026-09-11T21:15:36.223Z"
+  "lastSaved": "2026-09-11T22:54:44.223Z"
 }

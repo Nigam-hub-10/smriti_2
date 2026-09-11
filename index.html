@@ -6,36 +6,25 @@
   <meta name="description" content="Smriti - Gentle cognitive care and daily monitoring application for dementia patients and caregivers. Features 4 memory and routine games with daily caregiver score bar graphs.">
   <title>Smriti - Dementia Care & Cognitive Companion</title>
 
-  <meta name="theme-color" content="#B85241">
-
-  <!-- Google Fonts — Plus Jakarta Sans (Design System Primary) -->
+  <!-- Google Fonts for High Readability -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="patient.css">
-  <link rel="stylesheet" href="caregiver.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/patient.css">
+  <link rel="stylesheet" href="css/caregiver.css">
 </head>
 <body>
-
-  <!-- Decorative Background Arch -->
-  <div class="decorative-arch" aria-hidden="true">
-    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <path fill="#B85241" fill-opacity="0.06" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,154.7C672,149,768,171,864,186.7C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-    </svg>
-  </div>
 
   <!-- Top Navigation & Portal Switcher -->
   <header class="app-header">
     <div class="brand-area">
-      <div class="brand-logo-icon" aria-hidden="true">
-        <svg class="icon-svg" style="width:24px;height:24px;" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-      </div>
+      <div class="brand-logo-icon" aria-hidden="true">🧠</div>
       <div class="brand-titles">
-        <h1>Smriti <span style="font-size:0.85rem; font-weight:500; opacity:0.75;">Care &amp; Memory</span></h1>
-        <div class="tagline">Cognitive Support &amp; Caregiver Companion</div>
+        <h1>Smriti <span style="font-size:0.85rem; font-weight:500; opacity:0.75;">Care & Memory</span></h1>
+        <div class="tagline">Cognitive Support & Caregiver Insight Companion</div>
       </div>
     </div>
 
@@ -43,49 +32,49 @@
       <!-- Portal Switcher -->
       <div class="portal-switch-pill" role="tablist" aria-label="Portal Mode Selection">
         <button class="portal-btn active" id="btn-portal-patient" role="tab" aria-selected="true" title="Switch to Patient friendly view">
-          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Patient Portal
+          👤 Patient Portal
         </button>
-        <button class="portal-btn" id="btn-portal-caregiver" role="tab" aria-selected="false" title="Switch to Caregiver dashboard &amp; score graphs">
-          <svg class="icon-svg" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Caregiver Portal
+        <button class="portal-btn" id="btn-portal-caregiver" role="tab" aria-selected="false" title="Switch to Caregiver dashboard & score graphs">
+          📊 Caregiver Portal
         </button>
       </div>
 
       <!-- AI Care Companion Action -->
       <button class="header-action-btn" id="btn-header-chatbot" title="Talk to AI Companion" aria-label="Open AI Companion">
-        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg> AI Companion
+        🤖 AI Companion
       </button>
 
       <!-- Community & New User Onboarding Action -->
-      <button class="header-action-btn contribute-btn" id="btn-header-contribute" title="Contribute / New User Onboarding" aria-label="Contribute or Register New User">
-        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="17" y1="11" x2="23" y2="11"/></svg> Contribute
+      <button class="header-action-btn" id="btn-header-contribute" title="Contribute / New User Onboarding" aria-label="Contribute or Register New User" style="background:#ecfdf5; border-color:#6ee7b7; color:#065f46; font-weight:700;">
+        🤝 Contribute / New User
       </button>
 
       <!-- Profile & Settings Action -->
-      <button class="header-action-btn" id="btn-open-profile" title="Patient &amp; Caregiver Profile Settings" aria-label="Open Profile Settings">
-        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Profile
+      <button class="header-action-btn" id="btn-open-profile" title="Patient & Caregiver Profile Settings" aria-label="Open Profile Settings">
+        ⚙️ Profile & Caretaker
       </button>
 
       <!-- Accessibility Actions -->
       <button class="header-action-btn" id="toggle-voice-btn" title="Toggle audio voice reading" aria-label="Voice reading assistance">
-        <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Voice
+        🔊 Voice On
       </button>
       <button class="header-action-btn" id="toggle-contrast-btn" title="Toggle extra high contrast" aria-label="Toggle high contrast">
-        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> Contrast
+        👁️ High Contrast
       </button>
 
       <!-- Language Switcher (EN / HI) -->
-      <div class="lang-switch-group" id="header-lang-switch">
-        <button class="lang-btn active" id="btn-lang-en" data-lang="en" title="Switch to English">
+      <div class="lang-switch-group" id="header-lang-switch" style="display:flex; background:#f1f5f9; border-radius:30px; padding:3px; border:1.5px solid #cbd5e1; align-items:center; gap:2px;">
+        <button class="lang-btn active" id="btn-lang-en" data-lang="en" style="border:none; background:#2563eb; color:#ffffff; padding:5px 12px; font-size:0.85rem; font-weight:700; border-radius:20px; cursor:pointer; transition:all 0.2s;" title="Switch to English">
           English
         </button>
-        <button class="lang-btn" id="btn-lang-hi" data-lang="hi" title="हिंदी में बदलें (Switch to Hindi)">
-          हिंदी
+        <button class="lang-btn" id="btn-lang-hi" data-lang="hi" style="border:none; background:transparent; color:#475569; padding:5px 12px; font-size:0.85rem; font-weight:700; border-radius:20px; cursor:pointer; transition:all 0.2s;" title="हिंदी में बदलें (Switch to Hindi)">
+          🇮🇳 हिंदी
         </button>
       </div>
 
       <!-- Logout / Switch Role Action -->
-      <button class="header-action-btn logout-btn" id="btn-logout" title="Log Out and return to Role Selection" aria-label="Log Out or Switch Role">
-        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Log Out
+      <button class="header-action-btn" id="btn-logout" title="Log Out and return to Role Selection" aria-label="Log Out or Switch Role" style="background:#fee2e2; border-color:#fca5a5; color:#991b1b; font-weight:700;">
+        🚪 Log Out / Switch
       </button>
     </div>
   </header>
@@ -111,60 +100,26 @@
       <!-- Mood Check-in Card -->
       <div class="mood-checkin-card">
         <div class="mood-title-area">
-          <h3><svg class="icon-svg" style="width:22px;height:22px;color:var(--primary);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg> How are you feeling right now?</h3>
+          <h3>😊 How are you feeling right now?</h3>
           <button class="read-btn" id="mood-read-btn" title="Listen to question">
-            <svg class="icon-svg" style="width:16px;height:16px;" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Read Aloud
+            🔊 Read Aloud
           </button>
         </div>
         <div class="mood-options-grid">
           <button class="mood-btn selected" data-mood="happy" aria-label="Feeling Happy">
-            <span class="mood-emoji">
-              <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
-                <circle cx="32" cy="32" r="30" fill="#FFF0EB" stroke="#B85241" stroke-width="2.5"/>
-                <circle cx="22" cy="26" r="3.5" fill="#B85241"/>
-                <circle cx="42" cy="26" r="3.5" fill="#B85241"/>
-                <path d="M20 38c3 6 9 9 12 9s9-3 12-9" stroke="#B85241" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-                <circle cx="15" cy="34" r="4" fill="#F5C4B8" opacity="0.6"/>
-                <circle cx="49" cy="34" r="4" fill="#F5C4B8" opacity="0.6"/>
-              </svg>
-            </span>
+            <span class="mood-emoji">😊</span>
             <span class="mood-label">Happy</span>
           </button>
-          <button class="mood-btn" data-mood="calm" aria-label="Feeling Calm &amp; Peaceful">
-            <span class="mood-emoji">
-              <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
-                <circle cx="32" cy="32" r="30" fill="#FFF0EB" stroke="#B85241" stroke-width="2.5"/>
-                <path d="M18 27c2-2 5-2 7 0" stroke="#B85241" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                <path d="M39 27c2-2 5-2 7 0" stroke="#B85241" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                <path d="M22 40c3 4 7 5 10 5s7-1 10-5" stroke="#B85241" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-                <circle cx="15" cy="34" r="4" fill="#F5C4B8" opacity="0.5"/>
-                <circle cx="49" cy="34" r="4" fill="#F5C4B8" opacity="0.5"/>
-              </svg>
-            </span>
+          <button class="mood-btn" data-mood="calm" aria-label="Feeling Calm & Peaceful">
+            <span class="mood-emoji">😌</span>
             <span class="mood-label">Peaceful</span>
           </button>
           <button class="mood-btn" data-mood="neutral" aria-label="Feeling Okay">
-            <span class="mood-emoji">
-              <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
-                <circle cx="32" cy="32" r="30" fill="#FFF0EB" stroke="#B85241" stroke-width="2.5"/>
-                <circle cx="22" cy="27" r="3" fill="#B85241"/>
-                <circle cx="42" cy="27" r="3" fill="#B85241"/>
-                <line x1="22" y1="41" x2="42" y2="41" stroke="#B85241" stroke-width="2.8" stroke-linecap="round"/>
-              </svg>
-            </span>
+            <span class="mood-emoji">😐</span>
             <span class="mood-label">Just Okay</span>
           </button>
           <button class="mood-btn" data-mood="tired" aria-label="Feeling Tired or Sleepy">
-            <span class="mood-emoji">
-              <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
-                <circle cx="32" cy="32" r="30" fill="#FFF0EB" stroke="#B85241" stroke-width="2.5"/>
-                <path d="M18 28c2-2 5-2 7 0" stroke="#B85241" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                <path d="M39 28c2-2 5-2 7 0" stroke="#B85241" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                <path d="M24 42c2 3 5 4 8 4s6-1 8-4" stroke="#B85241" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-                <text x="48" y="18" font-size="11" font-weight="700" fill="#B85241" font-family="Plus Jakarta Sans, sans-serif">z</text>
-                <text x="53" y="12" font-size="9" font-weight="700" fill="#D4735F" font-family="Plus Jakarta Sans, sans-serif">z</text>
-              </svg>
-            </span>
+            <span class="mood-emoji">🥱</span>
             <span class="mood-label">A Bit Tired</span>
           </button>
         </div>
@@ -172,8 +127,8 @@
 
       <!-- Games Header -->
       <div class="section-headline">
-        <h3><svg class="icon-svg" style="width:22px;height:22px;color:var(--primary);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Today's Gentle Activities</h3>
-        <span>No timers • Relaxing &amp; fun</span>
+        <h3>🎯 Today's Gentle Activities</h3>
+        <span>No timers • Relaxing & fun</span>
       </div>
 
       <!-- 4 Cognitive Games Grid -->
@@ -182,9 +137,7 @@
         <!-- Game 1: Memory Pairs -->
         <article class="game-card" data-game="memory" id="game-card-memory">
           <div class="game-card-header">
-            <div class="game-icon-box memory">
-              <svg class="icon-svg" style="width:28px;height:28px;" viewBox="0 0 24 24"><circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M14 15a2 2 0 0 0-4 0"/><path d="M2.5 13L5 7h14l2.5 6"/></svg>
-            </div>
+            <div class="game-icon-box memory">👓</div>
             <span class="game-status-pill" id="pill-game-memory">Ready to Play</span>
           </div>
           <div class="game-card-content">
@@ -192,16 +145,14 @@
             <p>Find pairs of everyday household items like glasses, medicine box, keys, and water bottle.</p>
           </div>
           <button class="game-play-btn" aria-label="Play Daily Essentials Match">
-            Start Matching
+            ▶ Start Matching
           </button>
         </article>
 
         <!-- Game 2: Daily Routine Sequencing -->
         <article class="game-card" data-game="sequencing" id="game-card-sequencing">
           <div class="game-card-header">
-            <div class="game-icon-box sequencing">
-              <svg class="icon-svg" style="width:28px;height:28px;" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><polyline points="9 14 11 16 15 11"/></svg>
-            </div>
+            <div class="game-icon-box sequencing">📋</div>
             <span class="game-status-pill" id="pill-game-sequencing">Ready to Play</span>
           </div>
           <div class="game-card-content">
@@ -209,16 +160,14 @@
             <p>Put everyday steps in the right order (e.g. brushing teeth, drinking water, washing hands).</p>
           </div>
           <button class="game-play-btn" aria-label="Play Daily Routine Steps">
-            Arrange Steps
+            ▶ Arrange Steps
           </button>
         </article>
 
         <!-- Game 3: Object Recognition -->
         <article class="game-card" data-game="recognition" id="game-card-recognition">
           <div class="game-card-header">
-            <div class="game-icon-box recognition">
-              <svg class="icon-svg" style="width:28px;height:28px;" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.64 2.87 1.68 3.82.72.66 1.13 1.34 1.32 2.18"/></svg>
-            </div>
+            <div class="game-icon-box recognition">💡</div>
             <span class="game-status-pill" id="pill-game-recognition">Ready to Play</span>
           </div>
           <div class="game-card-content">
@@ -226,16 +175,14 @@
             <p>Connect pictures of familiar items with what they do. Hear hints with gentle audio.</p>
           </div>
           <button class="game-play-btn" aria-label="Play Everyday Item Recall">
-            Guess Items
+            ▶ Guess Items
           </button>
         </article>
 
         <!-- Game 4: Calming Focus Garden -->
         <article class="game-card" data-game="garden" id="game-card-garden">
           <div class="game-card-header">
-            <div class="game-icon-box garden">
-              <svg class="icon-svg" style="width:28px;height:28px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2a4.5 4.5 0 0 0-4.5 4.5 4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5A4.5 4.5 0 0 0 12 2z"/><path d="M12 13a4.5 4.5 0 0 0-4.5 4.5 4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5A4.5 4.5 0 0 0 12 13z"/><path d="M2 12a4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5A4.5 4.5 0 0 0 6.5 7.5 4.5 4.5 0 0 0 2 12z"/><path d="M13 12a4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5 4.5 4.5 0 0 0-4.5-4.5 4.5 4.5 0 0 0-4.5 4.5z"/></svg>
-            </div>
+            <div class="game-icon-box garden">🌸</div>
             <span class="game-status-pill" id="pill-game-garden">Ready to Play</span>
           </div>
           <div class="game-card-content">
@@ -243,7 +190,7 @@
             <p>Gently touch blooming flowers in the tranquil garden to relax and practice fine motor focus.</p>
           </div>
           <button class="game-play-btn" aria-label="Play Calming Focus Garden">
-            Visit Garden
+            ▶ Visit Garden
           </button>
         </article>
 
@@ -251,8 +198,7 @@
 
       <!-- Reassurance Card -->
       <div class="patient-reassurance-card">
-        <div class="decorative-quote" aria-hidden="true">“</div>
-        <div class="reassurance-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="#B85241" stroke="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="reassurance-icon">💖</div>
         <p>Remember: You are doing wonderfully. There is no rush with any activity. Take your time, breathe deeply, and smile.</p>
       </div>
 
@@ -266,30 +212,19 @@
       <!-- Patient Status Banner -->
       <div class="cg-status-banner">
         <div class="cg-patient-profile">
-          <div class="cg-avatar-wrapper">
-            <div class="cg-avatar">
-              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
-            <span class="cg-status-dot" title="Active Session"></span>
-          </div>
+          <div class="cg-avatar">👵</div>
           <div class="cg-patient-meta">
             <h2 id="cg-patient-name">Eleanor Vance, 74y</h2>
             <p id="cg-patient-stage">Mild Cognitive Impairment • Primary Caretaker: Sarah Vance (+1 555 382-9011)</p>
-            <div class="cg-action-buttons">
-              <button class="header-action-btn cg-edit-btn" id="btn-edit-profile-cg" title="Edit patient and caretaker data">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-                <span>Edit Profile</span>
+            <div style="margin-top: 8px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+              <button class="header-action-btn" id="btn-edit-profile-cg" style="padding: 6px 14px; font-size: 0.85rem;" title="Edit patient and caretaker data">
+                ✏️ Edit Profile & Caretaker Details
               </button>
-              <button class="header-action-btn cg-pin-btn" id="btn-change-pin-cg" title="Change caregiver passcode">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                <span>Change Passcode</span>
+              <button class="header-action-btn" id="btn-change-pin-cg" style="padding: 6px 14px; font-size: 0.85rem; background: #312e81; border-color: #4338ca; color: #ffffff;" title="Change caregiver passcode">
+                🔒 Change Passcode
               </button>
-              <button class="header-action-btn cg-logout-btn" id="btn-logout-cg" title="Log out of caregiver session">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                <span>Log Out Session</span>
+              <button class="header-action-btn" id="btn-logout-cg" style="padding: 6px 14px; font-size: 0.85rem; background:#7f1d1d; border-color:#991b1b; color:#ffffff; font-weight:700;" title="Log out of caregiver session">
+                🚪 Log Out Caregiver Session
               </button>
             </div>
           </div>
@@ -298,108 +233,73 @@
         <div class="cg-status-pills">
           <div class="cg-pill">
             <span class="cg-pill-label">Today's Mood</span>
-            <span class="cg-pill-value" id="cg-today-mood-pill">HAPPY</span>
+            <span class="cg-pill-value" id="cg-today-mood-pill">HAPPY 😊</span>
           </div>
           <div class="cg-pill">
             <span class="cg-pill-label">Today's Activity</span>
             <span class="cg-pill-value" id="cg-today-games-pill">3 / 4 Done</span>
           </div>
           <div class="cg-pill">
-            <span class="cg-pill-label">Patient Status</span>
-            <span class="cg-pill-value cg-status-active">Active Today</span>
+            <span class="cg-pill-label">Status</span>
+            <span class="cg-pill-value" style="color:#34d399;">Active Today</span>
           </div>
         </div>
       </div>
 
       <!-- Top Metric Cards -->
       <div class="cg-metrics-grid">
-        <!-- 1. Overall Index -->
-        <div class="cg-metric-card cg-card-overall">
+        <div class="cg-metric-card">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Overall Index</span>
-            <div class="cg-metric-icon-badge cg-icon-overall">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-            </div>
+            <span class="cg-metric-title">Overall Cognitive Index</span>
+            <span class="cg-metric-icon">📈</span>
           </div>
           <div class="cg-metric-value" id="metric-val-overall">88%</div>
-          <div class="cg-metric-progress">
-            <div class="cg-metric-progress-fill fill-overall" style="width: 88%;"></div>
-          </div>
           <div class="cg-metric-trend trend-up">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
-            <span>+4% from last week</span>
+            <span>▲ +4% from last week</span>
           </div>
         </div>
 
-        <!-- 2. Memory Recall -->
-        <div class="cg-metric-card cg-card-memory">
+        <div class="cg-metric-card">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Memory Recall</span>
-            <div class="cg-metric-icon-badge cg-icon-memory">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="6" cy="12" r="4"></circle><circle cx="18" cy="12" r="4"></circle><path d="M10 12h4"></path></svg>
-            </div>
+            <span class="cg-metric-title">Memory Recall (Game 1)</span>
+            <span class="cg-metric-icon">👓</span>
           </div>
           <div class="cg-metric-value" id="metric-val-memory">84%</div>
-          <div class="cg-metric-progress">
-            <div class="cg-metric-progress-fill fill-memory" style="width: 84%;"></div>
-          </div>
           <div class="cg-metric-trend trend-stable">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="4"></circle></svg>
-            <span>Stable spatial recall</span>
+            <span>● Stable spatial recall</span>
           </div>
         </div>
 
-        <!-- 3. Routine Sequencing -->
-        <div class="cg-metric-card cg-card-seq">
+        <div class="cg-metric-card">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Routine Sequencing</span>
-            <div class="cg-metric-icon-badge cg-icon-seq">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-            </div>
+            <span class="cg-metric-title">Routine Sequencing (Game 2)</span>
+            <span class="cg-metric-icon">📋</span>
           </div>
           <div class="cg-metric-value" id="metric-val-seq">86%</div>
-          <div class="cg-metric-progress">
-            <div class="cg-metric-progress-fill fill-seq" style="width: 86%;"></div>
-          </div>
           <div class="cg-metric-trend trend-up">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
-            <span>Strong ADL execution</span>
+            <span>▲ Strong ADL execution</span>
           </div>
         </div>
 
-        <!-- 4. Object Recognition -->
-        <div class="cg-metric-card cg-card-rec">
+        <div class="cg-metric-card">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Object Recognition</span>
-            <div class="cg-metric-icon-badge cg-icon-rec">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
-            </div>
+            <span class="cg-metric-title">Object Recognition (Game 3)</span>
+            <span class="cg-metric-icon">💡</span>
           </div>
           <div class="cg-metric-value" id="metric-val-rec">90%</div>
-          <div class="cg-metric-progress">
-            <div class="cg-metric-progress-fill fill-rec" style="width: 90%;"></div>
-          </div>
           <div class="cg-metric-trend trend-up">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
-            <span>Sharp item association</span>
+            <span>▲ Sharp item association</span>
           </div>
         </div>
 
-        <!-- 5. Garden Calmness -->
-        <div class="cg-metric-card cg-card-garden">
+        <div class="cg-metric-card">
           <div class="cg-metric-header">
-            <span class="cg-metric-title">Garden Calmness</span>
-            <div class="cg-metric-icon-badge cg-icon-garden">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
-            </div>
+            <span class="cg-metric-title">Garden Calmness (Game 4)</span>
+            <span class="cg-metric-icon">🌸</span>
           </div>
           <div class="cg-metric-value" id="metric-val-garden">98%</div>
-          <div class="cg-metric-progress">
-            <div class="cg-metric-progress-fill fill-garden" style="width: 98%;"></div>
-          </div>
           <div class="cg-metric-trend trend-stable">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="4"></circle></svg>
-            <span>Relaxed attention state</span>
+            <span>● Relaxed attention state</span>
           </div>
         </div>
       </div>
@@ -407,37 +307,18 @@
       <!-- MAIN INTERACTIVE BAR GRAPH CARD -->
       <div class="cg-chart-card">
         <div class="cg-chart-header">
-          <div class="cg-chart-title-group">
-            <div class="cg-chart-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-            </div>
-            <div>
-              <h3>Daily Cognitive Score Records</h3>
-              <p>Day-by-day performance tracking across all 4 daily life games. Hover or tap bars for detailed notes.</p>
-            </div>
+          <div>
+            <h3>📊 Daily Cognitive Score Records (Bar Graph)</h3>
+            <p>Day-by-day performance tracking across all 4 daily life games. Hover or tap bars for detailed notes.</p>
           </div>
 
           <!-- Metric Filters for the Bar Graph -->
           <div class="cg-chart-filters" role="group" aria-label="Chart Filter">
-            <button class="filter-btn active" data-filter="overall">
-              <span>Overall Index</span>
-            </button>
-            <button class="filter-btn" data-filter="memory">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="12" r="4"></circle><circle cx="18" cy="12" r="4"></circle></svg>
-              <span>Memory Pairs</span>
-            </button>
-            <button class="filter-btn" data-filter="sequencing">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg>
-              <span>Routine Steps</span>
-            </button>
-            <button class="filter-btn" data-filter="recognition">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>
-              <span>Object Recall</span>
-            </button>
-            <button class="filter-btn" data-filter="garden">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"></circle></svg>
-              <span>Garden Calm</span>
-            </button>
+            <button class="filter-btn active" data-filter="overall">Overall Index</button>
+            <button class="filter-btn" data-filter="memory">👓 Memory Pairs</button>
+            <button class="filter-btn" data-filter="sequencing">📋 Routine Steps</button>
+            <button class="filter-btn" data-filter="recognition">💡 Object Recall</button>
+            <button class="filter-btn" data-filter="garden">🌸 Garden Calm</button>
           </div>
         </div>
 
@@ -449,15 +330,15 @@
         <!-- Legend -->
         <div class="chart-legend">
           <div class="legend-item">
-            <span class="legend-color-dot" style="background: var(--primary);"></span>
+            <span class="legend-color-dot" style="background:#38bdf8;"></span>
             <span>Current Daily Score</span>
           </div>
           <div class="legend-item">
-            <span class="legend-color-dot" style="background: var(--success); height:3px; border-radius:0;"></span>
+            <span class="legend-color-dot" style="background:#34d399; height:3px; border-radius:0;"></span>
             <span>Target Cognitive Baseline (75%+)</span>
           </div>
           <div class="legend-item">
-            <span class="legend-color-dot" style="background: var(--bg-card); border:1px solid var(--primary);"></span>
+            <span class="legend-color-dot" style="background:#ffffff; border:1px solid #38bdf8;"></span>
             <span>Interactive Hover / Tap Detail</span>
           </div>
         </div>
@@ -468,10 +349,7 @@
         
         <!-- Score Records Table -->
         <div class="cg-table-card">
-          <div class="cg-card-title-header">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <h3>Day-by-Day Score Breakdown</h3>
-          </div>
+          <h3>📅 Day-by-Day Score Breakdown</h3>
           <div class="cg-table-wrap">
             <table class="score-table" aria-label="Detailed daily score records table">
               <thead>
@@ -494,10 +372,7 @@
 
         <!-- Caregiver Log & Observations -->
         <div class="cg-notes-card">
-          <div class="cg-card-title-header">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-            <h3>Caregiver Daily Observations</h3>
-          </div>
+          <h3>📝 Caregiver Daily Observations</h3>
           
           <form id="caregiver-note-form" class="cg-note-input-form">
             <textarea id="caregiver-note-text" class="cg-textarea" placeholder="Log patient behavior, orientation, meal appetite, or observations..." required></textarea>
@@ -514,8 +389,7 @@
             </div>
 
             <button type="submit" class="cg-submit-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              <span>Save Observation</span>
+              ➕ Save Observation
             </button>
           </form>
 
@@ -529,45 +403,35 @@
       <!-- Emergency and Quick Care Actions -->
       <div class="cg-actions-row">
         <button class="cg-action-btn" id="cg-call-doctor">
-          <div class="cg-action-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-          </div>
+          <span class="cg-action-icon">🩺</span>
           <div class="cg-action-text">
             <strong id="cg-doc-title">Contact Neurologist</strong>
             <span id="cg-doc-meta">Dr. Arvind Mehta (Clinic)</span>
           </div>
         </button>
         <button class="cg-action-btn" id="cg-call-caregiver">
-          <div class="cg-action-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          </div>
+          <span class="cg-action-icon">📞</span>
           <div class="cg-action-text">
             <strong id="cg-caregiver-title">Call Primary Caretaker</strong>
             <span id="cg-caregiver-meta">Sarah Vance: +1 (555) 382-9011</span>
           </div>
         </button>
         <button class="cg-action-btn" id="cg-export-report">
-          <div class="cg-action-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          </div>
+          <span class="cg-action-icon">📄</span>
           <div class="cg-action-text">
             <strong>Print Care Report</strong>
             <span>Export printable summary</span>
           </div>
         </button>
         <button class="cg-action-btn" id="cg-backup-json" title="Download persistent JSON file">
-          <div class="cg-action-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          </div>
+          <span class="cg-action-icon">💾</span>
           <div class="cg-action-text">
             <strong>Download Backup (JSON)</strong>
             <span>Save records to disk</span>
           </div>
         </button>
         <button class="cg-action-btn" id="cg-restore-json" title="Restore records from JSON">
-          <div class="cg-action-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-          </div>
+          <span class="cg-action-icon">📤</span>
           <div class="cg-action-text">
             <strong>Restore Backup</strong>
             <span>Load saved file</span>
@@ -759,204 +623,170 @@
        CARETAKER PASSCODE / PIN SECURITY MODAL
        ========================================================= -->
   <div class="modal-overlay" id="caretaker-pin-modal" role="dialog" aria-modal="true" aria-labelledby="pin-modal-title">
-    <div class="modal-content pin-modal-content">
-      <div class="modal-header pin-modal-header">
-        <div class="pin-modal-title-wrapper">
-          <div class="pin-security-badge-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
-          </div>
-          <h3 class="modal-title pin-modal-title" id="pin-modal-title">Caregiver Security Access</h3>
-        </div>
+    <div class="modal-content" style="max-width: 460px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="pin-modal-title">🔒 Caregiver Security Access</h3>
         <button class="modal-close-btn" id="pin-modal-close" aria-label="Close PIN modal">✕</button>
       </div>
-      <div class="modal-body pin-modal-body">
+      <div class="modal-body" style="padding: 24px;">
 
         <!-- VIEW 1: Standard Unlock Passcode -->
-        <div id="pin-view-unlock" class="pin-subview">
-          <div class="pin-hero-head">
-            <div class="pin-hero-icon-badge">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                <rect x="9" y="11" width="6" height="5" rx="1"></rect>
-                <path d="M10 11V9a2 2 0 1 1 4 0v2"></path>
-              </svg>
-            </div>
-            <h4 class="pin-heading">Enter Caregiver Passcode</h4>
-            <p class="pin-subtext">
+        <div id="pin-view-unlock" class="pin-subview" style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="text-align: center;">
+            <div style="font-size: 2.2rem; margin-bottom: 4px;">🛡️</div>
+            <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0 0 4px 0;">Enter Caregiver Passcode</h4>
+            <p style="font-size: 0.9rem; color: #64748b; margin: 0;">
               Access patient cognitive score graphs, trends, and clinical notes.
             </p>
           </div>
 
-          <form id="caretaker-pin-form" class="pin-form">
-            <div class="pin-input-field-group">
-              <input type="password" id="caretaker-pin-input" class="form-control pin-custom-input" maxlength="8" placeholder="••••" required autofocus autocomplete="off">
+          <form id="caretaker-pin-form" style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="password" id="caretaker-pin-input" class="form-control" maxlength="8" placeholder="Enter PIN (e.g. 1234)" style="font-size: 1.8rem; text-align: center; letter-spacing: 6px; padding: 10px; font-weight: 700;" required autofocus>
+            <div id="pin-error-msg" style="color: #dc2626; font-size: 0.92rem; display: none; font-weight: 600; text-align: center; background: #fef2f2; padding: 8px; border-radius: 8px; border: 1px solid #fecaca;">
+              ⚠️ Incorrect passcode. Please try again or use the reset options below.
             </div>
-
-            <div id="pin-error-msg" class="pin-alert-error" style="display: none;">
-              Incorrect passcode. Please try again or use the reset options below.
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: #64748b; background: #f8fafc; padding: 8px 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <span>💡 Default passcode: <strong>1234</strong></span>
+              <span id="pin-caregiver-name-badge" style="color: #3b82f6; font-weight: 600;">Sarah Vance</span>
             </div>
-
-            <div class="pin-meta-info-card">
-              <div class="pin-default-hint">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                <span>Default passcode: <strong>1234</strong></span>
-              </div>
-              <span id="pin-caregiver-name-badge" class="pin-caregiver-badge">Sarah Vance</span>
-            </div>
-
-            <div class="pin-action-buttons">
-              <button type="button" class="btn-pin-cancel" id="btn-pin-cancel">Cancel</button>
-              <button type="submit" class="btn-pin-submit">
-                <span>Unlock Access</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
-                </svg>
-              </button>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <button type="button" class="btn-secondary-cancel" id="btn-pin-cancel" style="flex: 1;">Cancel</button>
+              <button type="submit" class="btn-primary-save" style="flex: 1; justify-content: center;">Unlock 🔓</button>
             </div>
           </form>
 
-          <!-- Navigation Sub-Actions -->
-          <div class="pin-secondary-actions">
-            <button type="button" id="btn-nav-to-change-pin" class="pin-sub-action-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
-              </svg>
-              <span>I know previous passcode • <strong>Change Passcode</strong></span>
+          <!-- Navigation to Change PIN or Forgot PIN -->
+          <div style="border-top: 1px solid #e2e8f0; margin-top: 6px; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+            <button type="button" id="btn-nav-to-change-pin" style="background: none; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 14px; color: #334155; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;">
+              <span>🔑</span> I know previous passcode • <strong>Change Passcode</strong>
             </button>
-            <button type="button" id="btn-nav-to-forgot-pin" class="pin-sub-action-btn pin-sub-action-highlight">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-              </svg>
-              <span>Forgot Passcode? • <strong>Reset via Caretaker Phone</strong></span>
+            <button type="button" id="btn-nav-to-forgot-pin" style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px 14px; color: #1d4ed8; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;">
+              <span>📱</span> Forgot Passcode? • <strong>Reset via Caretaker Phone</strong>
             </button>
           </div>
         </div>
 
-        <!-- VIEW 2: Change Passcode -->
-        <div id="pin-view-change" class="pin-subview" style="display: none;">
-          <div class="pin-subview-head">
-            <div class="pin-subview-icon-badge">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
-              </svg>
+        <!-- VIEW 2: Change Passcode (When user knows current passcode) -->
+        <div id="pin-view-change" class="pin-subview" style="display: none; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span style="font-size: 1.5rem;">🔑</span>
+              <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0;">Change Caretaker Passcode</h4>
             </div>
-            <div>
-              <h4 class="pin-subheading">Change Caretaker Passcode</h4>
-              <p class="pin-subtext">Enter your current passcode followed by your new passcode.</p>
-            </div>
+            <p style="font-size: 0.88rem; color: #64748b; margin: 0;">
+              Enter your current passcode followed by your new passcode.
+            </p>
           </div>
 
-          <form id="change-pin-form" class="pin-form">
+          <form id="change-pin-form" style="display: flex; flex-direction: column; gap: 12px;">
             <div class="form-group">
-              <label for="change-pin-current" class="pin-label">Current Passcode *</label>
-              <input type="password" id="change-pin-current" class="form-control pin-input-sm" maxlength="8" placeholder="Current PIN" required>
-            </div>
-
-            <div class="form-group">
-              <label for="change-pin-new" class="pin-label">New Passcode (4-8 digits) *</label>
-              <input type="password" id="change-pin-new" class="form-control pin-input-sm" maxlength="8" placeholder="Enter new PIN" required>
+              <label for="change-pin-current" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Current Passcode *</label>
+              <input type="password" id="change-pin-current" class="form-control" maxlength="8" placeholder="Current PIN (e.g. 1234)" required>
             </div>
 
             <div class="form-group">
-              <label for="change-pin-confirm" class="pin-label">Confirm New Passcode *</label>
-              <input type="password" id="change-pin-confirm" class="form-control pin-input-sm" maxlength="8" placeholder="Re-enter new PIN" required>
+              <label for="change-pin-new" style="font-size: 0.88rem; font-weight: 600; color: #334155;">New Passcode (4-8 digits) *</label>
+              <input type="password" id="change-pin-new" class="form-control" maxlength="8" placeholder="Enter new PIN" required>
             </div>
 
-            <div id="change-pin-error-msg" class="pin-alert-error" style="display: none;"></div>
-            <div id="change-pin-success-msg" class="pin-alert-success" style="display: none;">
-              Passcode successfully updated!
+            <div class="form-group">
+              <label for="change-pin-confirm" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Confirm New Passcode *</label>
+              <input type="password" id="change-pin-confirm" class="form-control" maxlength="8" placeholder="Re-enter new PIN" required>
             </div>
 
-            <div class="pin-action-buttons">
-              <button type="button" class="btn-pin-cancel" id="btn-back-from-change">← Back</button>
-              <button type="submit" class="btn-pin-submit">Save Passcode</button>
+            <div id="change-pin-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
+            </div>
+
+            <div id="change-pin-success-msg" style="color: #15803d; font-size: 0.88rem; display: none; font-weight: 600; background: #f0fdf4; padding: 8px 12px; border-radius: 8px; border: 1px solid #bbf7d0;">
+              ✅ Passcode successfully updated!
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 6px;">
+              <button type="button" class="btn-secondary-cancel" id="btn-back-from-change" style="flex: 1;">← Back</button>
+              <button type="submit" class="btn-primary-save" style="flex: 1.5; justify-content: center;">Save Passcode 💾</button>
             </div>
           </form>
         </div>
 
-        <!-- VIEW 3: Forgot Passcode -->
-        <div id="pin-view-forgot" class="pin-subview" style="display: none;">
-          <div class="pin-subview-head">
-            <div class="pin-subview-icon-badge">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-              </svg>
+        <!-- VIEW 3: Forgot Passcode (Reset via Caretaker Phone Number) -->
+        <div id="pin-view-forgot" class="pin-subview" style="display: none; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span style="font-size: 1.5rem;">📱</span>
+              <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0;">Reset Passcode via Caretaker Phone</h4>
             </div>
-            <div>
-              <h4 class="pin-subheading">Reset Passcode via Phone</h4>
-              <p class="pin-subtext">Verify identity using registered caretaker phone number.</p>
-            </div>
+            <p style="font-size: 0.88rem; color: #64748b; margin: 0;">
+              Verify identity using the registered caretaker phone number.
+            </p>
           </div>
 
-          <div id="forgot-caretaker-info-box" class="pin-caretaker-info-banner">
-            <div>Registered Caretaker: <strong id="forgot-info-name">Sarah Vance</strong></div>
-            <div class="pin-phone-hint">Phone number ends in <strong id="forgot-info-phone-masked">...4193</strong></div>
+          <div id="forgot-caretaker-info-box" style="background: #f1f5f9; border-left: 4px solid #3b82f6; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #334155;">
+            Registered Caretaker: <strong id="forgot-info-name">Sarah Vance</strong><br>
+            <span style="color: #64748b;">Hint: Registered phone number ends in <strong id="forgot-info-phone-masked">...4193</strong></span>
           </div>
 
-          <!-- Step 1: Verify Phone -->
-          <div id="forgot-step-1" class="pin-form">
+          <!-- Step 1: Verify Phone Number -->
+          <div id="forgot-step-1" style="display: flex; flex-direction: column; gap: 12px;">
             <div class="form-group">
-              <label for="forgot-phone-input" class="pin-label">Enter Caretaker Phone Number *</label>
-              <input type="tel" id="forgot-phone-input" class="form-control pin-input-sm" placeholder="e.g. +1 (555) 382-9011" required>
+              <label for="forgot-phone-input" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Enter Caretaker Phone Number *</label>
+              <input type="tel" id="forgot-phone-input" class="form-control" placeholder="e.g. +1 (555) 382-9011 or 5553829011" required>
             </div>
 
-            <div id="forgot-phone-error-msg" class="pin-alert-error" style="display: none;"></div>
+            <div id="forgot-phone-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
+            </div>
 
-            <div class="pin-action-buttons">
-              <button type="button" class="btn-pin-cancel" id="btn-back-from-forgot-1">← Back</button>
-              <button type="button" class="btn-pin-submit" id="btn-verify-phone">Send Verification Code</button>
+            <div style="display: flex; gap: 10px;">
+              <button type="button" class="btn-secondary-cancel" id="btn-back-from-forgot-1" style="flex: 1;">← Back</button>
+              <button type="button" class="btn-primary-save" id="btn-verify-phone" style="flex: 1.5; justify-content: center;">Send Code 📲</button>
             </div>
           </div>
 
-          <!-- Step 2: Verification Code -->
-          <form id="forgot-step-2" class="pin-form" style="display: none;">
-            <div class="pin-otp-banner">
-              <div class="pin-otp-banner-header">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B8C3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <!-- Step 2: Verification Code & Set New Passcode -->
+          <form id="forgot-step-2" style="display: none; flex-direction: column; gap: 14px;">
+            <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <span style="font-size:2.2rem;">📲</span>
                 <div>
-                  <div class="pin-otp-title">Code Sent to Caretaker Mobile</div>
-                  <div class="pin-otp-sub">Target phone: <strong id="forgot-confirmed-phone">+91 ******4193</strong></div>
+                  <div style="font-size: 1rem; font-weight: 700; color: #166534;">Code Sent to Caretaker Mobile</div>
+                  <div style="font-size: 0.85rem; color: #374151;">
+                    Target phone: <strong id="forgot-confirmed-phone">+91 ******4193</strong>
+                  </div>
                 </div>
               </div>
 
-              <div class="pin-otp-policy-note">
-                <strong>Security Policy Active:</strong> Verification code sent to caretaker's mobile.
+              <div style="background: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; color: #166534; line-height: 1.45;">
+                🔒 <strong>Security Policy Active:</strong> The verification code is <strong>strictly sent to the caretaker's mobile</strong> and is never revealed on this patient screen.
               </div>
 
+              <!-- WhatsApp Mobile Delivery Button -->
               <div>
-                <a id="btn-send-whatsapp-otp" href="#" target="_blank" class="pin-whatsapp-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-                  <span>Check Code on WhatsApp</span>
+                <a id="btn-send-whatsapp-otp" href="#" target="_blank" style="background: #22c55e; color: #ffffff; padding: 11px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 3px 10px rgba(34,197,94,0.3); transition: background 0.2s;">
+                  <span>💬</span> Check / Open Code on WhatsApp
                 </a>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="forgot-otp-input" class="pin-label">Enter 4-Digit Code Received *</label>
-              <input type="text" id="forgot-otp-input" class="form-control pin-custom-input pin-input-otp" maxlength="6" placeholder="••••" required autofocus>
+              <label for="forgot-otp-input" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Enter 4-Digit Code Received on Mobile *</label>
+              <input type="text" id="forgot-otp-input" class="form-control" maxlength="6" placeholder="Enter 4-digit code from phone" style="letter-spacing: 6px; font-weight: 700; text-align: center; font-size: 1.4rem; padding: 10px;" required autofocus>
             </div>
 
             <div class="form-group">
-              <label for="forgot-new-pin" class="pin-label">New Passcode *</label>
-              <input type="password" id="forgot-new-pin" class="form-control pin-input-sm" maxlength="8" placeholder="New PIN (4-8 digits)" required>
+              <label for="forgot-new-pin" style="font-size: 0.88rem; font-weight: 600; color: #334155;">New Passcode *</label>
+              <input type="password" id="forgot-new-pin" class="form-control" maxlength="8" placeholder="New PIN (4-8 digits)" required>
             </div>
 
             <div class="form-group">
-              <label for="forgot-confirm-pin" class="pin-label">Confirm New Passcode *</label>
-              <input type="password" id="forgot-confirm-pin" class="form-control pin-input-sm" maxlength="8" placeholder="Confirm new PIN" required>
+              <label for="forgot-confirm-pin" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Confirm New Passcode *</label>
+              <input type="password" id="forgot-confirm-pin" class="form-control" maxlength="8" placeholder="Confirm new PIN" required>
             </div>
 
-            <div id="forgot-step2-error-msg" class="pin-alert-error" style="display: none;"></div>
+            <div id="forgot-step2-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
+            </div>
 
-            <div class="pin-action-buttons">
-              <button type="button" class="btn-pin-cancel" id="btn-back-from-forgot-2">← Change Phone</button>
-              <button type="submit" class="btn-pin-submit">Reset & Unlock</button>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <button type="button" class="btn-secondary-cancel" id="btn-back-from-forgot-2" style="flex: 1;">← Change Phone</button>
+              <button type="submit" class="btn-primary-save" style="flex: 1.5; justify-content: center;">Reset & Unlock 🔓</button>
             </div>
           </form>
         </div>
@@ -980,7 +810,13 @@
             <span style="font-size:0.86rem; color:#475569;">Gentle Guidance, Reassurance & One-Touch Caretaker Connect</span>
           </div>
         </div>
-        <button class="modal-close-btn" id="chatbot-modal-close" aria-label="Close AI Companion">✕</button>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button type="button" id="btn-sarvam-voice-settings" title="Configure Sarvam AI Voice (Meera, Arvind, etc.)" style="display:flex; align-items:center; gap:6px; background:#ecfdf5; border:1.5px solid #a7f3d0; color:#065f46; padding:6px 14px; border-radius:20px; font-size:0.84rem; font-weight:700; cursor:pointer; box-shadow:0 2px 6px rgba(16,185,129,0.15); transition:all 0.2s;">
+            <span id="sarvam-voice-dot" style="width:9px; height:9px; border-radius:50%; background:#10b981; display:inline-block; box-shadow:0 0 8px rgba(16,185,129,0.8);"></span>
+            <span id="sarvam-voice-label">🎙️ Sarvam AI: Meera</span>
+          </button>
+          <button class="modal-close-btn" id="chatbot-modal-close" aria-label="Close AI Companion">✕</button>
+        </div>
       </div>
 
       <div class="modal-body" style="flex:1; display:flex; flex-direction:column; padding:18px; gap:14px; overflow:hidden;">
@@ -1006,6 +842,139 @@
             Send 💬
           </button>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SARVAM AI INDIC VOICE CONFIGURATION MODAL
+       ========================================================= -->
+  <div class="modal-overlay" id="sarvam-settings-modal" role="dialog" aria-modal="true" aria-labelledby="sarvam-settings-title" style="z-index: 10000;">
+    <div class="modal-content" style="max-width: 620px; max-height: 92vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-bottom: 1.5px solid #bbf7d0;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:2rem; background:#10b981; width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 4px 12px rgba(16,185,129,0.3);">
+            🎙️
+          </div>
+          <div>
+            <h3 class="modal-title" id="sarvam-settings-title" style="font-size:1.3rem; margin:0; color:#065f46;">
+              Sarvam AI Voice Engine
+            </h3>
+            <span style="font-size:0.85rem; color:#047857;">
+              Indic Neural Text-to-Speech (Bulbul:v1) for Warm Indian Voices
+            </span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="sarvam-modal-close" aria-label="Close Sarvam Settings">✕</button>
+      </div>
+
+      <div class="modal-body" style="padding: 22px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px;">
+        <!-- Status Indicator Card -->
+        <div id="sarvam-status-banner" style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="sarvam-status-icon" style="font-size: 1.6rem;">🟡</div>
+            <div>
+              <div id="sarvam-status-heading" style="font-weight: 700; color: #1e293b; font-size: 0.96rem;">Checking Sarvam AI Status...</div>
+              <div id="sarvam-status-desc" style="font-size: 0.84rem; color: #64748b;">Ready to connect your Sarvam AI API subscription key</div>
+            </div>
+          </div>
+          <span id="sarvam-badge-pill" style="font-size: 0.78rem; font-weight: 700; background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 20px; white-space: nowrap;">STANDBY</span>
+        </div>
+
+        <!-- API Key Input Section -->
+        <form id="form-sarvam-key" style="display: flex; flex-direction: column; gap: 14px;">
+          <div class="form-group">
+            <label for="sarvam-key-input" style="display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: #1e293b; font-size: 0.92rem;">
+              <span>Sarvam AI Subscription Key (API Key) *</span>
+              <a href="https://sarvam.ai" target="_blank" style="font-size: 0.8rem; color: #0284c7; text-decoration: none;">Get key at sarvam.ai ↗</a>
+            </label>
+            <div style="position: relative; display: flex; align-items: center;">
+              <input type="password" id="sarvam-key-input" class="form-control" placeholder="Paste your Sarvam API Key here..." style="padding-right: 42px; font-family: monospace; font-size: 0.95rem;">
+              <button type="button" id="btn-toggle-key-visibility" title="Toggle visibility" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #64748b;">👁️</button>
+            </div>
+            <span style="font-size: 0.8rem; color: #64748b;">Your key is securely saved locally on your machine in <code>data/sarvam_config.json</code>.</span>
+          </div>
+
+          <!-- Speaker Voice Selection -->
+          <div class="form-group">
+            <label style="font-weight: 700; color: #1e293b; font-size: 0.92rem; margin-bottom: 8px; display: block;">
+              Select AI Speaker Voice (Indic Bulbul:v3)
+            </label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;" id="sarvam-speaker-options">
+              
+              <label style="display: flex; align-items: center; gap: 10px; background: #ffffff; border: 2px solid #10b981; border-radius: 10px; padding: 10px 12px; cursor: pointer; transition: all 0.2s;" class="sarvam-voice-choice active">
+                <input type="radio" name="sarvam-speaker" value="priya" checked style="accent-color: #10b981;">
+                <div>
+                  <strong style="display: block; color: #065f46; font-size: 0.94rem;">👩 Priya (Hindi / Indian Female)</strong>
+                  <span style="font-size: 0.8rem; color: #047857;">Warm, Gentle & Reassuring (Recommended for Care)</span>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; cursor: pointer; transition: all 0.2s;" class="sarvam-voice-choice">
+                <input type="radio" name="sarvam-speaker" value="kabir" style="accent-color: #10b981;">
+                <div>
+                  <strong style="display: block; color: #1e293b; font-size: 0.94rem;">👨 Kabir (Hindi / Indian Male)</strong>
+                  <span style="font-size: 0.8rem; color: #64748b;">Calm, Patient & Clear Doctor/Companion tone</span>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; cursor: pointer; transition: all 0.2s;" class="sarvam-voice-choice">
+                <input type="radio" name="sarvam-speaker" value="kavya" style="accent-color: #10b981;">
+                <div>
+                  <strong style="display: block; color: #1e293b; font-size: 0.94rem;">👩 Kavya (Female)</strong>
+                  <span style="font-size: 0.8rem; color: #64748b;">Soft & Melodic Indic Voice</span>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; cursor: pointer; transition: all 0.2s;" class="sarvam-voice-choice">
+                <input type="radio" name="sarvam-speaker" value="simran" style="accent-color: #10b981;">
+                <div>
+                  <strong style="display: block; color: #1e293b; font-size: 0.94rem;">👩 Simran (Female)</strong>
+                  <span style="font-size: 0.8rem; color: #64748b;">Clear & Expressive Tone</span>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; cursor: pointer; transition: all 0.2s;" class="sarvam-voice-choice">
+                <input type="radio" name="sarvam-speaker" value="aditya" style="accent-color: #10b981;">
+                <div>
+                  <strong style="display: block; color: #1e293b; font-size: 0.94rem;">👨 Aditya (Male)</strong>
+                  <span style="font-size: 0.8rem; color: #64748b;">Friendly and Grounded</span>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; cursor: pointer; transition: all 0.2s;" class="sarvam-voice-choice">
+                <input type="radio" name="sarvam-speaker" value="rohan" style="accent-color: #10b981;">
+                <div>
+                  <strong style="display: block; color: #1e293b; font-size: 0.94rem;">👨 Rohan (Male)</strong>
+                  <span style="font-size: 0.8rem; color: #64748b;">Gentle & Caring Tone</span>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Test Voice & Sample Actions -->
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <div>
+              <div style="font-weight: 700; color: #1e40af; font-size: 0.9rem;">Test Live Voice Quality</div>
+              <div style="font-size: 0.82rem; color: #3b82f6;">Plays: "नमस्ते! मैं स्मृति हूँ, आपकी देखभाल और याददाश्त की साथी।"</div>
+            </div>
+            <button type="button" id="btn-test-sarvam-voice" style="background: #2563eb; color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.88rem; box-shadow: 0 2px 6px rgba(37,99,235,0.25);">
+              <span>🔊</span> Listen Sample
+            </button>
+          </div>
+
+          <!-- Save Actions -->
+          <div style="display: flex; gap: 10px; margin-top: 6px;">
+            <button type="submit" class="btn-primary-save" style="flex: 1.4; justify-content: center; background: #10b981; border-color: #10b981; font-size: 1rem; padding: 12px;">
+              💾 Save & Activate Sarvam AI Voice
+            </button>
+            <button type="button" id="btn-reset-sarvam" class="btn-secondary-cancel" style="flex: 1; justify-content: center; font-size: 0.92rem;">
+              Use Local Voice Only
+            </button>
+          </div>
+        </form>
+
       </div>
     </div>
   </div>
@@ -1171,22 +1140,15 @@
        SMRITI COMMUNITY & VOLUNTEER CONTRIBUTION HUB
        ========================================================= -->
   <div class="modal-overlay" id="community-hub-modal" role="dialog" aria-modal="true" aria-labelledby="community-hub-modal-title">
-    <div class="modal-content comm-modal-content">
-      <div class="modal-header comm-modal-header">
-        <div class="comm-header-title-group">
-          <div class="comm-header-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-          </div>
+    <div class="modal-content" style="max-width: 760px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #f5f3ff, #ede9fe);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:2rem;">🤝</div>
           <div>
-            <h3 class="modal-title comm-modal-title" id="community-hub-modal-title" data-i18n="communityHubTitle">
+            <h3 class="modal-title" id="community-hub-modal-title" style="font-size:1.35rem; margin:0; color:#5b21b6;" data-i18n="communityHubTitle">
               Smriti Community & Contributor Hub
             </h3>
-            <span class="comm-modal-subtitle" data-i18n="communityHubSubtitle">
+            <span style="font-size:0.86rem; color:#6d28d9;" data-i18n="communityHubSubtitle">
               Share Caregiving Insights, Add Memory Activities & Volunteer Support
             </span>
           </div>
@@ -1195,61 +1157,56 @@
       </div>
 
       <!-- Hub Tab Navigation -->
-      <div class="community-tabs-bar">
-        <button type="button" class="comm-tab-btn active" data-tab="gallery">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          <span data-i18n="tabCommunityFeed">Community Insights</span>
+      <div class="community-tabs-bar" style="display:flex; background:#f8fafc; border-bottom:1.5px solid #e2e8f0; padding:4px 16px; gap:8px; overflow-x:auto;">
+        <button type="button" class="comm-tab-btn active" data-tab="gallery" style="border:none; background:transparent; padding:10px 14px; font-weight:700; color:#5b21b6; border-bottom:3px solid #5b21b6; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
+          📖 <span data-i18n="tabCommunityFeed">Community Insights</span>
         </button>
-        <button type="button" class="comm-tab-btn" data-tab="tip">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
-          <span data-i18n="tabShareTip">Share Caregiver Tip</span>
+        <button type="button" class="comm-tab-btn" data-tab="tip" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
+          💡 <span data-i18n="tabShareTip">Share Caregiver Tip</span>
         </button>
-        <button type="button" class="comm-tab-btn" data-tab="game">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          <span data-i18n="tabSuggestGame">Contribute Memory Activity</span>
+        <button type="button" class="comm-tab-btn" data-tab="game" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
+          🎮 <span data-i18n="tabSuggestGame">Contribute Memory Activity</span>
         </button>
-        <button type="button" class="comm-tab-btn" data-tab="volunteer">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          <span data-i18n="tabVolunteer">Volunteer Support</span>
+        <button type="button" class="comm-tab-btn" data-tab="volunteer" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
+          🙋 <span data-i18n="tabVolunteer">Volunteer Support</span>
         </button>
       </div>
 
-      <div class="modal-body comm-modal-body">
+      <div class="modal-body" style="padding: 20px; overflow-y: auto; flex: 1;">
         
         <!-- PANEL 1: Community Insights Feed / Gallery -->
-        <div class="comm-tab-panel active" id="panel-comm-gallery">
-          <div class="comm-panel-header">
+        <div class="comm-tab-panel active" id="panel-comm-gallery" style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
             <div>
-              <h4 class="comm-panel-title" data-i18n="insightsHeader">Caregiver Community Knowledge Base</h4>
-              <span class="comm-panel-sub" data-i18n="insightsSub">Practical clinical tips & memory exercises shared by families and dementia specialists</span>
+              <h4 style="margin:0; color:#1e293b; font-size:1.1rem;" data-i18n="insightsHeader">Caregiver Community Knowledge Base</h4>
+              <span style="font-size:0.84rem; color:#64748b;" data-i18n="insightsSub">Practical clinical tips & memory exercises shared by families and dementia specialists</span>
             </div>
-            <button type="button" class="btn-comm-action" id="btn-quick-share-tip">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              <span data-i18n="btnShareNew">Share Your Contribution</span>
+            <button type="button" class="btn-primary-save" id="btn-quick-share-tip" style="padding:8px 16px; font-size:0.88rem; background:#6d28d9; border-color:#6d28d9;">
+              + <span data-i18n="btnShareNew">Share Your Contribution</span>
             </button>
           </div>
 
-          <div id="community-cards-container" class="comm-cards-stack">
+          <div id="community-cards-container" style="display:flex; flex-direction:column; gap:12px;">
             <!-- Populated dynamically -->
           </div>
         </div>
 
         <!-- PANEL 2: Share Caregiver Tip Form -->
-        <div class="comm-tab-panel" id="panel-comm-tip" style="display:none;">
-          <div class="comm-panel-intro">
-            <h4 class="comm-panel-title" data-i18n="tipFormHeader">Share Practical Caregiving Insight</h4>
-            <p class="comm-panel-sub" data-i18n="tipFormSub">Share strategies that helped calm wandering, facilitate sleep, or make daily routines peaceful.</p>
+        <div class="comm-tab-panel" id="panel-comm-tip" style="display:none; flex-direction:column; gap:14px;">
+          <div>
+            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="tipFormHeader">💡 Share Practical Caregiving Insight</h4>
+            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="tipFormSub">Share strategies that helped calm wandering, facilitate sleep, or make daily routines peaceful.</p>
           </div>
 
-          <form id="form-contrib-tip" class="comm-form">
+          <form id="form-contrib-tip" style="display:flex; flex-direction:column; gap:12px;">
             <div class="profile-grid-2">
               <div class="form-group">
                 <label for="tip-author" data-i18n="authorNameLabel">Your Name *</label>
-                <input type="text" id="tip-author" class="form-control pin-input-sm" placeholder="e.g. Priya Nair" required>
+                <input type="text" id="tip-author" class="form-control" placeholder="e.g. Priya Nair" required>
               </div>
               <div class="form-group">
                 <label for="tip-author-role" data-i18n="authorRoleLabel">Your Role</label>
-                <select id="tip-author-role" class="form-control pin-input-sm">
+                <select id="tip-author-role" class="form-control">
                   <option value="Family Caregiver">Family Caregiver</option>
                   <option value="Nurse / Certified Aide">Nurse / Certified Aide</option>
                   <option value="Occupational Therapist">Occupational Therapist</option>
@@ -1259,7 +1216,7 @@
               </div>
               <div class="form-group">
                 <label for="tip-category" data-i18n="tipCategoryLabel">Category</label>
-                <select id="tip-category" class="form-control pin-input-sm">
+                <select id="tip-category" class="form-control">
                   <option value="Sundowning & Calming">Sundowning & Calming</option>
                   <option value="Morning Routines">Morning Routines</option>
                   <option value="Hydration & Nutrition">Hydration & Nutrition</option>
@@ -1269,38 +1226,37 @@
               </div>
               <div class="form-group">
                 <label for="tip-title" data-i18n="tipTitleLabel">Insight Title *</label>
-                <input type="text" id="tip-title" class="form-control pin-input-sm" placeholder="e.g. Soothing Twilight Lamp Technique" required>
+                <input type="text" id="tip-title" class="form-control" placeholder="e.g. Soothing Twilight Lamp Technique" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="tip-content" data-i18n="tipContentLabel">Your Practical Tip or Strategy *</label>
-              <textarea id="tip-content" class="form-control cg-textarea" rows="4" placeholder="Explain what works and how other caregivers can apply it..." required></textarea>
+              <textarea id="tip-content" class="form-control" rows="4" placeholder="Explain what works and how other caregivers can apply it..." required style="resize:vertical;"></textarea>
             </div>
 
-            <button type="submit" class="btn-comm-submit">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              <span>Publish Tip to Community</span>
+            <button type="submit" class="btn-primary-save" style="background:#5b21b6; border-color:#5b21b6; align-self:flex-start; padding:10px 24px;">
+              Publish Tip to Community 💡
             </button>
           </form>
         </div>
 
         <!-- PANEL 3: Contribute Memory Activity Form -->
-        <div class="comm-tab-panel" id="panel-comm-game" style="display:none;">
-          <div class="comm-panel-intro">
-            <h4 class="comm-panel-title" data-i18n="gameFormHeader">Contribute a Memory or Calming Exercise</h4>
-            <p class="comm-panel-sub" data-i18n="gameFormSub">Propose familiar everyday association games, song recall, or nostalgic touchpoints.</p>
+        <div class="comm-tab-panel" id="panel-comm-game" style="display:none; flex-direction:column; gap:14px;">
+          <div>
+            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="gameFormHeader">🎮 Contribute a Memory or Calming Exercise</h4>
+            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="gameFormSub">Propose familiar everyday association games, song recall, or nostalgic touchpoints.</p>
           </div>
 
-          <form id="form-contrib-game" class="comm-form">
+          <form id="form-contrib-game" style="display:flex; flex-direction:column; gap:12px;">
             <div class="profile-grid-2">
               <div class="form-group">
                 <label for="game-title" data-i18n="gameTitleLabel">Activity Title *</label>
-                <input type="text" id="game-title" class="form-control pin-input-sm" placeholder="e.g. Childhood Kitchen Utensils Match" required>
+                <input type="text" id="game-title" class="form-control" placeholder="e.g. Childhood Kitchen Utensils Match" required>
               </div>
               <div class="form-group">
                 <label for="game-category" data-i18n="gameCategoryLabel">Cognitive Target</label>
-                <select id="game-category" class="form-control pin-input-sm">
+                <select id="game-category" class="form-control">
                   <option value="Object Recognition">Object Recognition</option>
                   <option value="Daily Routine Sequencing">Daily Routine Sequencing</option>
                   <option value="Sensory & Floral Calming">Sensory & Floral Calming</option>
@@ -1309,11 +1265,11 @@
               </div>
               <div class="form-group">
                 <label for="game-author" data-i18n="authorNameLabel">Contributor Name *</label>
-                <input type="text" id="game-author" class="form-control pin-input-sm" placeholder="e.g. Dr. Sunita Rao" required>
+                <input type="text" id="game-author" class="form-control" placeholder="e.g. Dr. Sunita Rao" required>
               </div>
               <div class="form-group">
                 <label for="game-difficulty">Suggested Cognitive Stage</label>
-                <select id="game-difficulty" class="form-control pin-input-sm">
+                <select id="game-difficulty" class="form-control">
                   <option value="Early-Stage (Gentle)">Early-Stage (Gentle)</option>
                   <option value="Mid-Stage (Multi-cue)">Mid-Stage (Multi-cue)</option>
                   <option value="Any Stage (Relaxing)">Any Stage (Relaxing)</option>
@@ -1323,40 +1279,39 @@
 
             <div class="form-group">
               <label for="game-content" data-i18n="gameContentLabel">Activity Description & Prompt Steps *</label>
-              <textarea id="game-content" class="form-control cg-textarea" rows="4" placeholder="Describe the steps, objects to present, and how patients engage..." required></textarea>
+              <textarea id="game-content" class="form-control" rows="4" placeholder="Describe the steps, objects to present, and how patients engage..." required style="resize:vertical;"></textarea>
             </div>
 
-            <button type="submit" class="btn-comm-submit">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              <span>Submit Activity</span>
+            <button type="submit" class="btn-primary-save" style="background:#0284c7; border-color:#0284c7; align-self:flex-start; padding:10px 24px;">
+              Submit Activity 🎮
             </button>
           </form>
         </div>
 
         <!-- PANEL 4: Volunteer Support Signup -->
-        <div class="comm-tab-panel" id="panel-comm-volunteer" style="display:none;">
-          <div class="comm-panel-intro">
-            <h4 class="comm-panel-title" data-i18n="volunteerFormHeader">Join as a Volunteer / Community Supporter</h4>
-            <p class="comm-panel-sub" data-i18n="volunteerFormSub">Offer companionship, daily check-in calls, or respite care assistance to families in need.</p>
+        <div class="comm-tab-panel" id="panel-comm-volunteer" style="display:none; flex-direction:column; gap:14px;">
+          <div>
+            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="volunteerFormHeader">🙋 Join as a Volunteer / Community Supporter</h4>
+            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="volunteerFormSub">Offer companionship, daily check-in calls, or respite care assistance to families in need.</p>
           </div>
 
-          <form id="form-contrib-volunteer" class="comm-form">
+          <form id="form-contrib-volunteer" style="display:flex; flex-direction:column; gap:12px;">
             <div class="profile-grid-2">
               <div class="form-group">
                 <label for="vol-name" data-i18n="authorNameLabel">Volunteer Full Name *</label>
-                <input type="text" id="vol-name" class="form-control pin-input-sm" placeholder="e.g. Vikram Singhania" required>
+                <input type="text" id="vol-name" class="form-control" placeholder="e.g. Vikram Singhania" required>
               </div>
               <div class="form-group">
                 <label for="vol-contact">Phone or WhatsApp Contact *</label>
-                <input type="tel" id="vol-contact" class="form-control pin-input-sm" placeholder="e.g. +91 9876543210" required>
+                <input type="tel" id="vol-contact" class="form-control" placeholder="e.g. +91 9876543210" required>
               </div>
               <div class="form-group">
                 <label for="vol-city">City / Region</label>
-                <input type="text" id="vol-city" class="form-control pin-input-sm" placeholder="e.g. New Delhi / Dehradun">
+                <input type="text" id="vol-city" class="form-control" placeholder="e.g. New Delhi / Dehradun">
               </div>
               <div class="form-group">
                 <label for="vol-service">Support Type Offered</label>
-                <select id="vol-service" class="form-control pin-input-sm">
+                <select id="vol-service" class="form-control">
                   <option value="Friendly Check-in Calls (Tele-visit)">Friendly Check-in Calls (Tele-visit)</option>
                   <option value="Poetry & Story Reading">Poetry & Story Reading</option>
                   <option value="Emergency Caregiver Respite">Emergency Caregiver Respite</option>
@@ -1367,12 +1322,11 @@
 
             <div class="form-group">
               <label for="vol-notes">Availability & Background Note</label>
-              <textarea id="vol-notes" class="form-control cg-textarea" rows="3" placeholder="Share your availability, language fluency, and care background..." required></textarea>
+              <textarea id="vol-notes" class="form-control" rows="3" placeholder="Share your availability, language fluency, and care background..." required style="resize:vertical;"></textarea>
             </div>
 
-            <button type="submit" class="btn-comm-submit">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              <span>Register Volunteer Support</span>
+            <button type="submit" class="btn-primary-save" style="background:#059669; border-color:#059669; align-self:flex-start; padding:10px 24px;">
+              Register Volunteer Support 🤝
             </button>
           </form>
         </div>
@@ -1383,24 +1337,24 @@
 
   <!-- Floating AI Care Companion Button -->
   <button class="floating-support-btn" id="floating-ai-btn" title="Talk with Smriti AI Companion" aria-label="Talk with Smriti AI Companion">
-    <svg class="icon-svg" style="width:20px;height:20px;" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg> AI Companion
+    🤖 Talk to AI Companion
   </button>
 
   <!-- Toast Container -->
   <div id="toast-container" class="toast-container"></div>
 
   <!-- App Scripts -->
-  <script src="i18n.js"></script>
-  <script src="data.js"></script>
-  <script src="speech.js"></script>
-  <script src="audio.js"></script>
-  <script src="chart.js"></script>
-  <script src="chatbot.js"></script>
-  <script src="memory.js"></script>
-  <script src="sequencing.js"></script>
-  <script src="recognition.js"></script>
-  <script src="focusGarden.js"></script>
-  <script src="app.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/games/memory.js"></script>
+  <script src="js/games/sequencing.js"></script>
+  <script src="js/games/recognition.js"></script>
+  <script src="js/games/focusGarden.js"></script>
+  <script src="js/app.js"></script>
 
 </body>
 </html>

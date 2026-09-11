@@ -1,6 +1,7 @@
 /* =========================================================
    Smriti - Interactive Daily Score Bar Graph Engine
-   Design System: Terracotta Rust & Warm Cream Palette
+   Renders smooth, crisp, responsive canvas bar charts
+   with tooltips, target guidelines, and dynamic metric filters.
    ========================================================= */
 
 class CognitiveBarChart {
@@ -106,15 +107,15 @@ class CognitiveBarChart {
   getColorTheme() {
     switch (this.activeFilter) {
       case 'memory':
-        return { start: '#D4735F', end: '#8B3A2F', stroke: '#B85241', name: 'Memory Pairs' };
+        return { start: '#60a5fa', end: '#2563eb', stroke: '#93c5fd', name: 'Memory Pairs' };
       case 'sequencing':
-        return { start: '#D4935F', end: '#9C4221', stroke: '#C4763C', name: 'Routine Steps' };
+        return { start: '#818cf8', end: '#4f46e5', stroke: '#c7d2fe', name: 'Routine Steps' };
       case 'recognition':
-        return { start: '#A88530', end: '#5F460D', stroke: '#8B6914', name: 'Object Recall' };
+        return { start: '#fbbf24', end: '#d97706', stroke: '#fde68a', name: 'Object Recall' };
       case 'garden':
-        return { start: '#7AAF58', end: '#3D5E29', stroke: '#5B8C3E', name: 'Garden Focus' };
+        return { start: '#34d399', end: '#059669', stroke: '#a7f3d0', name: 'Garden Focus' };
       default:
-        return { start: '#D4735F', end: '#8B3A2F', stroke: '#B85241', name: 'Overall Cognitive Index' };
+        return { start: '#38bdf8', end: '#0284c7', stroke: '#7dd3fc', name: 'Overall Cognitive Index' };
     }
   }
 
@@ -161,7 +162,7 @@ class CognitiveBarChart {
 
     // Draw horizontal grid lines & Y-axis labels
     const ySteps = [0, 25, 50, 75, 100];
-    ctx.font = '600 11px "Plus Jakarta Sans", sans-serif';
+    ctx.font = '500 11px system-ui, sans-serif';
     ctx.textAlign = 'right';
     ctx.textBaseline = 'middle';
 
@@ -170,7 +171,7 @@ class CognitiveBarChart {
       
       // Grid line
       ctx.beginPath();
-      ctx.strokeStyle = val === 75 ? 'rgba(184, 82, 65, 0.35)' : 'rgba(28, 27, 26, 0.08)';
+      ctx.strokeStyle = val === 75 ? 'rgba(52, 211, 153, 0.25)' : 'rgba(255, 255, 255, 0.08)';
       ctx.lineWidth = val === 75 ? 1.5 : 1;
       ctx.setLineDash(val === 75 ? [4, 4] : []);
       ctx.moveTo(padLeft, y);
@@ -179,14 +180,14 @@ class CognitiveBarChart {
       ctx.setLineDash([]);
 
       // Label
-      ctx.fillStyle = val === 75 ? '#B85241' : '#555452';
+      ctx.fillStyle = val === 75 ? '#34d399' : '#94a3b8';
       ctx.fillText(val + '%', padLeft - 8, y);
     });
 
     // Baseline label
-    ctx.fillStyle = 'rgba(184, 82, 65, 0.85)';
+    ctx.fillStyle = 'rgba(52, 211, 153, 0.7)';
     ctx.textAlign = 'left';
-    ctx.font = '700 10px "Plus Jakarta Sans", sans-serif';
+    ctx.font = '600 10px system-ui, sans-serif';
     ctx.fillText('TARGET (75%)', padLeft + 6, padTop + chartH - (75 / 100) * chartH - 8);
 
     // Calculate Bar Layout
@@ -208,12 +209,12 @@ class CognitiveBarChart {
       // Create Bar Gradient
       const isHovered = this.hoverIndex === index;
       const grad = ctx.createLinearGradient(x, y, x, padTop + chartH);
-      grad.addColorStop(0, isHovered ? '#B85241' : theme.start);
+      grad.addColorStop(0, isHovered ? '#ffffff' : theme.start);
       grad.addColorStop(1, theme.end);
 
       // Draw Rounded Bar
       ctx.beginPath();
-      const radius = 8;
+      const radius = 6;
       ctx.moveTo(x + radius, y);
       ctx.lineTo(x + barW - radius, y);
       ctx.quadraticCurveTo(x + barW, y, x + barW, y + radius);
@@ -228,14 +229,14 @@ class CognitiveBarChart {
 
       // Glow / border on hover
       if (isHovered) {
-        ctx.strokeStyle = '#B85241';
+        ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 2;
         ctx.stroke();
       }
 
       // Bar Top Value Label
-      ctx.fillStyle = isHovered ? '#B85241' : '#1C1B1A';
-      ctx.font = '700 11px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = isHovered ? '#ffffff' : '#e2e8f0';
+      ctx.font = '700 11px system-ui, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'bottom';
       if (currentH > 20) {
@@ -243,8 +244,8 @@ class CognitiveBarChart {
       }
 
       // X-Axis Day Label
-      ctx.fillStyle = isHovered ? '#B85241' : '#555452';
-      ctx.font = isHovered ? '700 12px "Plus Jakarta Sans", sans-serif' : '600 11px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = isHovered ? '#60a5fa' : '#94a3b8';
+      ctx.font = isHovered ? '700 12px system-ui, sans-serif' : '500 11px system-ui, sans-serif';
       ctx.textBaseline = 'top';
       ctx.fillText(item.label, x + barW / 2, padTop + chartH + 10);
     });
@@ -257,7 +258,7 @@ class CognitiveBarChart {
       const tipText1 = `${item.fullDate}: ${item.value}%`;
       const tipText2 = `Mood: ${item.mood.toUpperCase()} • ${item.completed}/4 games`;
       
-      ctx.font = '700 12px "Plus Jakarta Sans", sans-serif';
+      ctx.font = '600 12px system-ui, sans-serif';
       const textW = Math.max(ctx.measureText(tipText1).width, ctx.measureText(tipText2).width) + 24;
       const tipH = 46;
       
@@ -269,22 +270,22 @@ class CognitiveBarChart {
       if (tipY < 4) tipY = b.y + 12;
 
       // Tooltip Card background
-      ctx.fillStyle = '#FAF4EA';
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
       ctx.strokeStyle = theme.stroke;
       ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.roundRect(tipX, tipY, textW, tipH, 10);
+      ctx.roundRect(tipX, tipY, textW, tipH, 8);
       ctx.fill();
       ctx.stroke();
 
       // Tooltip Text
-      ctx.fillStyle = '#1C1B1A';
+      ctx.fillStyle = '#ffffff';
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillText(tipText1, tipX + 12, tipY + 8);
 
-      ctx.font = '500 11px "Plus Jakarta Sans", sans-serif';
-      ctx.fillStyle = '#555452';
+      ctx.font = '400 11px system-ui, sans-serif';
+      ctx.fillStyle = '#94a3b8';
       ctx.fillText(tipText2, tipX + 12, tipY + 26);
     }
   }

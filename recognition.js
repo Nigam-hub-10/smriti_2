@@ -135,7 +135,10 @@ class RecognitionGame {
   start() {
     if (!this.container) return;
     this.currentIndex = 0;
-    this.scorePoints = 0;
+    this.correctCount = 0;
+    this.incorrectCount = 0;
+    this.hintsUsed = 0;
+    this.startTime = Date.now();
 
     // Pick 4 random questions from the 16 bank
     const shuffled = [...this.questionBank].sort(() => Math.random() - 0.5);
@@ -181,11 +184,14 @@ class RecognitionGame {
     `;
 
     const speakPrompt = () => {
+      if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
       window.smritiSpeech.speak(q.question);
     };
 
     document.getElementById('rec-speak-btn').addEventListener('click', speakPrompt);
     document.getElementById('rec-hint-btn').addEventListener('click', () => {
+      this.hintsUsed = (this.hintsUsed || 0) + 1;
+      if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
       window.smritiSpeech.speak(`Hint: ${q.hint}`);
     });
 
@@ -202,25 +208,27 @@ class RecognitionGame {
 
   handleAnswer(selectedBtn, isCorrect, allButtons) {
     allButtons.forEach(b => b.style.pointerEvents = 'none');
+    if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
 
     if (isCorrect) {
       selectedBtn.classList.add('correct');
-      this.scorePoints += 25;
+      this.correctCount = (this.correctCount || 0) + 1;
       if (window.smritiAudio) window.smritiAudio.playSuccess();
       window.smritiSpeech.speak("That's right! Wonderful answer!");
     } else {
       selectedBtn.classList.add('wrong');
+      this.incorrectCount = (this.incorrectCount || 0) + 1;
       allButtons.forEach(b => {
         if (b.getAttribute('data-correct') === 'true') {
           b.classList.add('correct');
         }
       });
-      this.scorePoints += 15;
       if (window.smritiAudio) window.smritiAudio.playPop();
       window.smritiSpeech.speak("Good try! The highlighted green choice is the match.");
     }
 
     setTimeout(() => {
+      if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
       this.currentIndex++;
       if (this.currentIndex < this.sessionQuestions.length) {
         this.renderQuestion();
@@ -231,16 +239,32 @@ class RecognitionGame {
   }
 
   finish() {
-    const score = Math.max(75, this.scorePoints);
+    const total = this.sessionQuestions.length || 4;
+    const elapsedSeconds = Math.max(5, Math.round((Date.now() - (this.startTime || Date.now())) / 1000));
+    const accRatio = this.correctCount / total;
+    
+    // Average seconds per question (gentle cognitive benchmark: ~7s per item)
+    const avgSec = elapsedSeconds / total;
+    let speedScore = 100;
+    if (avgSec > 7) {
+      speedScore = Math.max(45, Math.round(100 - (avgSec - 7) * 3));
+    } else {
+      speedScore = Math.min(100, Math.round(85 + (7 - avgSec) * 2));
+    }
+
+    const deductions = ((this.hintsUsed || 0) * 4) + ((this.incorrectCount || 0) * 5);
+    const rawScore = Math.round((accRatio * 65) + (speedScore * 0.35) - deductions);
+    const score = Math.max(25, Math.min(100, rawScore));
+
     window.smritiData.saveGameScore('recognition', score);
     if (window.smritiAudio) window.smritiAudio.playWin();
 
     this.container.innerHTML = `
       <div class="game-finish-card">
-        <div class="finish-icon">💡</div>
-        <h3 class="finish-title">Fabulous Everyday Recall!</h3>
-        <div class="finish-score">Score: ${score}% • 4 Items Identified</div>
-        <p class="finish-msg">Connecting everyday items with what they do keeps your memory sharp, active, and vibrant.</p>
+        <div class="finish-icon">${score >= 80 ? '💡' : (score >= 60 ? '🌟' : '👏')}</div>
+        <h3 class="finish-title">${score >= 80 ? 'Fabulous Everyday Recall!' : 'Good Effort on Everyday Recall!'}</h3>
+        <div class="finish-score">Score: ${score}% • Precision: ${this.correctCount}/${total} Items • Avg Time: ${avgSec.toFixed(1)}s/item • Hints: ${this.hintsUsed || 0}</div>
+        <p class="finish-msg">Connecting everyday items with what they do in ${elapsedSeconds} seconds keeps your memory sharp, active, and vibrant.</p>
         <div style="display:flex; gap:12px; margin-top:10px;">
           <button class="header-action-btn" id="rec-play-again-btn" style="padding:12px 20px;">
             🔄 Play Again (New Clues)
@@ -255,10 +279,12 @@ class RecognitionGame {
     window.smritiSpeech.speak(`Wonderful job on object recall! You scored ${score} percent.`);
 
     document.getElementById('rec-play-again-btn').addEventListener('click', () => {
+      if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
       this.start();
     });
 
     document.getElementById('rec-finish-btn').addEventListener('click', () => {
+      if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
       if (this.onComplete) this.onComplete(score);
     });
   }

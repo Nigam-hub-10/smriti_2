@@ -51,6 +51,28 @@ class SmritiHTTPHandler(http.server.SimpleHTTPRequestHandler):
             else:
                 self.wfile.write(b"{}")
             return
+        elif self.path == "/api/sarvam/config":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            cfg_file = os.path.join(DATA_DIR, "sarvam_config.json")
+            cfg = {}
+            if os.path.exists(cfg_file):
+                try:
+                    with open(cfg_file, "r", encoding="utf-8") as f:
+                        cfg = json.load(f)
+                except Exception:
+                    pass
+            key = cfg.get("api_key", "") or os.environ.get("SARVAM_API_KEY", "")
+            masked = (key[:4] + "..." + key[-4:]) if len(key) > 8 else ("***" if key else "")
+            self.wfile.write(json.dumps({
+                "status": "success",
+                "has_key": bool(key),
+                "masked_key": masked,
+                "speaker": cfg.get("speaker", "meera"),
+                "model": cfg.get("model", "bulbul:v1")
+            }).encode("utf-8"))
+            return
         super().do_GET()
 
     def do_POST(self):
@@ -117,6 +139,173 @@ class SmritiHTTPHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header("Content-Type", "application/json")
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "error", "error": str(e)}).encode("utf-8"))
+            return
+        elif self.path == "/api/sarvam/config":
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(content_length).decode("utf-8")
+            try:
+                payload = json.loads(body) if body else {}
+                cfg_file = os.path.join(DATA_DIR, "sarvam_config.json")
+                current_cfg = {}
+                if os.path.exists(cfg_file):
+                    try:
+                        with open(cfg_file, "r", encoding="utf-8") as f:
+                            current_cfg = json.load(f)
+                    except Exception:
+                        pass
+                
+                if "api_key" in payload and payload["api_key"] is not None:
+                    current_cfg["api_key"] = payload["api_key"].strip()
+                if "speaker" in payload and payload["speaker"]:
+                    current_cfg["speaker"] = payload["speaker"].strip()
+                if "model" in payload and payload["model"]:
+                    current_cfg["model"] = payload["model"].strip()
+
+                with open(cfg_file, "w", encoding="utf-8") as f:
+                    json.dump(current_cfg, f, indent=2)
+
+                masked = ""
+                key = current_cfg.get("api_key", "")
+                if key:
+                    masked = key[:4] + "..." + key[-4:] if len(key) > 8 else "***"
+
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    "status": "success",
+                    "has_key": bool(key),
+                    "masked_key": masked,
+                    "speaker": current_cfg.get("speaker", "meera")
+                }).encode("utf-8"))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "error": str(e)}).encode("utf-8"))
+            return
+        elif self.path == "/api/sarvam/tts":
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(content_length).decode("utf-8")
+            try:
+                payload = json.loads(body) if body else {}
+                text = (payload.get("text") or "").strip()
+                if not text:
+                    self.send_response(400)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"status": "error", "error": "Missing text parameter"}).encode("utf-8"))
+                    return
+
+                # Determine API key
+                api_key = payload.get("api_key", "").strip()
+                speaker = payload.get("speaker", "").strip()
+                
+                cfg_file = os.path.join(DATA_DIR, "sarvam_config.json")
+                if os.path.exists(cfg_file):
+                    try:
+                        with open(cfg_file, "r", encoding="utf-8") as f:
+                            saved_cfg = json.load(f)
+                            if not api_key:
+                                api_key = saved_cfg.get("api_key", "").strip()
+                            if not speaker:
+                                speaker = saved_cfg.get("speaker", "").strip()
+                    except Exception:
+                        pass
+                
+                if not api_key:
+                    api_key = os.environ.get("SARVAM_API_KEY", "").strip()
+
+                if not api_key:
+                    self.send_response(400)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({
+                        "status": "no_key",
+                        "error": "Sarvam AI API key is not configured yet. Please provide your API key."
+                    }).encode("utf-8"))
+                    return
+
+                valid_v3_speakers = {
+                    'aditya', 'ritu', 'ashutosh', 'priya', 'neha', 'rahul', 'pooja',
+                    'rohan', 'simran', 'kavya', 'amit', 'dev', 'ishita', 'shreya',
+                    'ratan', 'varun', 'manan', 'sumit', 'roopa', 'kabir', 'aayan',
+                    'shubh', 'advait', 'anand', 'tanya', 'tarun', 'sunny', 'mani',
+                    'gokul', 'vijay', 'shruti', 'suhani', 'mohit', 'kavitha', 'rehan',
+                    'soham', 'rupali'
+                }
+                speaker_alias = {
+                    'meera': 'priya',
+                    'arvind': 'kabir',
+                    'pavithra': 'kavya',
+                    'maithili': 'simran',
+                    'amol': 'aditya',
+                    'amartya': 'rahul',
+                    'anushka': 'priya',
+                    'abhilash': 'kabir'
+                }
+                speaker_clean = (speaker or 'priya').lower().strip()
+                sarvam_speaker = speaker_alias.get(speaker_clean, speaker_clean if speaker_clean in valid_v3_speakers else 'priya')
+
+                # Language detection / code
+                lang_code = payload.get("language_code", "")
+                if not lang_code:
+                    has_devanagari = any('\u0900' <= char <= '\u097f' for char in text)
+                    lang_code = "hi-IN" if has_devanagari else "en-IN"
+
+                import urllib.request
+                sarvam_payload = {
+                    "inputs": [text[:500]],
+                    "target_language_code": lang_code,
+                    "speaker": sarvam_speaker,
+                    "pitch": 0,
+                    "pace": 1.0,
+                    "loudness": 1.5,
+                    "speech_sample_rate": 22050,
+                    "enable_preprocessing": True,
+                    "model": "bulbul:v3"
+                }
+
+                req = urllib.request.Request(
+                    "https://api.sarvam.ai/text-to-speech",
+                    data=json.dumps(sarvam_payload).encode("utf-8"),
+                    headers={
+                        "api-subscription-key": api_key,
+                        "Content-Type": "application/json"
+                    }
+                )
+
+                with urllib.request.urlopen(req, timeout=12) as response:
+                    res_body = response.read().decode("utf-8")
+                    res_json = json.loads(res_body)
+                    audios = res_json.get("audios", [])
+                    if audios and len(audios) > 0:
+                        self.send_response(200)
+                        self.send_header("Content-Type", "application/json")
+                        self.end_headers()
+                        self.wfile.write(json.dumps({
+                            "status": "success",
+                            "audio_base64": audios[0],
+                            "speaker": speaker,
+                            "language_code": lang_code,
+                            "provider": "sarvam"
+                        }).encode("utf-8"))
+                        return
+                    else:
+                        raise Exception("No audio returned from Sarvam AI")
+
+            except Exception as e:
+                err_detail = str(e)
+                if hasattr(e, 'read'):
+                    try:
+                        err_detail += " - " + e.read().decode('utf-8')
+                    except Exception:
+                        pass
+                print("[SARVAM TTS ERROR]:", err_detail)
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "error": err_detail}).encode("utf-8"))
             return
         self.send_response(404)
         self.end_headers()

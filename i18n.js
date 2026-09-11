@@ -59,33 +59,33 @@ const TRANSLATIONS = {
     callDoctor: "🩺 Call Doctor",
 
     // Caretaker Security Modal
-    caregiverSecurityTitle: "Caregiver Security Access",
+    caregiverSecurityTitle: "🔒 Caregiver Security Access",
     enterPinPrompt: "Enter Caregiver Passcode to access patient score graphs, trends, and clinical notes.",
-    incorrectPin: "Incorrect passcode. Please try again or use the reset options below.",
-    defaultPinHint: "Default passcode: 1234",
-    unlockBtn: "Unlock Access",
-    changePinNav: "I know previous passcode • Change Passcode",
-    forgotPinNav: "Forgot Passcode? • Reset via Caretaker Phone",
+    incorrectPin: "⚠️ Incorrect passcode. Please try again or use the reset options below.",
+    defaultPinHint: "💡 Default passcode: 1234",
+    unlockBtn: "Unlock 🔓",
+    changePinNav: "🔑 I know previous passcode • Change Passcode",
+    forgotPinNav: "📱 Forgot Passcode? • Reset via Caretaker Phone",
     cancelBtn: "Cancel",
 
     // Change Passcode
-    changePasscodeTitle: "Change Caregiver Passcode",
+    changePasscodeTitle: "🔑 Change Caregiver Passcode",
     changePasscodeDesc: "Enter your current passcode followed by your new passcode.",
     currentPinLabel: "Current Passcode *",
     newPinLabel: "New Passcode (4-8 digits) *",
     confirmPinLabel: "Confirm New Passcode *",
-    savePasscodeBtn: "Save Passcode",
+    savePasscodeBtn: "Save Passcode 💾",
 
     // Forgot Passcode
-    resetPhoneTitle: "Reset Passcode via Caretaker Phone",
+    resetPhoneTitle: "📱 Reset Passcode via Caretaker Phone",
     resetPhoneDesc: "Verify identity using the registered caretaker phone number.",
     enterPhoneLabel: "Enter Caretaker Phone Number *",
-    sendCodeBtn: "Send Code",
+    sendCodeBtn: "Send Code 📲",
     codeSentTitle: "Code Sent to Caretaker Mobile",
-    securityPolicyActive: "Security Policy Active: The verification code is strictly sent to the caretaker's mobile and is never revealed on this patient screen.",
-    checkWhatsAppBtn: "Check Code on WhatsApp",
+    securityPolicyActive: "🔒 Security Policy Active: The verification code is strictly sent to the caretaker's mobile and is never revealed on this patient screen.",
+    checkWhatsAppBtn: "💬 Check / Open Code on WhatsApp",
     enterOtpLabel: "Enter 4-Digit Code Received on Mobile *",
-    resetUnlockBtn: "Reset & Unlock",
+    resetUnlockBtn: "Reset & Unlock 🔓",
 
     // Caregiver Dashboard
     cgCognitiveTracking: "Cognitive Performance Tracking",
@@ -204,33 +204,33 @@ const TRANSLATIONS = {
     callDoctor: "🩺 डॉक्टर को कॉल करें",
 
     // Caretaker Security Modal
-    caregiverSecurityTitle: "देखभालकर्ता सुरक्षा पहुंच",
+    caregiverSecurityTitle: "🔒 देखभालकर्ता सुरक्षा पहुंच",
     enterPinPrompt: "मरीज़ के स्कोर ग्राफ़, मानसिक रुझान और रिकॉर्ड देखने के लिए देखभालकर्ता पासकोड दर्ज करें।",
-    incorrectPin: "गलत पासकोड। कृपया पुनः प्रयास करें या नीचे दिए गए रीसेट विकल्प का उपयोग करें।",
-    defaultPinHint: "डिफ़ॉल्ट पासकोड: 1234",
-    unlockBtn: "अनलॉक करें",
-    changePinNav: "मुझे पिछला पासकोड याद है • पासकोड बदलें",
-    forgotPinNav: "पासकोड भूल गए? • फ़ोन नंबर से रीसेट करें",
+    incorrectPin: "⚠️ गलत पासकोड। कृपया पुनः प्रयास करें या नीचे दिए गए रीसेट विकल्प का उपयोग करें।",
+    defaultPinHint: "💡 डिफ़ॉल्ट पासकोड: 1234",
+    unlockBtn: "अनलॉक करें 🔓",
+    changePinNav: "🔑 मुझे पिछला पासकोड याद है • पासकोड बदलें",
+    forgotPinNav: "📱 पासकोड भूल गए? • फ़ोन नंबर से रीसेट करें",
     cancelBtn: "रद्द करें",
 
     // Change Passcode
-    changePasscodeTitle: "देखभालकर्ता पासकोड बदलें",
+    changePasscodeTitle: "🔑 देखभालकर्ता पासकोड बदलें",
     changePasscodeDesc: "अपना वर्तमान पासकोड और नया 4-अंकीय पासकोड दर्ज करें।",
     currentPinLabel: "वर्तमान पासकोड *",
     newPinLabel: "नया पासकोड (4-8 अंक) *",
     confirmPinLabel: "नए पासकोड की पुष्टि करें *",
-    savePasscodeBtn: "पासकोड सहेजें",
+    savePasscodeBtn: "पासकोड सहेजें 💾",
 
     // Forgot Passcode
-    resetPhoneTitle: "देखभालकर्ता फ़ोन से पासकोड रीसेट",
+    resetPhoneTitle: "📱 देखभालकर्ता फ़ोन से पासकोड रीसेट",
     resetPhoneDesc: "पंजीकृत देखभालकर्ता मोबाइल नंबर का उपयोग करके पहचान सत्यापित करें।",
     enterPhoneLabel: "देखभालकर्ता फ़ोन नंबर दर्ज करें *",
-    sendCodeBtn: "कोड भेजें",
+    sendCodeBtn: "कोड भेजें 📲",
     codeSentTitle: "कोड देखभालकर्ता के मोबाइल पर भेजा गया",
-    securityPolicyActive: "सुरक्षा नीति सक्रिय: सत्यापन कोड केवल देखभालकर्ता के मोबाइल पर भेजा गया है और इस स्क्रीन पर नहीं दिखाया जाता।",
-    checkWhatsAppBtn: "व्हाट्सएप पर कोड देखें / खोलें",
+    securityPolicyActive: "🔒 सुरक्षा नीति सक्रिय: सत्यापन कोड केवल देखभालकर्ता के मोबाइल पर भेजा गया है और इस स्क्रीन पर नहीं दिखाया जाता।",
+    checkWhatsAppBtn: "💬 व्हाट्सएप पर कोड देखें / खोलें",
     enterOtpLabel: "मोबाइल पर प्राप्त 4-अंकीय कोड दर्ज करें *",
-    resetUnlockBtn: "रीसेट और अनलॉक करें",
+    resetUnlockBtn: "रीसेट और अनलॉक करें 🔓",
 
     // Caregiver Dashboard
     cgCognitiveTracking: "संज्ञानात्मक प्रदर्शन ट्रैकिंग",
