@@ -1,0 +1,688 @@
+/* =========================================================
+   Smriti - Patient Portal Stylesheet
+   Designed with Cognitive Ergonomics for Dementia:
+   - Extra large touch targets (min 58px)
+   - Low cognitive load & gentle pastel gradients
+   - Friendly reassuring visual cues & voice buttons
+   ========================================================= */
+
+.patient-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+/* Patient Hero Card */
+.patient-hero {
+  background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #bfdbfe;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.patient-hero::after {
+  content: "🌻";
+  position: absolute;
+  right: 18px;
+  bottom: -20px;
+  font-size: 130px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.patient-hero-content h2 {
+  font-size: 2.2rem;
+  color: #1e3a8a;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.patient-hero-content p {
+  font-size: 1.25rem;
+  color: #1e40af;
+  font-weight: 500;
+  max-width: 580px;
+}
+
+.patient-date-badge {
+  background: #ffffff;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  border: 1px solid #bfdbfe;
+  min-width: 180px;
+}
+
+.patient-date-badge .day-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: capitalize;
+}
+
+.patient-date-badge .full-date {
+  font-size: 0.95rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+/* Mood Check-in Section */
+.mood-checkin-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  border: 2px solid #e5e7eb;
+  box-shadow: var(--shadow-sm);
+}
+
+.mood-title-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.mood-title-area h3 {
+  font-size: 1.5rem;
+  color: #111827;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.read-btn {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  color: #166534;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.read-btn:hover {
+  background: #dcfce7;
+  transform: scale(1.03);
+}
+
+.mood-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+}
+
+.mood-btn {
+  background: #f9fafb;
+  border: 2.5px solid #e5e7eb;
+  border-radius: var(--radius-md);
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mood-btn .mood-emoji {
+  font-size: 2.8rem;
+  transition: transform 0.2s ease;
+}
+
+.mood-btn .mood-label {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.mood-btn:hover {
+  background: #f0fdfa;
+  border-color: #5eead4;
+  transform: translateY(-3px);
+}
+
+.mood-btn.selected {
+  background: #ecfdf5;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.mood-btn.selected .mood-emoji {
+  transform: scale(1.2);
+}
+
+/* Section Header */
+.section-headline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.section-headline h3 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-headline span {
+  font-size: 1.1rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Games Grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.game-card {
+  background: #ffffff;
+  border: 2.5px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+
+.game-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.game-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.game-icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.game-icon-box.memory { background: linear-gradient(135deg, #fee2e2, #fecaca); color: #dc2626; }
+.game-icon-box.sequencing { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #2563eb; }
+.game-icon-box.recognition { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #d97706; }
+.game-icon-box.garden { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #059669; }
+
+.game-status-pill {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.game-status-pill.done {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.game-card-content h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.game-card-content p {
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.game-play-btn {
+  margin-top: auto;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.game-play-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.02);
+}
+
+/* Patient Daily Helper / Reassurance Card */
+.patient-reassurance-card {
+  background: #fefce8;
+  border: 2px dashed #fde047;
+  border-radius: var(--radius-lg);
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.patient-reassurance-card .reassurance-icon {
+  font-size: 42px;
+}
+
+.patient-reassurance-card p {
+  font-size: 1.2rem;
+  color: #854d0e;
+  font-weight: 600;
+}
+
+/* Active Game Screen Overlay & Arena */
+.game-arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  min-height: 400px;
+  width: 100%;
+}
+
+.game-instruction-banner {
+  background: #eff6ff;
+  border-left: 6px solid #3b82f6;
+  padding: 16px 22px;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.game-instruction-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* Game Score Notification Card */
+.game-finish-card {
+  text-align: center;
+  padding: 36px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.finish-icon {
+  font-size: 64px;
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+.finish-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #15803d;
+}
+
+.finish-score {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  background: #dbeafe;
+  padding: 8px 24px;
+  border-radius: var(--radius-full);
+}
+
+.finish-msg {
+  font-size: 1.2rem;
+  color: #4b5563;
+  max-width: 480px;
+}
+
+/* Memory Game Grid */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 860px;
+  margin: 16px auto;
+}
+
+@media (max-width: 600px) {
+  .memory-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  background: #f8fafc;
+  border: 3.5px solid #cbd5e1;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  position: relative;
+  min-height: 125px;
+}
+
+.memory-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.2);
+}
+
+.memory-card .card-face {
+  font-size: 3.6rem;
+  display: none;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.memory-card .card-back {
+  font-size: 2.6rem;
+  color: #94a3b8;
+}
+
+.memory-card.flipped {
+  background: #ffffff;
+  border-color: #3b82f6;
+}
+
+.memory-card.flipped .card-face {
+  display: block;
+}
+
+.memory-card.flipped .card-back {
+  display: none;
+}
+
+.memory-card.matched {
+  background: #ecfdf5;
+  border-color: #10b981;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.3);
+  pointer-events: none;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Sequencing Game Styles */
+.sequencing-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 860px;
+}
+
+.sequence-slots {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sequence-slot {
+  flex: 1;
+  min-width: 180px;
+  min-height: 160px;
+  background: #f8fafc;
+  border: 3.5px dashed #94a3b8;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 14px;
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+}
+
+.sequence-slot.filled {
+  border-style: solid;
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.sequence-step-num {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-weight: 800;
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+.sequence-pool {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: #f1f5f9;
+  border-radius: var(--radius-md);
+}
+
+.sequence-item-card {
+  background: #ffffff;
+  border: 2.5px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.sequence-item-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.sequence-item-card .item-emoji {
+  font-size: 2rem;
+}
+
+/* Recognition Game Styles */
+.recognition-arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 620px;
+}
+
+.recognition-prompt-box {
+  background: #f0fdf4;
+  border: 2px solid #bbf7d0;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.recognition-big-icon {
+  font-size: 92px;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1));
+}
+
+.recognition-question {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #166534;
+}
+
+.recognition-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .recognition-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recognition-opt-btn {
+  background: #ffffff;
+  border: 3px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 20px 18px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.recognition-opt-btn:hover {
+  border-color: #3b82f6;
+  background: #f8fafc;
+  transform: scale(1.02);
+}
+
+.recognition-opt-btn.correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #14532d !important;
+}
+
+.recognition-opt-btn.wrong {
+  background: #fee2e2 !important;
+  border-color: #ef4444 !important;
+  color: #991b1b !important;
+}
+
+/* Calming Focus Garden */
+.garden-arena {
+  width: 100%;
+  max-width: 640px;
+  background: linear-gradient(180deg, #ecfdf5 0%, #d1fae5 100%);
+  border: 3px solid #a7f3d0;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  min-height: 420px;
+}
+
+.garden-prompt-bar {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  border: 1px solid #6ee7b7;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #065f46;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.garden-field {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+
+.garden-flower-btn {
+  aspect-ratio: 1;
+  background: #ffffff;
+  border: 3px solid #6ee7b7;
+  border-radius: 50%;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.15);
+}
+
+.garden-flower-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+.garden-flower-btn.active-target {
+  animation: pulseGlow 1.5s infinite;
+  border-color: #059669;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70% { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(16, 185, 129, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}

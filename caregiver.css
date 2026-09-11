@@ -1,0 +1,489 @@
+/* =========================================================
+   Smriti - Caregiver Dashboard Stylesheet
+   Professional, Clear, Insightful, and Responsive
+   ========================================================= */
+
+.caregiver-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Caregiver Top Status Bar */
+.cg-status-banner {
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.cg-patient-profile {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cg-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.cg-patient-meta h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cg-patient-meta p {
+  font-size: 0.92rem;
+  color: #94a3b8;
+}
+
+.cg-status-pills {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cg-pill {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cg-pill-label {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.cg-pill-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+/* Key Metrics Grid */
+.cg-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.cg-metric-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.cg-metric-card:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-3px);
+}
+
+.cg-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cg-metric-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.cg-metric-icon {
+  font-size: 1.4rem;
+}
+
+.cg-metric-value {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.cg-metric-trend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.trend-up { color: #34d399; }
+.trend-stable { color: #60a5fa; }
+.trend-down { color: #f87171; }
+
+/* Main Graph Card */
+.cg-chart-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.cg-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cg-chart-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cg-chart-header p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.cg-chart-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+.filter-btn.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+}
+
+/* Custom Chart Canvas Container */
+.chart-wrapper {
+  width: 100%;
+  height: 340px;
+  position: relative;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: var(--radius-md);
+  padding: 16px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.legend-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* Two-column layout for Table & Caregiver Notes */
+.cg-grid-split {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 28px;
+}
+
+@media (max-width: 960px) {
+  .cg-grid-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Detailed Score Records Table */
+.cg-table-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cg-table-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.cg-table-wrap {
+  overflow-x: auto;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.score-table th {
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.score-table td {
+  padding: 14px 14px;
+  font-size: 0.92rem;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.score-table tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.score-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.score-tag.high { background: rgba(52, 211, 153, 0.2); color: #34d399; }
+.score-tag.medium { background: rgba(96, 165, 250, 0.2); color: #60a5fa; }
+.score-tag.low { background: rgba(248, 113, 113, 0.2); color: #f87171; }
+
+/* Caregiver Log & Notes Widget */
+.cg-notes-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cg-notes-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.cg-note-input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cg-textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: #f1f5f9;
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.cg-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.cg-quick-checks {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cg-check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  cursor: pointer;
+}
+
+.cg-check-item input[type="checkbox"] {
+  accent-color: #3b82f6;
+  width: 17px;
+  height: 17px;
+}
+
+.cg-submit-btn {
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: var(--transition);
+}
+
+.cg-submit-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+.cg-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.cg-note-entry {
+  background: rgba(15, 23, 42, 0.5);
+  border-left: 3px solid #3b82f6;
+  padding: 12px 14px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.cg-note-time {
+  font-size: 0.76rem;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.cg-note-text {
+  font-size: 0.9rem;
+  color: #f1f5f9;
+  line-height: 1.4;
+}
+
+.cg-note-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.cg-note-tag {
+  font-size: 0.72rem;
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* Caregiver Emergency & Quick Actions Panel */
+.cg-actions-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cg-action-btn {
+  flex: 1;
+  min-width: 200px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #f1f5f9;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cg-action-btn:hover {
+  background: rgba(45, 62, 95, 0.9);
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+.cg-action-icon {
+  font-size: 1.8rem;
+}
+
+.cg-action-text strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.cg-action-text span {
+  font-size: 0.82rem;
+  color: #94a3b8;
+}

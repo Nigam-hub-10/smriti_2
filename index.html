@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smriti - Gentle cognitive care and daily monitoring application for dementia patients and caregivers. Features 4 memory and routine games with daily caregiver score bar graphs.">
+  <title>Smriti - Dementia Care & Cognitive Companion</title>
+
+  <!-- Google Fonts for High Readability -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/patient.css">
+  <link rel="stylesheet" href="css/caregiver.css">
+</head>
+<body>
+
+  <!-- Top Navigation & Portal Switcher -->
+  <header class="app-header">
+    <div class="brand-area">
+      <div class="brand-logo-icon" aria-hidden="true">🧠</div>
+      <div class="brand-titles">
+        <h1>Smriti <span style="font-size:0.85rem; font-weight:500; opacity:0.75;">Care & Memory</span></h1>
+        <div class="tagline">Cognitive Support & Caregiver Insight Companion</div>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <!-- Portal Switcher -->
+      <div class="portal-switch-pill" role="tablist" aria-label="Portal Mode Selection">
+        <button class="portal-btn active" id="btn-portal-patient" role="tab" aria-selected="true" title="Switch to Patient friendly view">
+          👤 Patient Portal
+        </button>
+        <button class="portal-btn" id="btn-portal-caregiver" role="tab" aria-selected="false" title="Switch to Caregiver dashboard & score graphs">
+          📊 Caregiver Portal
+        </button>
+      </div>
+
+      <!-- AI Care Companion Action -->
+      <button class="header-action-btn" id="btn-header-chatbot" title="Talk to AI Companion" aria-label="Open AI Companion">
+        🤖 AI Companion
+      </button>
+
+      <!-- Community & New User Onboarding Action -->
+      <button class="header-action-btn" id="btn-header-contribute" title="Contribute / New User Onboarding" aria-label="Contribute or Register New User" style="background:#ecfdf5; border-color:#6ee7b7; color:#065f46; font-weight:700;">
+        🤝 Contribute / New User
+      </button>
+
+      <!-- Profile & Settings Action -->
+      <button class="header-action-btn" id="btn-open-profile" title="Patient & Caregiver Profile Settings" aria-label="Open Profile Settings">
+        ⚙️ Profile & Caretaker
+      </button>
+
+      <!-- Accessibility Actions -->
+      <button class="header-action-btn" id="toggle-voice-btn" title="Toggle audio voice reading" aria-label="Voice reading assistance">
+        🔊 Voice On
+      </button>
+      <button class="header-action-btn" id="toggle-contrast-btn" title="Toggle extra high contrast" aria-label="Toggle high contrast">
+        👁️ High Contrast
+      </button>
+
+      <!-- Language Switcher (EN / HI) -->
+      <div class="lang-switch-group" id="header-lang-switch" style="display:flex; background:#f1f5f9; border-radius:30px; padding:3px; border:1.5px solid #cbd5e1; align-items:center; gap:2px;">
+        <button class="lang-btn active" id="btn-lang-en" data-lang="en" style="border:none; background:#2563eb; color:#ffffff; padding:5px 12px; font-size:0.85rem; font-weight:700; border-radius:20px; cursor:pointer; transition:all 0.2s;" title="Switch to English">
+          English
+        </button>
+        <button class="lang-btn" id="btn-lang-hi" data-lang="hi" style="border:none; background:transparent; color:#475569; padding:5px 12px; font-size:0.85rem; font-weight:700; border-radius:20px; cursor:pointer; transition:all 0.2s;" title="हिंदी में बदलें (Switch to Hindi)">
+          🇮🇳 हिंदी
+        </button>
+      </div>
+
+      <!-- Logout / Switch Role Action -->
+      <button class="header-action-btn" id="btn-logout" title="Log Out and return to Role Selection" aria-label="Log Out or Switch Role" style="background:#fee2e2; border-color:#fca5a5; color:#991b1b; font-weight:700;">
+        🚪 Log Out / Switch
+      </button>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <!-- =========================================================
+         PATIENT PORTAL VIEW
+         ========================================================= -->
+    <section id="patient-view" class="patient-container" aria-label="Patient Daily Companion">
+      
+      <!-- Greeting & Daily Date Card -->
+      <div class="patient-hero">
+        <div class="patient-hero-content">
+          <h2>Welcome back, <span id="patient-name-span">Eleanor</span>!</h2>
+          <p>Today is a fresh, beautiful day. Take your time and enjoy gentle activities created to keep your mind smiling and clear.</p>
+        </div>
+        <div class="patient-date-badge">
+          <div class="day-name" id="patient-day-name">Friday</div>
+          <div class="full-date" id="patient-full-date">September 11, 2026</div>
+        </div>
+      </div>
+
+      <!-- Mood Check-in Card -->
+      <div class="mood-checkin-card">
+        <div class="mood-title-area">
+          <h3>😊 How are you feeling right now?</h3>
+          <button class="read-btn" id="mood-read-btn" title="Listen to question">
+            🔊 Read Aloud
+          </button>
+        </div>
+        <div class="mood-options-grid">
+          <button class="mood-btn selected" data-mood="happy" aria-label="Feeling Happy">
+            <span class="mood-emoji">😊</span>
+            <span class="mood-label">Happy</span>
+          </button>
+          <button class="mood-btn" data-mood="calm" aria-label="Feeling Calm & Peaceful">
+            <span class="mood-emoji">😌</span>
+            <span class="mood-label">Peaceful</span>
+          </button>
+          <button class="mood-btn" data-mood="neutral" aria-label="Feeling Okay">
+            <span class="mood-emoji">😐</span>
+            <span class="mood-label">Just Okay</span>
+          </button>
+          <button class="mood-btn" data-mood="tired" aria-label="Feeling Tired or Sleepy">
+            <span class="mood-emoji">🥱</span>
+            <span class="mood-label">A Bit Tired</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Games Header -->
+      <div class="section-headline">
+        <h3>🎯 Today's Gentle Activities</h3>
+        <span>No timers • Relaxing & fun</span>
+      </div>
+
+      <!-- 4 Cognitive Games Grid -->
+      <div class="games-grid">
+        
+        <!-- Game 1: Memory Pairs -->
+        <article class="game-card" data-game="memory" id="game-card-memory">
+          <div class="game-card-header">
+            <div class="game-icon-box memory">👓</div>
+            <span class="game-status-pill" id="pill-game-memory">Ready to Play</span>
+          </div>
+          <div class="game-card-content">
+            <h4>Daily Essentials Match</h4>
+            <p>Find pairs of everyday household items like glasses, medicine box, keys, and water bottle.</p>
+          </div>
+          <button class="game-play-btn" aria-label="Play Daily Essentials Match">
+            ▶ Start Matching
+          </button>
+        </article>
+
+        <!-- Game 2: Daily Routine Sequencing -->
+        <article class="game-card" data-game="sequencing" id="game-card-sequencing">
+          <div class="game-card-header">
+            <div class="game-icon-box sequencing">📋</div>
+            <span class="game-status-pill" id="pill-game-sequencing">Ready to Play</span>
+          </div>
+          <div class="game-card-content">
+            <h4>Daily Routine Steps</h4>
+            <p>Put everyday steps in the right order (e.g. brushing teeth, drinking water, washing hands).</p>
+          </div>
+          <button class="game-play-btn" aria-label="Play Daily Routine Steps">
+            ▶ Arrange Steps
+          </button>
+        </article>
+
+        <!-- Game 3: Object Recognition -->
+        <article class="game-card" data-game="recognition" id="game-card-recognition">
+          <div class="game-card-header">
+            <div class="game-icon-box recognition">💡</div>
+            <span class="game-status-pill" id="pill-game-recognition">Ready to Play</span>
+          </div>
+          <div class="game-card-content">
+            <h4>Everyday Item Recall</h4>
+            <p>Connect pictures of familiar items with what they do. Hear hints with gentle audio.</p>
+          </div>
+          <button class="game-play-btn" aria-label="Play Everyday Item Recall">
+            ▶ Guess Items
+          </button>
+        </article>
+
+        <!-- Game 4: Calming Focus Garden -->
+        <article class="game-card" data-game="garden" id="game-card-garden">
+          <div class="game-card-header">
+            <div class="game-icon-box garden">🌸</div>
+            <span class="game-status-pill" id="pill-game-garden">Ready to Play</span>
+          </div>
+          <div class="game-card-content">
+            <h4>Calming Focus Garden</h4>
+            <p>Gently touch blooming flowers in the tranquil garden to relax and practice fine motor focus.</p>
+          </div>
+          <button class="game-play-btn" aria-label="Play Calming Focus Garden">
+            ▶ Visit Garden
+          </button>
+        </article>
+
+      </div>
+
+      <!-- Reassurance Card -->
+      <div class="patient-reassurance-card">
+        <div class="reassurance-icon">💖</div>
+        <p>Remember: You are doing wonderfully. There is no rush with any activity. Take your time, breathe deeply, and smile.</p>
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         CAREGIVER DASHBOARD VIEW
+         ========================================================= -->
+    <section id="caregiver-view" class="caregiver-container hidden" aria-label="Caregiver Clinical Dashboard">
+      
+      <!-- Patient Status Banner -->
+      <div class="cg-status-banner">
+        <div class="cg-patient-profile">
+          <div class="cg-avatar">👵</div>
+          <div class="cg-patient-meta">
+            <h2 id="cg-patient-name">Eleanor Vance, 74y</h2>
+            <p id="cg-patient-stage">Mild Cognitive Impairment • Primary Caretaker: Sarah Vance (+1 555 382-9011)</p>
+            <div style="margin-top: 8px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+              <button class="header-action-btn" id="btn-edit-profile-cg" style="padding: 6px 14px; font-size: 0.85rem;" title="Edit patient and caretaker data">
+                ✏️ Edit Profile & Caretaker Details
+              </button>
+              <button class="header-action-btn" id="btn-change-pin-cg" style="padding: 6px 14px; font-size: 0.85rem; background: #312e81; border-color: #4338ca; color: #ffffff;" title="Change caregiver passcode">
+                🔒 Change Passcode
+              </button>
+              <button class="header-action-btn" id="btn-logout-cg" style="padding: 6px 14px; font-size: 0.85rem; background:#7f1d1d; border-color:#991b1b; color:#ffffff; font-weight:700;" title="Log out of caregiver session">
+                🚪 Log Out Caregiver Session
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cg-status-pills">
+          <div class="cg-pill">
+            <span class="cg-pill-label">Today's Mood</span>
+            <span class="cg-pill-value" id="cg-today-mood-pill">HAPPY 😊</span>
+          </div>
+          <div class="cg-pill">
+            <span class="cg-pill-label">Today's Activity</span>
+            <span class="cg-pill-value" id="cg-today-games-pill">3 / 4 Done</span>
+          </div>
+          <div class="cg-pill">
+            <span class="cg-pill-label">Status</span>
+            <span class="cg-pill-value" style="color:#34d399;">Active Today</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Metric Cards -->
+      <div class="cg-metrics-grid">
+        <div class="cg-metric-card">
+          <div class="cg-metric-header">
+            <span class="cg-metric-title">Overall Cognitive Index</span>
+            <span class="cg-metric-icon">📈</span>
+          </div>
+          <div class="cg-metric-value" id="metric-val-overall">88%</div>
+          <div class="cg-metric-trend trend-up">
+            <span>▲ +4% from last week</span>
+          </div>
+        </div>
+
+        <div class="cg-metric-card">
+          <div class="cg-metric-header">
+            <span class="cg-metric-title">Memory Recall (Game 1)</span>
+            <span class="cg-metric-icon">👓</span>
+          </div>
+          <div class="cg-metric-value" id="metric-val-memory">84%</div>
+          <div class="cg-metric-trend trend-stable">
+            <span>● Stable spatial recall</span>
+          </div>
+        </div>
+
+        <div class="cg-metric-card">
+          <div class="cg-metric-header">
+            <span class="cg-metric-title">Routine Sequencing (Game 2)</span>
+            <span class="cg-metric-icon">📋</span>
+          </div>
+          <div class="cg-metric-value" id="metric-val-seq">86%</div>
+          <div class="cg-metric-trend trend-up">
+            <span>▲ Strong ADL execution</span>
+          </div>
+        </div>
+
+        <div class="cg-metric-card">
+          <div class="cg-metric-header">
+            <span class="cg-metric-title">Object Recognition (Game 3)</span>
+            <span class="cg-metric-icon">💡</span>
+          </div>
+          <div class="cg-metric-value" id="metric-val-rec">90%</div>
+          <div class="cg-metric-trend trend-up">
+            <span>▲ Sharp item association</span>
+          </div>
+        </div>
+
+        <div class="cg-metric-card">
+          <div class="cg-metric-header">
+            <span class="cg-metric-title">Garden Calmness (Game 4)</span>
+            <span class="cg-metric-icon">🌸</span>
+          </div>
+          <div class="cg-metric-value" id="metric-val-garden">98%</div>
+          <div class="cg-metric-trend trend-stable">
+            <span>● Relaxed attention state</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN INTERACTIVE BAR GRAPH CARD -->
+      <div class="cg-chart-card">
+        <div class="cg-chart-header">
+          <div>
+            <h3>📊 Daily Cognitive Score Records (Bar Graph)</h3>
+            <p>Day-by-day performance tracking across all 4 daily life games. Hover or tap bars for detailed notes.</p>
+          </div>
+
+          <!-- Metric Filters for the Bar Graph -->
+          <div class="cg-chart-filters" role="group" aria-label="Chart Filter">
+            <button class="filter-btn active" data-filter="overall">Overall Index</button>
+            <button class="filter-btn" data-filter="memory">👓 Memory Pairs</button>
+            <button class="filter-btn" data-filter="sequencing">📋 Routine Steps</button>
+            <button class="filter-btn" data-filter="recognition">💡 Object Recall</button>
+            <button class="filter-btn" data-filter="garden">🌸 Garden Calm</button>
+          </div>
+        </div>
+
+        <!-- Canvas for Bar Graph -->
+        <div class="chart-wrapper">
+          <canvas id="score-bar-chart" width="800" height="340" role="img" aria-label="Cognitive Score Daily Bar Chart"></canvas>
+        </div>
+
+        <!-- Legend -->
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-color-dot" style="background:#38bdf8;"></span>
+            <span>Current Daily Score</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color-dot" style="background:#34d399; height:3px; border-radius:0;"></span>
+            <span>Target Cognitive Baseline (75%+)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color-dot" style="background:#ffffff; border:1px solid #38bdf8;"></span>
+            <span>Interactive Hover / Tap Detail</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-column split: Detailed History Table & Caregiver Notes -->
+      <div class="cg-grid-split">
+        
+        <!-- Score Records Table -->
+        <div class="cg-table-card">
+          <h3>📅 Day-by-Day Score Breakdown</h3>
+          <div class="cg-table-wrap">
+            <table class="score-table" aria-label="Detailed daily score records table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Average</th>
+                  <th>Memory</th>
+                  <th>Routine</th>
+                  <th>Recall</th>
+                  <th>Garden</th>
+                  <th>Mood</th>
+                </tr>
+              </thead>
+              <tbody id="score-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Caregiver Log & Observations -->
+        <div class="cg-notes-card">
+          <h3>📝 Caregiver Daily Observations</h3>
+          
+          <form id="caregiver-note-form" class="cg-note-input-form">
+            <textarea id="caregiver-note-text" class="cg-textarea" placeholder="Log patient behavior, orientation, meal appetite, or observations..." required></textarea>
+            
+            <div class="cg-quick-checks">
+              <label class="cg-check-item">
+                <input type="checkbox" id="check-meds">
+                <span>Medication Taken</span>
+              </label>
+              <label class="cg-check-item">
+                <input type="checkbox" id="check-hydrated">
+                <span>Hydrated (1.5L+)</span>
+              </label>
+            </div>
+
+            <button type="submit" class="cg-submit-btn">
+              ➕ Save Observation
+            </button>
+          </form>
+
+          <div class="cg-notes-list" id="caregiver-notes-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Emergency and Quick Care Actions -->
+      <div class="cg-actions-row">
+        <button class="cg-action-btn" id="cg-call-doctor">
+          <span class="cg-action-icon">🩺</span>
+          <div class="cg-action-text">
+            <strong id="cg-doc-title">Contact Neurologist</strong>
+            <span id="cg-doc-meta">Dr. Arvind Mehta (Clinic)</span>
+          </div>
+        </button>
+        <button class="cg-action-btn" id="cg-call-caregiver">
+          <span class="cg-action-icon">📞</span>
+          <div class="cg-action-text">
+            <strong id="cg-caregiver-title">Call Primary Caretaker</strong>
+            <span id="cg-caregiver-meta">Sarah Vance: +1 (555) 382-9011</span>
+          </div>
+        </button>
+        <button class="cg-action-btn" id="cg-export-report">
+          <span class="cg-action-icon">📄</span>
+          <div class="cg-action-text">
+            <strong>Print Care Report</strong>
+            <span>Export printable summary</span>
+          </div>
+        </button>
+        <button class="cg-action-btn" id="cg-backup-json" title="Download persistent JSON file">
+          <span class="cg-action-icon">💾</span>
+          <div class="cg-action-text">
+            <strong>Download Backup (JSON)</strong>
+            <span>Save records to disk</span>
+          </div>
+        </button>
+        <button class="cg-action-btn" id="cg-restore-json" title="Restore records from JSON">
+          <span class="cg-action-icon">📤</span>
+          <div class="cg-action-text">
+            <strong>Restore Backup</strong>
+            <span>Load saved file</span>
+          </div>
+        </button>
+        <input type="file" id="cg-file-input" accept=".json" style="display:none;">
+      </div>
+
+    </section>
+  </main>
+
+  <!-- =========================================================
+       ACTIVE GAME MODAL DIALOG
+       ========================================================= -->
+  <div class="modal-overlay" id="game-modal" role="dialog" aria-modal="true">
+    <div class="modal-content game-modal-wide" id="game-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="game-modal-title">Activity</h3>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="theatre-toggle-btn" id="btn-toggle-theatre" title="Toggle Fullscreen Immersion Mode">
+            ⛶ Theatre Mode
+          </button>
+          <button class="modal-close-btn" id="game-modal-close" aria-label="Close activity" title="Close and return">✕</button>
+        </div>
+      </div>
+      <div class="modal-body" id="game-container">
+        <!-- Game injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       PATIENT & CARETAKER PROFILE MODAL DIALOG
+       ========================================================= -->
+  <div class="modal-overlay" id="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title">
+    <div class="modal-content" style="max-width: 680px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="profile-modal-title">⚙️ Patient & Caretaker Profile Details</h3>
+        <button class="modal-close-btn" id="profile-modal-close" aria-label="Close profile modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="profile-form" class="profile-form-container">
+          
+          <!-- Patient Details -->
+          <div class="profile-section">
+            <div class="profile-section-title">👤 Patient Details</div>
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="prof-patient-name">Patient Full Name *</label>
+                <input type="text" id="prof-patient-name" class="form-control" required placeholder="e.g. Eleanor Vance">
+              </div>
+              <div class="form-group">
+                <label for="prof-patient-preferred">Preferred Call Name (for greetings) *</label>
+                <input type="text" id="prof-patient-preferred" class="form-control" required placeholder="e.g. Eleanor or Ellie">
+              </div>
+              <div class="form-group">
+                <label for="prof-patient-age">Patient Age (Years) *</label>
+                <input type="number" id="prof-patient-age" class="form-control" min="1" max="130" required placeholder="e.g. 74">
+              </div>
+              <div class="form-group">
+                <label for="prof-patient-stage">Condition / Stage</label>
+                <select id="prof-patient-stage" class="form-control">
+                  <option value="Mild Cognitive Impairment (Early Stage)">Mild Cognitive Impairment (Early Stage)</option>
+                  <option value="Early-Stage Dementia">Early-Stage Dementia</option>
+                  <option value="Moderate Dementia (Support Needed)">Moderate Dementia (Support Needed)</option>
+                  <option value="Senior Memory Maintenance">Senior Memory Maintenance</option>
+                  <option value="Other / General Care">Other / General Care</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="prof-language">Language Preference / पसंदीदा भाषा</label>
+                <select id="prof-language" class="form-control">
+                  <option value="en">English</option>
+                  <option value="hi">🇮🇳 हिंदी (Hindi)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="prof-patient-notes">Personal Comfort Notes & Likes</label>
+              <input type="text" id="prof-patient-notes" class="form-control" placeholder="e.g. Loves morning chamomile tea, classical music, calm garden strolls">
+            </div>
+          </div>
+
+          <!-- Caretaker Details -->
+          <div class="profile-section">
+            <div class="profile-section-title">🛡️ Caretaker / Primary Caregiver Account</div>
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="prof-cg-name">Caretaker Full Name *</label>
+                <input type="text" id="prof-cg-name" class="form-control" required placeholder="e.g. Sarah Vance">
+              </div>
+              <div class="form-group">
+                <label for="prof-cg-relation">Relationship to Patient</label>
+                <input type="text" id="prof-cg-relation" class="form-control" placeholder="e.g. Daughter, Spouse, Full-time Nurse">
+              </div>
+              <div class="form-group">
+                <label for="prof-cg-phone">Caretaker Phone Number *</label>
+                <input type="tel" id="prof-cg-phone" class="form-control" required placeholder="e.g. +1 (555) 382-9011">
+              </div>
+              <div class="form-group">
+                <label for="prof-cg-email">Caretaker Email Address</label>
+                <input type="email" id="prof-cg-email" class="form-control" placeholder="e.g. sarah.vance@carefamily.org">
+              </div>
+              <div class="form-group">
+                <label for="prof-cg-pin">Caregiver Portal Passcode / PIN (4 digits) *</label>
+                <input type="password" id="prof-cg-pin" class="form-control" maxlength="8" required placeholder="e.g. 1234">
+              </div>
+              <div class="form-group">
+                <label for="prof-home-address">Patient Home Address / Room</label>
+                <input type="text" id="prof-home-address" class="form-control" placeholder="e.g. Greenwood Villa, Apt 4B">
+              </div>
+            </div>
+          </div>
+
+          <!-- Medical & Emergency Contacts -->
+          <div class="profile-section">
+            <div class="profile-section-title">🩺 Physician & Clinic Contacts</div>
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="prof-doc-name">Doctor / Neurologist Name</label>
+                <input type="text" id="prof-doc-name" class="form-control" placeholder="e.g. Dr. Arvind Mehta (Neurology)">
+              </div>
+              <div class="form-group">
+                <label for="prof-doc-phone">Doctor / Clinic Phone Number</label>
+                <input type="tel" id="prof-doc-phone" class="form-control" placeholder="e.g. +1 (555) 902-8811">
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-actions-bar">
+            <button type="button" class="btn-secondary-cancel" id="btn-cancel-profile">Cancel</button>
+            <button type="submit" class="btn-primary-save">💾 Save Profile & Caretaker Details</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       WHO IS USING THIS APP? (ROLE SELECTION MODAL)
+       ========================================================= -->
+  <div class="modal-overlay" id="role-welcome-modal" role="dialog" aria-modal="true" aria-labelledby="role-modal-title">
+    <div class="modal-content" style="max-width: 580px; text-align: center;">
+      <div class="modal-header" style="justify-content: center; background: linear-gradient(135deg, #e0f2fe, #dbeafe);">
+        <h3 class="modal-title" id="role-modal-title" style="font-size: 1.6rem; color: #1e3a8a;">
+          🧠 Welcome to Smriti
+        </h3>
+      </div>
+      <div class="modal-body" style="padding: 32px 28px; display: flex; flex-direction: column; gap: 20px;">
+        <!-- Language Selector inside Welcome Modal -->
+        <div style="display:flex; justify-content:center; align-items:center; gap:10px; background:#f8fafc; padding:8px 18px; border-radius:30px; border:1.5px solid #e2e8f0; width:fit-content; margin:0 auto;">
+          <span style="font-size:0.92rem; font-weight:700; color:#334155;">🌐 भाषा / Language:</span>
+          <button type="button" class="lang-btn active" data-lang="en" id="welcome-lang-en" style="border:none; background:#2563eb; color:#ffffff; padding:5px 14px; border-radius:20px; font-weight:700; cursor:pointer; font-size:0.88rem;">English</button>
+          <button type="button" class="lang-btn" data-lang="hi" id="welcome-lang-hi" style="border:none; background:transparent; color:#475569; padding:5px 14px; border-radius:20px; font-weight:700; cursor:pointer; font-size:0.88rem;">🇮🇳 हिंदी</button>
+        </div>
+
+        <p style="font-size: 1.25rem; font-weight: 600; color: #1e293b;" id="role-select-prompt">
+          Please select who is using the app right now:
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+          <button class="role-select-btn" id="btn-select-patient-role" style="background:#f0f9ff; border:2.5px solid #0284c7; border-radius:18px; padding:26px 16px; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:12px; transition:all 0.2s;">
+            <span style="font-size: 3.8rem;">👤</span>
+            <strong style="font-size: 1.35rem; color: #0369a1;">I am the Patient</strong>
+            <span style="font-size: 0.92rem; color: #475569;">Play gentle games & daily check-in</span>
+          </button>
+          <button class="role-select-btn" id="btn-select-caretaker-role" style="background:#f8fafc; border:2.5px solid #4f46e5; border-radius:18px; padding:26px 16px; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:12px; transition:all 0.2s;">
+            <span style="font-size: 3.8rem;">🛡️</span>
+            <strong style="font-size: 1.35rem; color: #3730a3;">I am the Caretaker</strong>
+            <span style="font-size: 0.92rem; color: #475569;">Passcode protected graphs & logs</span>
+        </div>
+        
+        <!-- New User Onboarding & Community Contribution Options -->
+        <div style="border-top:1.5px dashed #cbd5e1; padding-top:16px; margin-top:6px; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+            <button type="button" id="btn-open-new-user-wizard" style="background:#ecfdf5; border:1.5px solid #6ee7b7; border-radius:12px; padding:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:700; color:#065f46; font-size:0.92rem; transition:all 0.2s;">
+              <span>✨</span> <span data-i18n="newUserRegisterBtn">New User? Register Profile</span>
+            </button>
+            <button type="button" id="btn-open-community-hub" style="background:#f5f3ff; border:1.5px solid #c4b5fd; border-radius:12px; padding:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:700; color:#5b21b6; font-size:0.92rem; transition:all 0.2s;">
+              <span>🤝</span> <span data-i18n="communityHubBtn">Contribute & Volunteer Hub</span>
+            </button>
+          </div>
+          <span style="font-size:0.82rem; color:#64748b;" data-i18n="newUserHint">First time here? Set up a new patient profile or share tips to support dementia families worldwide.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       CARETAKER PASSCODE / PIN SECURITY MODAL
+       ========================================================= -->
+  <div class="modal-overlay" id="caretaker-pin-modal" role="dialog" aria-modal="true" aria-labelledby="pin-modal-title">
+    <div class="modal-content" style="max-width: 460px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="pin-modal-title">🔒 Caregiver Security Access</h3>
+        <button class="modal-close-btn" id="pin-modal-close" aria-label="Close PIN modal">✕</button>
+      </div>
+      <div class="modal-body" style="padding: 24px;">
+
+        <!-- VIEW 1: Standard Unlock Passcode -->
+        <div id="pin-view-unlock" class="pin-subview" style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="text-align: center;">
+            <div style="font-size: 2.2rem; margin-bottom: 4px;">🛡️</div>
+            <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0 0 4px 0;">Enter Caregiver Passcode</h4>
+            <p style="font-size: 0.9rem; color: #64748b; margin: 0;">
+              Access patient cognitive score graphs, trends, and clinical notes.
+            </p>
+          </div>
+
+          <form id="caretaker-pin-form" style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="password" id="caretaker-pin-input" class="form-control" maxlength="8" placeholder="Enter PIN (e.g. 1234)" style="font-size: 1.8rem; text-align: center; letter-spacing: 6px; padding: 10px; font-weight: 700;" required autofocus>
+            <div id="pin-error-msg" style="color: #dc2626; font-size: 0.92rem; display: none; font-weight: 600; text-align: center; background: #fef2f2; padding: 8px; border-radius: 8px; border: 1px solid #fecaca;">
+              ⚠️ Incorrect passcode. Please try again or use the reset options below.
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: #64748b; background: #f8fafc; padding: 8px 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <span>💡 Default passcode: <strong>1234</strong></span>
+              <span id="pin-caregiver-name-badge" style="color: #3b82f6; font-weight: 600;">Sarah Vance</span>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <button type="button" class="btn-secondary-cancel" id="btn-pin-cancel" style="flex: 1;">Cancel</button>
+              <button type="submit" class="btn-primary-save" style="flex: 1; justify-content: center;">Unlock 🔓</button>
+            </div>
+          </form>
+
+          <!-- Navigation to Change PIN or Forgot PIN -->
+          <div style="border-top: 1px solid #e2e8f0; margin-top: 6px; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+            <button type="button" id="btn-nav-to-change-pin" style="background: none; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 14px; color: #334155; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;">
+              <span>🔑</span> I know previous passcode • <strong>Change Passcode</strong>
+            </button>
+            <button type="button" id="btn-nav-to-forgot-pin" style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px 14px; color: #1d4ed8; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;">
+              <span>📱</span> Forgot Passcode? • <strong>Reset via Caretaker Phone</strong>
+            </button>
+          </div>
+        </div>
+
+        <!-- VIEW 2: Change Passcode (When user knows current passcode) -->
+        <div id="pin-view-change" class="pin-subview" style="display: none; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span style="font-size: 1.5rem;">🔑</span>
+              <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0;">Change Caretaker Passcode</h4>
+            </div>
+            <p style="font-size: 0.88rem; color: #64748b; margin: 0;">
+              Enter your current passcode followed by your new passcode.
+            </p>
+          </div>
+
+          <form id="change-pin-form" style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="form-group">
+              <label for="change-pin-current" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Current Passcode *</label>
+              <input type="password" id="change-pin-current" class="form-control" maxlength="8" placeholder="Current PIN (e.g. 1234)" required>
+            </div>
+
+            <div class="form-group">
+              <label for="change-pin-new" style="font-size: 0.88rem; font-weight: 600; color: #334155;">New Passcode (4-8 digits) *</label>
+              <input type="password" id="change-pin-new" class="form-control" maxlength="8" placeholder="Enter new PIN" required>
+            </div>
+
+            <div class="form-group">
+              <label for="change-pin-confirm" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Confirm New Passcode *</label>
+              <input type="password" id="change-pin-confirm" class="form-control" maxlength="8" placeholder="Re-enter new PIN" required>
+            </div>
+
+            <div id="change-pin-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
+            </div>
+
+            <div id="change-pin-success-msg" style="color: #15803d; font-size: 0.88rem; display: none; font-weight: 600; background: #f0fdf4; padding: 8px 12px; border-radius: 8px; border: 1px solid #bbf7d0;">
+              ✅ Passcode successfully updated!
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 6px;">
+              <button type="button" class="btn-secondary-cancel" id="btn-back-from-change" style="flex: 1;">← Back</button>
+              <button type="submit" class="btn-primary-save" style="flex: 1.5; justify-content: center;">Save Passcode 💾</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- VIEW 3: Forgot Passcode (Reset via Caretaker Phone Number) -->
+        <div id="pin-view-forgot" class="pin-subview" style="display: none; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span style="font-size: 1.5rem;">📱</span>
+              <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0;">Reset Passcode via Caretaker Phone</h4>
+            </div>
+            <p style="font-size: 0.88rem; color: #64748b; margin: 0;">
+              Verify identity using the registered caretaker phone number.
+            </p>
+          </div>
+
+          <div id="forgot-caretaker-info-box" style="background: #f1f5f9; border-left: 4px solid #3b82f6; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #334155;">
+            Registered Caretaker: <strong id="forgot-info-name">Sarah Vance</strong><br>
+            <span style="color: #64748b;">Hint: Registered phone number ends in <strong id="forgot-info-phone-masked">...4193</strong></span>
+          </div>
+
+          <!-- Step 1: Verify Phone Number -->
+          <div id="forgot-step-1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="form-group">
+              <label for="forgot-phone-input" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Enter Caretaker Phone Number *</label>
+              <input type="tel" id="forgot-phone-input" class="form-control" placeholder="e.g. +1 (555) 382-9011 or 5553829011" required>
+            </div>
+
+            <div id="forgot-phone-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+              <button type="button" class="btn-secondary-cancel" id="btn-back-from-forgot-1" style="flex: 1;">← Back</button>
+              <button type="button" class="btn-primary-save" id="btn-verify-phone" style="flex: 1.5; justify-content: center;">Send Code 📲</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Verification Code & Set New Passcode -->
+          <form id="forgot-step-2" style="display: none; flex-direction: column; gap: 14px;">
+            <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <span style="font-size:2.2rem;">📲</span>
+                <div>
+                  <div style="font-size: 1rem; font-weight: 700; color: #166534;">Code Sent to Caretaker Mobile</div>
+                  <div style="font-size: 0.85rem; color: #374151;">
+                    Target phone: <strong id="forgot-confirmed-phone">+91 ******4193</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div style="background: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; color: #166534; line-height: 1.45;">
+                🔒 <strong>Security Policy Active:</strong> The verification code is <strong>strictly sent to the caretaker's mobile</strong> and is never revealed on this patient screen.
+              </div>
+
+              <!-- WhatsApp Mobile Delivery Button -->
+              <div>
+                <a id="btn-send-whatsapp-otp" href="#" target="_blank" style="background: #22c55e; color: #ffffff; padding: 11px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 3px 10px rgba(34,197,94,0.3); transition: background 0.2s;">
+                  <span>💬</span> Check / Open Code on WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="forgot-otp-input" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Enter 4-Digit Code Received on Mobile *</label>
+              <input type="text" id="forgot-otp-input" class="form-control" maxlength="6" placeholder="Enter 4-digit code from phone" style="letter-spacing: 6px; font-weight: 700; text-align: center; font-size: 1.4rem; padding: 10px;" required autofocus>
+            </div>
+
+            <div class="form-group">
+              <label for="forgot-new-pin" style="font-size: 0.88rem; font-weight: 600; color: #334155;">New Passcode *</label>
+              <input type="password" id="forgot-new-pin" class="form-control" maxlength="8" placeholder="New PIN (4-8 digits)" required>
+            </div>
+
+            <div class="form-group">
+              <label for="forgot-confirm-pin" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Confirm New Passcode *</label>
+              <input type="password" id="forgot-confirm-pin" class="form-control" maxlength="8" placeholder="Confirm new PIN" required>
+            </div>
+
+            <div id="forgot-step2-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <button type="button" class="btn-secondary-cancel" id="btn-back-from-forgot-2" style="flex: 1;">← Change Phone</button>
+              <button type="submit" class="btn-primary-save" style="flex: 1.5; justify-content: center;">Reset & Unlock 🔓</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SMRITI AI CARE COMPANION MODAL
+       ========================================================= -->
+  <div class="modal-overlay" id="chatbot-modal" role="dialog" aria-modal="true" aria-labelledby="chatbot-modal-title">
+    <div class="modal-content" style="max-width: 680px; height: 86vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #eff6ff, #dbeafe);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:2rem; background:#3b82f6; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 4px 10px rgba(59,130,246,0.3);">
+            🤖
+          </div>
+          <div>
+            <h3 class="modal-title" id="chatbot-modal-title" style="font-size:1.35rem; margin:0; color:#1e3a8a;">Smriti AI Care Companion</h3>
+            <span style="font-size:0.86rem; color:#475569;">Gentle Guidance, Reassurance & One-Touch Caretaker Connect</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="chatbot-modal-close" aria-label="Close AI Companion">✕</button>
+      </div>
+
+      <div class="modal-body" style="flex:1; display:flex; flex-direction:column; padding:18px; gap:14px; overflow:hidden;">
+        <!-- Chat History Window -->
+        <div class="support-chat-window" id="chatbot-msg-list" style="flex:1; height:auto; overflow-y:auto;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Quick Assistance Chips -->
+        <div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:6px;" id="chatbot-chips-bar">
+          <button class="read-btn" data-chip="call_caregiver" style="white-space:nowrap;">📞 Call Caretaker</button>
+          <button class="read-btn" data-chip="call_doctor" style="white-space:nowrap;">🩺 Call Doctor</button>
+          <button class="read-btn" data-chip="location" style="white-space:nowrap;">📍 Where am I?</button>
+          <button class="read-btn" data-chip="date" style="white-space:nowrap;">⏰ What day is today?</button>
+          <button class="read-btn" data-chip="go_garden" style="white-space:nowrap;">🌸 Visit Garden</button>
+          <button class="read-btn" data-chip="comfort" style="white-space:nowrap;">💖 I feel worried</button>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form id="chatbot-input-form" class="support-chat-input-row" style="margin-top:0;">
+          <input type="text" id="chatbot-text-input" class="form-control" placeholder="Ask anything, e.g. 'Call Sarah', 'What time is it?', 'Where is my home?'..." style="flex:1; padding:14px 18px; font-size:1.05rem;" required>
+          <button type="submit" class="btn-primary-save" style="padding:12px 22px; font-size:1rem;">
+            Send 💬
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       NEW USER REGISTRATION & ONBOARDING WIZARD MODAL
+       ========================================================= -->
+  <div class="modal-overlay" id="new-user-modal" role="dialog" aria-modal="true" aria-labelledby="new-user-modal-title">
+    <div class="modal-content" style="max-width: 680px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:1.8rem;">✨</div>
+          <div>
+            <h3 class="modal-title" id="new-user-modal-title" style="font-size:1.3rem; margin:0; color:#065f46;" data-i18n="newUserModalTitle">
+              Register New Patient & Caretaker Profile
+            </h3>
+            <span style="font-size:0.86rem; color:#047857;" data-i18n="newUserModalSubtitle">
+              Personalized Setup for Fresh Cognitive Care Journey
+            </span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="new-user-modal-close" aria-label="Close setup wizard">✕</button>
+      </div>
+
+      <div class="modal-body" style="padding: 24px; overflow-y: auto; flex: 1;">
+        <!-- Stepper Indicator -->
+        <div class="wizard-stepper" style="display: flex; justify-content: space-between; margin-bottom: 24px; position: relative;">
+          <div class="step-indicator active" id="step-ind-1" style="flex:1; text-align:center; position:relative;">
+            <div class="step-num" style="width:34px; height:34px; border-radius:50%; background:#059669; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 6px;">1</div>
+            <div class="step-title" style="font-size:0.82rem; font-weight:700; color:#065f46;" data-i18n="step1Title">Patient Info</div>
+          </div>
+          <div class="step-indicator" id="step-ind-2" style="flex:1; text-align:center; position:relative;">
+            <div class="step-num" style="width:34px; height:34px; border-radius:50%; background:#e2e8f0; color:#64748b; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 6px;">2</div>
+            <div class="step-title" style="font-size:0.82rem; font-weight:600; color:#64748b;" data-i18n="step2Title">Caretaker & PIN</div>
+          </div>
+          <div class="step-indicator" id="step-ind-3" style="flex:1; text-align:center; position:relative;">
+            <div class="step-num" style="width:34px; height:34px; border-radius:50%; background:#e2e8f0; color:#64748b; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 6px;">3</div>
+            <div class="step-title" style="font-size:0.82rem; font-weight:600; color:#64748b;" data-i18n="step3Title">Doctor & Preferences</div>
+          </div>
+        </div>
+
+        <form id="new-user-form">
+          <!-- STEP 1: Patient Information -->
+          <div class="wizard-step" id="nu-step-1" style="display: flex; flex-direction: column; gap: 14px;">
+            <h4 style="color:#1e293b; margin:0 0 4px 0; font-size:1.1rem;" data-i18n="nuStep1Header">👤 Patient Personal Details</h4>
+            
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="nu-patient-name" data-i18n="patientFullNameLabel">Patient Full Name *</label>
+                <input type="text" id="nu-patient-name" class="form-control" placeholder="e.g. Ramesh Sharma" required>
+              </div>
+              <div class="form-group">
+                <label for="nu-patient-preferred" data-i18n="patientPreferredNameLabel">Preferred Greeting Name *</label>
+                <input type="text" id="nu-patient-preferred" class="form-control" placeholder="e.g. Ramesh or Dadaji" required>
+              </div>
+              <div class="form-group">
+                <label for="nu-patient-age" data-i18n="patientAgeLabel">Age (Years) *</label>
+                <input type="number" id="nu-patient-age" class="form-control" min="1" max="130" placeholder="e.g. 72" required>
+              </div>
+              <div class="form-group">
+                <label for="nu-patient-gender">Gender</label>
+                <select id="nu-patient-gender" class="form-control">
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Other">Other / Prefer not to say</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="nu-patient-stage" data-i18n="patientConditionLabel">Current Condition / Stage</label>
+              <select id="nu-patient-stage" class="form-control">
+                <option value="Mild Cognitive Impairment (Early Stage)">Mild Cognitive Impairment (Early Stage)</option>
+                <option value="Early-Stage Dementia">Early-Stage Dementia</option>
+                <option value="Moderate Dementia (Support Needed)">Moderate Dementia (Support Needed)</option>
+                <option value="Senior Memory Maintenance">Senior Memory Maintenance</option>
+                <option value="Other / General Care">Other / General Care</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="nu-patient-notes" data-i18n="patientComfortNotesLabel">Comfort Notes, Hobbies & Likes</label>
+              <input type="text" id="nu-patient-notes" class="form-control" placeholder="e.g. Loves morning classical music, herbal tea, garden walks">
+            </div>
+          </div>
+
+          <!-- STEP 2: Caretaker Details & Security PIN -->
+          <div class="wizard-step" id="nu-step-2" style="display: none; flex-direction: column; gap: 14px;">
+            <h4 style="color:#1e293b; margin:0 0 4px 0; font-size:1.1rem;" data-i18n="nuStep2Header">🛡️ Caretaker Account & Passcode</h4>
+
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="nu-cg-name" data-i18n="cgFullNameLabel">Primary Caretaker Full Name *</label>
+                <input type="text" id="nu-cg-name" class="form-control" placeholder="e.g. Amit Sharma">
+              </div>
+              <div class="form-group">
+                <label for="nu-cg-relation" data-i18n="cgRelationLabel">Relationship to Patient *</label>
+                <input type="text" id="nu-cg-relation" class="form-control" placeholder="e.g. Son, Daughter, Nurse">
+              </div>
+              <div class="form-group">
+                <label for="nu-cg-phone" data-i18n="cgPhoneLabel">Emergency Phone Number *</label>
+                <input type="tel" id="nu-cg-phone" class="form-control" placeholder="e.g. +91 9997264193">
+              </div>
+              <div class="form-group">
+                <label for="nu-cg-email">Caretaker Email</label>
+                <input type="email" id="nu-cg-email" class="form-control" placeholder="e.g. caregiver@family.org">
+              </div>
+              <div class="form-group">
+                <label for="nu-cg-pin" data-i18n="cgPinLabel">Caregiver Portal Passcode (4-8 digits) *</label>
+                <input type="password" id="nu-cg-pin" class="form-control" maxlength="8" placeholder="e.g. 1234">
+              </div>
+              <div class="form-group">
+                <label for="nu-cg-pin-confirm" data-i18n="cgPinConfirmLabel">Confirm Passcode *</label>
+                <input type="password" id="nu-cg-pin-confirm" class="form-control" maxlength="8" placeholder="Re-enter passcode">
+              </div>
+            </div>
+
+            <div id="nu-step2-error" style="color:#dc2626; font-size:0.88rem; display:none; background:#fef2f2; padding:8px 12px; border-radius:8px; border:1px solid #fecaca;"></div>
+          </div>
+
+          <!-- STEP 3: Doctor Details, Address & Language Preference -->
+          <div class="wizard-step" id="nu-step-3" style="display: none; flex-direction: column; gap: 14px;">
+            <h4 style="color:#1e293b; margin:0 0 4px 0; font-size:1.1rem;" data-i18n="nuStep3Header">🩺 Clinic Contacts & Preferences</h4>
+
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="nu-doc-name" data-i18n="docNameLabel">Doctor / Clinic Name</label>
+                <input type="text" id="nu-doc-name" class="form-control" placeholder="e.g. Dr. Arvind Mehta">
+              </div>
+              <div class="form-group">
+                <label for="nu-doc-phone" data-i18n="docPhoneLabel">Doctor Phone Number</label>
+                <input type="tel" id="nu-doc-phone" class="form-control" placeholder="e.g. +91 (555) 902-8811">
+              </div>
+              <div class="form-group">
+                <label for="nu-home-address" data-i18n="homeAddressLabel">Patient Home Address</label>
+                <input type="text" id="nu-home-address" class="form-control" placeholder="e.g. Sunrise Enclave, Flat 204">
+              </div>
+              <div class="form-group">
+                <label for="nu-language" data-i18n="languageChoiceLabel">Language Preference / पसंदीदा भाषा</label>
+                <select id="nu-language" class="form-control">
+                  <option value="en">English</option>
+                  <option value="hi">🇮🇳 हिंदी (Hindi)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stepper Buttons -->
+          <div style="display:flex; justify-content:space-between; margin-top:24px; border-top:1px solid #e2e8f0; padding-top:16px;">
+            <button type="button" class="btn-secondary-cancel" id="btn-nu-prev" style="display:none;" data-i18n="btnPrev">← Previous</button>
+            <div style="flex:1;"></div>
+            <button type="button" class="btn-primary-save" id="btn-nu-next" data-i18n="btnNext">Next Step →</button>
+            <button type="submit" class="btn-primary-save" id="btn-nu-submit" style="display:none; background:#059669; border-color:#059669;" data-i18n="btnCompleteProfile">
+              Complete Setup & Begin Care 🌸
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SMRITI COMMUNITY & VOLUNTEER CONTRIBUTION HUB
+       ========================================================= -->
+  <div class="modal-overlay" id="community-hub-modal" role="dialog" aria-modal="true" aria-labelledby="community-hub-modal-title">
+    <div class="modal-content" style="max-width: 760px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #f5f3ff, #ede9fe);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:2rem;">🤝</div>
+          <div>
+            <h3 class="modal-title" id="community-hub-modal-title" style="font-size:1.35rem; margin:0; color:#5b21b6;" data-i18n="communityHubTitle">
+              Smriti Community & Contributor Hub
+            </h3>
+            <span style="font-size:0.86rem; color:#6d28d9;" data-i18n="communityHubSubtitle">
+              Share Caregiving Insights, Add Memory Activities & Volunteer Support
+            </span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="community-hub-modal-close" aria-label="Close community hub">✕</button>
+      </div>
+
+      <!-- Hub Tab Navigation -->
+      <div class="community-tabs-bar" style="display:flex; background:#f8fafc; border-bottom:1.5px solid #e2e8f0; padding:4px 16px; gap:8px; overflow-x:auto;">
+        <button type="button" class="comm-tab-btn active" data-tab="gallery" style="border:none; background:transparent; padding:10px 14px; font-weight:700; color:#5b21b6; border-bottom:3px solid #5b21b6; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
+          📖 <span data-i18n="tabCommunityFeed">Community Insights</span>
+        </button>
+        <button type="button" class="comm-tab-btn" data-tab="tip" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
+          💡 <span data-i18n="tabShareTip">Share Caregiver Tip</span>
+        </button>
+        <button type="button" class="comm-tab-btn" data-tab="game" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
+          🎮 <span data-i18n="tabSuggestGame">Contribute Memory Activity</span>
+        </button>
+        <button type="button" class="comm-tab-btn" data-tab="volunteer" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
+          🙋 <span data-i18n="tabVolunteer">Volunteer Support</span>
+        </button>
+      </div>
+
+      <div class="modal-body" style="padding: 20px; overflow-y: auto; flex: 1;">
+        
+        <!-- PANEL 1: Community Insights Feed / Gallery -->
+        <div class="comm-tab-panel active" id="panel-comm-gallery" style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <h4 style="margin:0; color:#1e293b; font-size:1.1rem;" data-i18n="insightsHeader">Caregiver Community Knowledge Base</h4>
+              <span style="font-size:0.84rem; color:#64748b;" data-i18n="insightsSub">Practical clinical tips & memory exercises shared by families and dementia specialists</span>
+            </div>
+            <button type="button" class="btn-primary-save" id="btn-quick-share-tip" style="padding:8px 16px; font-size:0.88rem; background:#6d28d9; border-color:#6d28d9;">
+              + <span data-i18n="btnShareNew">Share Your Contribution</span>
+            </button>
+          </div>
+
+          <div id="community-cards-container" style="display:flex; flex-direction:column; gap:12px;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- PANEL 2: Share Caregiver Tip Form -->
+        <div class="comm-tab-panel" id="panel-comm-tip" style="display:none; flex-direction:column; gap:14px;">
+          <div>
+            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="tipFormHeader">💡 Share Practical Caregiving Insight</h4>
+            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="tipFormSub">Share strategies that helped calm wandering, facilitate sleep, or make daily routines peaceful.</p>
+          </div>
+
+          <form id="form-contrib-tip" style="display:flex; flex-direction:column; gap:12px;">
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="tip-author" data-i18n="authorNameLabel">Your Name *</label>
+                <input type="text" id="tip-author" class="form-control" placeholder="e.g. Priya Nair" required>
+              </div>
+              <div class="form-group">
+                <label for="tip-author-role" data-i18n="authorRoleLabel">Your Role</label>
+                <select id="tip-author-role" class="form-control">
+                  <option value="Family Caregiver">Family Caregiver</option>
+                  <option value="Nurse / Certified Aide">Nurse / Certified Aide</option>
+                  <option value="Occupational Therapist">Occupational Therapist</option>
+                  <option value="Doctor / Neurologist">Doctor / Neurologist</option>
+                  <option value="Volunteer Companion">Volunteer Companion</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tip-category" data-i18n="tipCategoryLabel">Category</label>
+                <select id="tip-category" class="form-control">
+                  <option value="Sundowning & Calming">Sundowning & Calming</option>
+                  <option value="Morning Routines">Morning Routines</option>
+                  <option value="Hydration & Nutrition">Hydration & Nutrition</option>
+                  <option value="Communication & Empathy">Communication & Empathy</option>
+                  <option value="Memory Reassurance">Memory Reassurance</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tip-title" data-i18n="tipTitleLabel">Insight Title *</label>
+                <input type="text" id="tip-title" class="form-control" placeholder="e.g. Soothing Twilight Lamp Technique" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="tip-content" data-i18n="tipContentLabel">Your Practical Tip or Strategy *</label>
+              <textarea id="tip-content" class="form-control" rows="4" placeholder="Explain what works and how other caregivers can apply it..." required style="resize:vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary-save" style="background:#5b21b6; border-color:#5b21b6; align-self:flex-start; padding:10px 24px;">
+              Publish Tip to Community 💡
+            </button>
+          </form>
+        </div>
+
+        <!-- PANEL 3: Contribute Memory Activity Form -->
+        <div class="comm-tab-panel" id="panel-comm-game" style="display:none; flex-direction:column; gap:14px;">
+          <div>
+            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="gameFormHeader">🎮 Contribute a Memory or Calming Exercise</h4>
+            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="gameFormSub">Propose familiar everyday association games, song recall, or nostalgic touchpoints.</p>
+          </div>
+
+          <form id="form-contrib-game" style="display:flex; flex-direction:column; gap:12px;">
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="game-title" data-i18n="gameTitleLabel">Activity Title *</label>
+                <input type="text" id="game-title" class="form-control" placeholder="e.g. Childhood Kitchen Utensils Match" required>
+              </div>
+              <div class="form-group">
+                <label for="game-category" data-i18n="gameCategoryLabel">Cognitive Target</label>
+                <select id="game-category" class="form-control">
+                  <option value="Object Recognition">Object Recognition</option>
+                  <option value="Daily Routine Sequencing">Daily Routine Sequencing</option>
+                  <option value="Sensory & Floral Calming">Sensory & Floral Calming</option>
+                  <option value="Music & Rhyme Recall">Music & Rhyme Recall</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="game-author" data-i18n="authorNameLabel">Contributor Name *</label>
+                <input type="text" id="game-author" class="form-control" placeholder="e.g. Dr. Sunita Rao" required>
+              </div>
+              <div class="form-group">
+                <label for="game-difficulty">Suggested Cognitive Stage</label>
+                <select id="game-difficulty" class="form-control">
+                  <option value="Early-Stage (Gentle)">Early-Stage (Gentle)</option>
+                  <option value="Mid-Stage (Multi-cue)">Mid-Stage (Multi-cue)</option>
+                  <option value="Any Stage (Relaxing)">Any Stage (Relaxing)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="game-content" data-i18n="gameContentLabel">Activity Description & Prompt Steps *</label>
+              <textarea id="game-content" class="form-control" rows="4" placeholder="Describe the steps, objects to present, and how patients engage..." required style="resize:vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary-save" style="background:#0284c7; border-color:#0284c7; align-self:flex-start; padding:10px 24px;">
+              Submit Activity 🎮
+            </button>
+          </form>
+        </div>
+
+        <!-- PANEL 4: Volunteer Support Signup -->
+        <div class="comm-tab-panel" id="panel-comm-volunteer" style="display:none; flex-direction:column; gap:14px;">
+          <div>
+            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="volunteerFormHeader">🙋 Join as a Volunteer / Community Supporter</h4>
+            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="volunteerFormSub">Offer companionship, daily check-in calls, or respite care assistance to families in need.</p>
+          </div>
+
+          <form id="form-contrib-volunteer" style="display:flex; flex-direction:column; gap:12px;">
+            <div class="profile-grid-2">
+              <div class="form-group">
+                <label for="vol-name" data-i18n="authorNameLabel">Volunteer Full Name *</label>
+                <input type="text" id="vol-name" class="form-control" placeholder="e.g. Vikram Singhania" required>
+              </div>
+              <div class="form-group">
+                <label for="vol-contact">Phone or WhatsApp Contact *</label>
+                <input type="tel" id="vol-contact" class="form-control" placeholder="e.g. +91 9876543210" required>
+              </div>
+              <div class="form-group">
+                <label for="vol-city">City / Region</label>
+                <input type="text" id="vol-city" class="form-control" placeholder="e.g. New Delhi / Dehradun">
+              </div>
+              <div class="form-group">
+                <label for="vol-service">Support Type Offered</label>
+                <select id="vol-service" class="form-control">
+                  <option value="Friendly Check-in Calls (Tele-visit)">Friendly Check-in Calls (Tele-visit)</option>
+                  <option value="Poetry & Story Reading">Poetry & Story Reading</option>
+                  <option value="Emergency Caregiver Respite">Emergency Caregiver Respite</option>
+                  <option value="Local Support & Medicine Delivery">Local Support & Medicine Delivery</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="vol-notes">Availability & Background Note</label>
+              <textarea id="vol-notes" class="form-control" rows="3" placeholder="Share your availability, language fluency, and care background..." required style="resize:vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary-save" style="background:#059669; border-color:#059669; align-self:flex-start; padding:10px 24px;">
+              Register Volunteer Support 🤝
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating AI Care Companion Button -->
+  <button class="floating-support-btn" id="floating-ai-btn" title="Talk with Smriti AI Companion" aria-label="Talk with Smriti AI Companion">
+    🤖 Talk to AI Companion
+  </button>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- App Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/games/memory.js"></script>
+  <script src="js/games/sequencing.js"></script>
+  <script src="js/games/recognition.js"></script>
+  <script src="js/games/focusGarden.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
