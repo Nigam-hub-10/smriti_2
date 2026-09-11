@@ -628,19 +628,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switch (gameType) {
       case 'memory':
-        gameModalTitle.innerHTML = '<span>👓 Daily Essentials Match</span>';
+        gameModalTitle.innerHTML = '<span>Daily Essentials Match</span>';
         state.activeGame = new window.MemoryGame('game-container', () => closeGameModal());
         break;
       case 'sequencing':
-        gameModalTitle.innerHTML = '<span>📋 Daily Routine Sequencing</span>';
+        gameModalTitle.innerHTML = '<span>Daily Routine Sequencing</span>';
         state.activeGame = new window.SequencingGame('game-container', () => closeGameModal());
         break;
       case 'recognition':
-        gameModalTitle.innerHTML = '<span>💡 Everyday Object Recognition</span>';
+        gameModalTitle.innerHTML = '<span>Everyday Object Recognition</span>';
         state.activeGame = new window.RecognitionGame('game-container', () => closeGameModal());
         break;
       case 'garden':
-        gameModalTitle.innerHTML = '<span>🌸 Calming Focus Garden</span>';
+        gameModalTitle.innerHTML = '<span>Calming Focus Garden</span>';
         state.activeGame = new window.FocusGardenGame('game-container', () => closeGameModal());
         break;
     }
