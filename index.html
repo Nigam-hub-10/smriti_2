@@ -30,10 +30,12 @@
   <!-- Top Navigation & Portal Switcher -->
   <header class="app-header">
     <div class="brand-area">
-      <div class="brand-logo-icon" aria-hidden="true">🧠</div>
+      <div class="brand-logo-icon" aria-hidden="true">
+        <svg class="icon-svg" style="width:24px;height:24px;" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </div>
       <div class="brand-titles">
-        <h1>Smriti <span style="font-size:0.85rem; font-weight:500; opacity:0.75;">Care & Memory</span></h1>
-        <div class="tagline">Cognitive Support & Caregiver Insight Companion</div>
+        <h1>Smriti <span style="font-size:0.85rem; font-weight:500; opacity:0.75;">Care &amp; Memory</span></h1>
+        <div class="tagline">Cognitive Support &amp; Caregiver Companion</div>
       </div>
     </div>
 
@@ -41,34 +43,34 @@
       <!-- Portal Switcher -->
       <div class="portal-switch-pill" role="tablist" aria-label="Portal Mode Selection">
         <button class="portal-btn active" id="btn-portal-patient" role="tab" aria-selected="true" title="Switch to Patient friendly view">
-          👤 Patient Portal
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Patient Portal
         </button>
-        <button class="portal-btn" id="btn-portal-caregiver" role="tab" aria-selected="false" title="Switch to Caregiver dashboard & score graphs">
-          📊 Caregiver Portal
+        <button class="portal-btn" id="btn-portal-caregiver" role="tab" aria-selected="false" title="Switch to Caregiver dashboard &amp; score graphs">
+          <svg class="icon-svg" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Caregiver Portal
         </button>
       </div>
 
       <!-- AI Care Companion Action -->
       <button class="header-action-btn" id="btn-header-chatbot" title="Talk to AI Companion" aria-label="Open AI Companion">
-        🤖 AI Companion
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg> AI Companion
       </button>
 
       <!-- Community & New User Onboarding Action -->
       <button class="header-action-btn contribute-btn" id="btn-header-contribute" title="Contribute / New User Onboarding" aria-label="Contribute or Register New User">
-        🤝 Contribute / New User
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="17" y1="11" x2="23" y2="11"/></svg> Contribute
       </button>
 
       <!-- Profile & Settings Action -->
-      <button class="header-action-btn" id="btn-open-profile" title="Patient & Caregiver Profile Settings" aria-label="Open Profile Settings">
-        ⚙️ Profile & Caretaker
+      <button class="header-action-btn" id="btn-open-profile" title="Patient &amp; Caregiver Profile Settings" aria-label="Open Profile Settings">
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Profile
       </button>
 
       <!-- Accessibility Actions -->
       <button class="header-action-btn" id="toggle-voice-btn" title="Toggle audio voice reading" aria-label="Voice reading assistance">
-        🔊 Voice On
+        <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Voice
       </button>
       <button class="header-action-btn" id="toggle-contrast-btn" title="Toggle extra high contrast" aria-label="Toggle high contrast">
-        👁️ High Contrast
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> Contrast
       </button>
 
       <!-- Language Switcher (EN / HI) -->
@@ -77,13 +79,13 @@
           English
         </button>
         <button class="lang-btn" id="btn-lang-hi" data-lang="hi" title="हिंदी में बदलें (Switch to Hindi)">
-          🇮🇳 हिंदी
+          हिंदी
         </button>
       </div>
 
       <!-- Logout / Switch Role Action -->
       <button class="header-action-btn logout-btn" id="btn-logout" title="Log Out and return to Role Selection" aria-label="Log Out or Switch Role">
-        🚪 Log Out / Switch
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Log Out
       </button>
     </div>
   </header>
@@ -109,9 +111,9 @@
       <!-- Mood Check-in Card -->
       <div class="mood-checkin-card">
         <div class="mood-title-area">
-          <h3>😊 How are you feeling right now?</h3>
+          <h3><svg class="icon-svg" style="width:22px;height:22px;color:var(--primary);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg> How are you feeling right now?</h3>
           <button class="read-btn" id="mood-read-btn" title="Listen to question">
-            🔊 Read Aloud
+            <svg class="icon-svg" style="width:16px;height:16px;" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Read Aloud
           </button>
         </div>
         <div class="mood-options-grid">
@@ -119,7 +121,7 @@
             <span class="mood-emoji">😊</span>
             <span class="mood-label">Happy</span>
           </button>
-          <button class="mood-btn" data-mood="calm" aria-label="Feeling Calm & Peaceful">
+          <button class="mood-btn" data-mood="calm" aria-label="Feeling Calm &amp; Peaceful">
             <span class="mood-emoji">😌</span>
             <span class="mood-label">Peaceful</span>
           </button>
@@ -136,8 +138,8 @@
 
       <!-- Games Header -->
       <div class="section-headline">
-        <h3>🎯 Today's Gentle Activities</h3>
-        <span>No timers • Relaxing & fun</span>
+        <h3><svg class="icon-svg" style="width:22px;height:22px;color:var(--primary);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Today's Gentle Activities</h3>
+        <span>No timers • Relaxing &amp; fun</span>
       </div>
 
       <!-- 4 Cognitive Games Grid -->
@@ -146,7 +148,9 @@
         <!-- Game 1: Memory Pairs -->
         <article class="game-card" data-game="memory" id="game-card-memory">
           <div class="game-card-header">
-            <div class="game-icon-box memory">👓</div>
+            <div class="game-icon-box memory">
+              <svg class="icon-svg" style="width:28px;height:28px;" viewBox="0 0 24 24"><circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M14 15a2 2 0 0 0-4 0"/><path d="M2.5 13L5 7h14l2.5 6"/></svg>
+            </div>
             <span class="game-status-pill" id="pill-game-memory">Ready to Play</span>
           </div>
           <div class="game-card-content">
@@ -154,14 +158,16 @@
             <p>Find pairs of everyday household items like glasses, medicine box, keys, and water bottle.</p>
           </div>
           <button class="game-play-btn" aria-label="Play Daily Essentials Match">
-            ▶ Start Matching
+            Start Matching
           </button>
         </article>
 
         <!-- Game 2: Daily Routine Sequencing -->
         <article class="game-card" data-game="sequencing" id="game-card-sequencing">
           <div class="game-card-header">
-            <div class="game-icon-box sequencing">📋</div>
+            <div class="game-icon-box sequencing">
+              <svg class="icon-svg" style="width:28px;height:28px;" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><polyline points="9 14 11 16 15 11"/></svg>
+            </div>
             <span class="game-status-pill" id="pill-game-sequencing">Ready to Play</span>
           </div>
           <div class="game-card-content">
@@ -169,14 +175,16 @@
             <p>Put everyday steps in the right order (e.g. brushing teeth, drinking water, washing hands).</p>
           </div>
           <button class="game-play-btn" aria-label="Play Daily Routine Steps">
-            ▶ Arrange Steps
+            Arrange Steps
           </button>
         </article>
 
         <!-- Game 3: Object Recognition -->
         <article class="game-card" data-game="recognition" id="game-card-recognition">
           <div class="game-card-header">
-            <div class="game-icon-box recognition">💡</div>
+            <div class="game-icon-box recognition">
+              <svg class="icon-svg" style="width:28px;height:28px;" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.64 2.87 1.68 3.82.72.66 1.13 1.34 1.32 2.18"/></svg>
+            </div>
             <span class="game-status-pill" id="pill-game-recognition">Ready to Play</span>
           </div>
           <div class="game-card-content">
@@ -184,14 +192,16 @@
             <p>Connect pictures of familiar items with what they do. Hear hints with gentle audio.</p>
           </div>
           <button class="game-play-btn" aria-label="Play Everyday Item Recall">
-            ▶ Guess Items
+            Guess Items
           </button>
         </article>
 
         <!-- Game 4: Calming Focus Garden -->
         <article class="game-card" data-game="garden" id="game-card-garden">
           <div class="game-card-header">
-            <div class="game-icon-box garden">🌸</div>
+            <div class="game-icon-box garden">
+              <svg class="icon-svg" style="width:28px;height:28px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2a4.5 4.5 0 0 0-4.5 4.5 4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5A4.5 4.5 0 0 0 12 2z"/><path d="M12 13a4.5 4.5 0 0 0-4.5 4.5 4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5A4.5 4.5 0 0 0 12 13z"/><path d="M2 12a4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5A4.5 4.5 0 0 0 6.5 7.5 4.5 4.5 0 0 0 2 12z"/><path d="M13 12a4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5 4.5 4.5 0 0 0-4.5-4.5 4.5 4.5 0 0 0-4.5 4.5z"/></svg>
+            </div>
             <span class="game-status-pill" id="pill-game-garden">Ready to Play</span>
           </div>
           <div class="game-card-content">
@@ -199,7 +209,7 @@
             <p>Gently touch blooming flowers in the tranquil garden to relax and practice fine motor focus.</p>
           </div>
           <button class="game-play-btn" aria-label="Play Calming Focus Garden">
-            ▶ Visit Garden
+            Visit Garden
           </button>
         </article>
 
@@ -1208,7 +1218,7 @@
 
   <!-- Floating AI Care Companion Button -->
   <button class="floating-support-btn" id="floating-ai-btn" title="Talk with Smriti AI Companion" aria-label="Talk with Smriti AI Companion">
-    🤖 Talk to AI Companion
+    <svg class="icon-svg" style="width:20px;height:20px;" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg> AI Companion
   </button>
 
   <!-- Toast Container -->

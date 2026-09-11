@@ -116,7 +116,7 @@ body.caregiver-mode {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 28px;
+  padding: 12px 24px;
   background: var(--bg-card);
   backdrop-filter: blur(14px);
   border-bottom: 1.5px solid var(--border);
@@ -125,39 +125,43 @@ body.caregiver-mode {
   z-index: 100;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
+  gap: 16px;
 }
 
 .brand-area {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .brand-logo-icon {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  border-radius: var(--radius-card);
+  border-radius: var(--radius-btn);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 26px;
-  box-shadow: 0 4px 12px rgba(184, 82, 65, 0.3);
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(184, 82, 65, 0.25);
+  flex-shrink: 0;
 }
 
 .brand-titles h1 {
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   font-weight: 800;
   letter-spacing: -0.5px;
   color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.2;
 }
 
 .brand-titles .tagline {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
   font-weight: 500;
 }
@@ -165,31 +169,48 @@ body.caregiver-mode {
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* SVG Icon Helper */
+.icon-svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Portal Switcher Buttons */
 .portal-switch-pill {
   display: flex;
   background: var(--bg-primary);
-  padding: 5px;
+  padding: 4px;
   border-radius: var(--radius-full);
   border: 1.5px solid var(--border-strong);
+  flex-shrink: 0;
 }
 
 .portal-btn {
   border: none;
   background: transparent;
-  padding: 10px 22px;
+  padding: 8px 18px;
   border-radius: var(--radius-full);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   color: var(--text-secondary);
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .portal-btn.active {
@@ -203,15 +224,18 @@ body.caregiver-mode {
   background: var(--bg-card);
   border: 1.5px solid var(--border-strong);
   border-radius: var(--radius-btn);
-  padding: 10px 16px;
-  display: flex;
+  padding: 8px 14px;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-primary);
   cursor: pointer;
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.2;
 }
 
 .header-action-btn:hover {
