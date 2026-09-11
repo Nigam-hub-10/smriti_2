@@ -6,17 +6,26 @@
   <meta name="description" content="Smriti - Gentle cognitive care and daily monitoring application for dementia patients and caregivers. Features 4 memory and routine games with daily caregiver score bar graphs.">
   <title>Smriti - Dementia Care & Cognitive Companion</title>
 
-  <!-- Google Fonts for High Readability -->
+  <meta name="theme-color" content="#B85241">
+
+  <!-- Google Fonts — Plus Jakarta Sans (Design System Primary) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/patient.css">
-  <link rel="stylesheet" href="css/caregiver.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="patient.css">
+  <link rel="stylesheet" href="caregiver.css">
 </head>
 <body>
+
+  <!-- Decorative Background Arch -->
+  <div class="decorative-arch" aria-hidden="true">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#B85241" fill-opacity="0.06" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,154.7C672,149,768,171,864,186.7C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+    </svg>
+  </div>
 
   <!-- Top Navigation & Portal Switcher -->
   <header class="app-header">
@@ -45,7 +54,7 @@
       </button>
 
       <!-- Community & New User Onboarding Action -->
-      <button class="header-action-btn" id="btn-header-contribute" title="Contribute / New User Onboarding" aria-label="Contribute or Register New User" style="background:#ecfdf5; border-color:#6ee7b7; color:#065f46; font-weight:700;">
+      <button class="header-action-btn contribute-btn" id="btn-header-contribute" title="Contribute / New User Onboarding" aria-label="Contribute or Register New User">
         🤝 Contribute / New User
       </button>
 
@@ -63,17 +72,17 @@
       </button>
 
       <!-- Language Switcher (EN / HI) -->
-      <div class="lang-switch-group" id="header-lang-switch" style="display:flex; background:#f1f5f9; border-radius:30px; padding:3px; border:1.5px solid #cbd5e1; align-items:center; gap:2px;">
-        <button class="lang-btn active" id="btn-lang-en" data-lang="en" style="border:none; background:#2563eb; color:#ffffff; padding:5px 12px; font-size:0.85rem; font-weight:700; border-radius:20px; cursor:pointer; transition:all 0.2s;" title="Switch to English">
+      <div class="lang-switch-group" id="header-lang-switch">
+        <button class="lang-btn active" id="btn-lang-en" data-lang="en" title="Switch to English">
           English
         </button>
-        <button class="lang-btn" id="btn-lang-hi" data-lang="hi" style="border:none; background:transparent; color:#475569; padding:5px 12px; font-size:0.85rem; font-weight:700; border-radius:20px; cursor:pointer; transition:all 0.2s;" title="हिंदी में बदलें (Switch to Hindi)">
+        <button class="lang-btn" id="btn-lang-hi" data-lang="hi" title="हिंदी में बदलें (Switch to Hindi)">
           🇮🇳 हिंदी
         </button>
       </div>
 
       <!-- Logout / Switch Role Action -->
-      <button class="header-action-btn" id="btn-logout" title="Log Out and return to Role Selection" aria-label="Log Out or Switch Role" style="background:#fee2e2; border-color:#fca5a5; color:#991b1b; font-weight:700;">
+      <button class="header-action-btn logout-btn" id="btn-logout" title="Log Out and return to Role Selection" aria-label="Log Out or Switch Role">
         🚪 Log Out / Switch
       </button>
     </div>
@@ -198,6 +207,7 @@
 
       <!-- Reassurance Card -->
       <div class="patient-reassurance-card">
+        <div class="decorative-quote" aria-hidden="true">“</div>
         <div class="reassurance-icon">💖</div>
         <p>Remember: You are doing wonderfully. There is no rush with any activity. Take your time, breathe deeply, and smile.</p>
       </div>
@@ -216,14 +226,14 @@
           <div class="cg-patient-meta">
             <h2 id="cg-patient-name">Eleanor Vance, 74y</h2>
             <p id="cg-patient-stage">Mild Cognitive Impairment • Primary Caretaker: Sarah Vance (+1 555 382-9011)</p>
-            <div style="margin-top: 8px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-              <button class="header-action-btn" id="btn-edit-profile-cg" style="padding: 6px 14px; font-size: 0.85rem;" title="Edit patient and caretaker data">
-                ✏️ Edit Profile & Caretaker Details
+            <div class="cg-action-buttons">
+              <button class="header-action-btn cg-edit-btn" id="btn-edit-profile-cg" title="Edit patient and caretaker data">
+                ✏️ Edit Profile &amp; Caretaker Details
               </button>
-              <button class="header-action-btn" id="btn-change-pin-cg" style="padding: 6px 14px; font-size: 0.85rem; background: #312e81; border-color: #4338ca; color: #ffffff;" title="Change caregiver passcode">
+              <button class="header-action-btn cg-pin-btn" id="btn-change-pin-cg" title="Change caregiver passcode">
                 🔒 Change Passcode
               </button>
-              <button class="header-action-btn" id="btn-logout-cg" style="padding: 6px 14px; font-size: 0.85rem; background:#7f1d1d; border-color:#991b1b; color:#ffffff; font-weight:700;" title="Log out of caregiver session">
+              <button class="header-action-btn cg-logout-btn" id="btn-logout-cg" title="Log out of caregiver session">
                 🚪 Log Out Caregiver Session
               </button>
             </div>
@@ -1205,17 +1215,17 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- App Scripts -->
-  <script src="js/i18n.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/speech.js"></script>
-  <script src="js/audio.js"></script>
-  <script src="js/chart.js"></script>
-  <script src="js/chatbot.js"></script>
-  <script src="js/games/memory.js"></script>
-  <script src="js/games/sequencing.js"></script>
-  <script src="js/games/recognition.js"></script>
-  <script src="js/games/focusGarden.js"></script>
-  <script src="js/app.js"></script>
+  <script src="i18n.js"></script>
+  <script src="data.js"></script>
+  <script src="speech.js"></script>
+  <script src="audio.js"></script>
+  <script src="chart.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="memory.js"></script>
+  <script src="sequencing.js"></script>
+  <script src="recognition.js"></script>
+  <script src="focusGarden.js"></script>
+  <script src="app.js"></script>
 
 </body>
 </html>

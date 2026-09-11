@@ -1,6 +1,6 @@
 /* =========================================================
    Smriti - Caregiver Dashboard Stylesheet
-   Professional, Clear, Insightful, and Responsive
+   Design System: Terracotta Rust & Warm Cream Palette
    ========================================================= */
 
 .caregiver-container {
@@ -13,17 +13,17 @@
 
 /* Caregiver Top Status Bar */
 .cg-status-banner {
-  background: rgba(30, 41, 59, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
   backdrop-filter: blur(12px);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-card);
   padding: 24px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .cg-patient-profile {
@@ -35,19 +35,20 @@
 .cg-avatar {
   width: 64px;
   height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  border-radius: var(--radius-circle);
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid var(--primary-soft);
+  box-shadow: 0 4px 12px rgba(184, 82, 65, 0.2);
 }
 
 .cg-patient-meta h2 {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -55,7 +56,33 @@
 
 .cg-patient-meta p {
   font-size: 0.92rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
+}
+
+.cg-action-buttons {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cg-action-buttons .header-action-btn {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-btn);
+}
+
+.cg-action-buttons .cg-pin-btn {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.cg-action-buttons .cg-logout-btn {
+  background: var(--danger-bg);
+  border-color: var(--danger);
+  color: var(--danger);
 }
 
 .cg-status-pills {
@@ -66,10 +93,10 @@
 }
 
 .cg-pill {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-strong);
   padding: 10px 18px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-btn);
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -77,16 +104,16 @@
 
 .cg-pill-label {
   font-size: 0.78rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.5px;
 }
 
 .cg-pill-value {
   font-size: 1.15rem;
-  font-weight: 700;
-  color: #f1f5f9;
+  font-weight: 800;
+  color: var(--primary);
 }
 
 /* Key Metrics Grid */
@@ -97,20 +124,22 @@
 }
 
 .cg-metric-card {
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-card);
   padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  box-shadow: var(--shadow-sm);
   transition: var(--transition);
 }
 
 .cg-metric-card:hover {
-  background: rgba(30, 41, 59, 0.95);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: var(--bg-card-hover);
+  border-color: var(--primary);
   transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .cg-metric-header {
@@ -121,8 +150,10 @@
 
 .cg-metric-title {
   font-size: 0.9rem;
-  font-weight: 600;
-  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
 }
 
 .cg-metric-icon {
@@ -130,9 +161,9 @@
 }
 
 .cg-metric-value {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  color: #f8fafc;
+  color: var(--primary);
 }
 
 .cg-metric-trend {
@@ -140,23 +171,23 @@
   align-items: center;
   gap: 6px;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.trend-up { color: #34d399; }
-.trend-stable { color: #60a5fa; }
-.trend-down { color: #f87171; }
+.trend-up { color: var(--success); }
+.trend-stable { color: var(--warning); }
+.trend-down { color: var(--danger); }
 
 /* Main Graph Card */
 .cg-chart-card {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-card);
   padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .cg-chart-header {
@@ -169,8 +200,10 @@
 
 .cg-chart-header h3 {
   font-size: 1.4rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -178,7 +211,7 @@
 
 .cg-chart-header p {
   font-size: 0.88rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   margin-top: 4px;
 }
 
@@ -190,27 +223,27 @@
 }
 
 .filter-btn {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #cbd5e1;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
   padding: 7px 16px;
   border-radius: var(--radius-full);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
 }
 
 .filter-btn:hover {
-  border-color: #3b82f6;
-  color: #ffffff;
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .filter-btn.active {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  background: var(--primary);
+  border-color: var(--primary);
   color: #ffffff;
-  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Custom Chart Canvas Container */
@@ -218,10 +251,10 @@
   width: 100%;
   height: 340px;
   position: relative;
-  background: rgba(15, 23, 42, 0.5);
-  border-radius: var(--radius-md);
+  background: #FFFDF9;
+  border-radius: var(--radius-btn);
   padding: 16px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
 }
 
 .chart-wrapper canvas {
@@ -244,7 +277,8 @@
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: #cbd5e1;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .legend-color-dot {
@@ -268,23 +302,28 @@
 
 /* Detailed Score Records Table */
 .cg-table-card {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-card);
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+  box-shadow: var(--shadow-sm);
 }
 
 .cg-table-card h3 {
   font-size: 1.3rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
 }
 
 .cg-table-wrap {
   overflow-x: auto;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border);
 }
 
 .score-table {
@@ -294,52 +333,61 @@
 }
 
 .score-table th {
-  padding: 12px 14px;
+  padding: 14px 16px;
   font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: #94a3b8;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.8px;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .score-table td {
-  padding: 14px 14px;
+  padding: 14px 16px;
   font-size: 0.92rem;
-  color: #e2e8f0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  background: #FFFDF9;
+}
+
+.score-table tr:nth-child(even) td {
+  background: var(--bg-card);
 }
 
 .score-table tr:hover td {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--primary-soft);
 }
 
 .score-tag {
   display: inline-block;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
   font-size: 0.82rem;
   font-weight: 700;
 }
 
-.score-tag.high { background: rgba(52, 211, 153, 0.2); color: #34d399; }
-.score-tag.medium { background: rgba(96, 165, 250, 0.2); color: #60a5fa; }
-.score-tag.low { background: rgba(248, 113, 113, 0.2); color: #f87171; }
+.score-tag.high { background: var(--success-bg); color: var(--success); }
+.score-tag.medium { background: var(--warning-bg); color: var(--warning); }
+.score-tag.low { background: var(--danger-bg); color: var(--danger); }
 
 /* Caregiver Log & Notes Widget */
 .cg-notes-card {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-card);
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+  box-shadow: var(--shadow-sm);
 }
 
 .cg-notes-card h3 {
   font-size: 1.3rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
 }
 
 .cg-note-input-form {
@@ -350,20 +398,21 @@
 
 .cg-textarea {
   width: 100%;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-sm);
+  background: #FFFDF9;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-btn);
   padding: 12px 14px;
-  color: #f1f5f9;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 0.95rem;
   resize: vertical;
-  min-height: 80px;
+  min-height: 85px;
 }
 
 .cg-textarea:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(184, 82, 65, 0.15);
 }
 
 .cg-quick-checks {
@@ -377,32 +426,36 @@
   align-items: center;
   gap: 8px;
   font-size: 0.88rem;
-  color: #cbd5e1;
+  font-weight: 600;
+  color: var(--text-secondary);
   cursor: pointer;
 }
 
 .cg-check-item input[type="checkbox"] {
-  accent-color: #3b82f6;
+  accent-color: var(--primary);
   width: 17px;
   height: 17px;
 }
 
 .cg-submit-btn {
-  background: #3b82f6;
+  background: var(--primary);
   color: #ffffff;
   border: none;
-  padding: 10px 18px;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  font-weight: 700;
   font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
   align-self: flex-start;
   transition: var(--transition);
 }
 
 .cg-submit-btn:hover {
-  background: #2563eb;
+  background: var(--primary-light);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
 .cg-notes-list {
@@ -414,21 +467,24 @@
 }
 
 .cg-note-entry {
-  background: rgba(15, 23, 42, 0.5);
-  border-left: 3px solid #3b82f6;
-  padding: 12px 14px;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: #FFFDF9;
+  border-left: 4px solid var(--primary);
+  padding: 12px 16px;
+  border-radius: 0 var(--radius-btn) var(--radius-btn) 0;
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .cg-note-time {
   font-size: 0.76rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   margin-bottom: 4px;
 }
 
 .cg-note-text {
   font-size: 0.9rem;
-  color: #f1f5f9;
+  color: var(--text-primary);
   line-height: 1.4;
 }
 
@@ -440,9 +496,10 @@
 
 .cg-note-tag {
   font-size: 0.72rem;
-  background: rgba(59, 130, 246, 0.15);
-  color: #93c5fd;
-  padding: 2px 8px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 700;
+  padding: 2px 10px;
   border-radius: var(--radius-full);
 }
 
@@ -456,22 +513,24 @@
 .cg-action-btn {
   flex: 1;
   min-width: 200px;
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-card);
   padding: 16px 20px;
   display: flex;
   align-items: center;
   gap: 14px;
-  color: #f1f5f9;
+  color: var(--text-primary);
   cursor: pointer;
   transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .cg-action-btn:hover {
-  background: rgba(45, 62, 95, 0.9);
-  border-color: #3b82f6;
+  background: var(--bg-card-hover);
+  border-color: var(--primary);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .cg-action-icon {
@@ -481,9 +540,10 @@
 .cg-action-text strong {
   display: block;
   font-size: 1rem;
+  color: var(--text-primary);
 }
 
 .cg-action-text span {
   font-size: 0.82rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
