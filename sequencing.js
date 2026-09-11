@@ -117,9 +117,6 @@ class SequencingGame {
     const randomIdx = Math.floor(Math.random() * this.routines.length);
     this.currentRoutine = this.routines[randomIdx];
     this.currentPlacements = [];
-    this.hintsUsed = 0;
-    this.resetsUsed = 0;
-    this.startTime = Date.now();
 
     // Shuffle pool of steps
     this.pool = [...this.currentRoutine.steps].sort(() => Math.random() - 0.5);
@@ -240,7 +237,6 @@ class SequencingGame {
   evaluate() {
     this.render();
 
-    const elapsedSeconds = Math.max(4, Math.round((Date.now() - (this.startTime || Date.now())) / 1000));
     let correctCount = 0;
     this.currentPlacements.forEach((placed, idx) => {
       if (placed.id === this.currentRoutine.steps[idx].id) {
@@ -248,21 +244,8 @@ class SequencingGame {
       }
     });
 
-    const totalSteps = this.currentRoutine.steps.length;
-    const stepRatio = correctCount / totalSteps;
-    
-    // Pace benchmark: gentle ~7s per routine step
-    const targetSeconds = totalSteps * 7;
-    let speedScore = 100;
-    if (elapsedSeconds > targetSeconds) {
-      speedScore = Math.max(45, Math.round(100 - (elapsedSeconds - targetSeconds) * 2.2));
-    } else {
-      speedScore = Math.min(100, Math.round(85 + (targetSeconds - elapsedSeconds) * 1.5));
-    }
-
-    const deductions = ((this.hintsUsed || 0) * 5) + ((this.resetsUsed || 0) * 6);
-    const rawScore = Math.round((stepRatio * 65) + (speedScore * 0.35) - deductions);
-    const score = Math.max(25, Math.min(100, rawScore));
+    const isPerfect = correctCount === this.currentRoutine.steps.length;
+    const score = isPerfect ? 100 : Math.max(75, Math.round((correctCount / this.currentRoutine.steps.length) * 100));
 
     window.smritiData.saveGameScore('sequencing', score);
     if (window.smritiAudio) window.smritiAudio.playWin();
@@ -270,10 +253,10 @@ class SequencingGame {
     setTimeout(() => {
       this.container.innerHTML = `
         <div class="game-finish-card">
-          <div class="finish-icon">${score >= 85 ? '🎉' : (score >= 65 ? '🌟' : '👏')}</div>
-          <h3 class="finish-title">${score >= 85 ? 'Flawless Daily Routine!' : 'Good Work on Daily Sequence!'}</h3>
-          <div class="finish-score">Score: ${score}% • Precision: ${correctCount}/${totalSteps} Steps • Time: ${elapsedSeconds}s • Hints: ${this.hintsUsed || 0}</div>
-          <p class="finish-msg">Mastering everyday sequences like ${this.currentRoutine.title} in ${elapsedSeconds} seconds builds mental rhythm and confidence.</p>
+          <div class="finish-icon">${isPerfect ? '🎉' : '👏'}</div>
+          <h3 class="finish-title">${isPerfect ? 'Flawless Daily Routine!' : 'Great Work on Daily Steps!'}</h3>
+          <div class="finish-score">Score: ${score}% • ${correctCount} of ${this.currentRoutine.steps.length} Steps Placed Correctly</div>
+          <p class="finish-msg">Mastering everyday sequences like ${this.currentRoutine.title} keeps memory confident and self-sufficient.</p>
           <div style="display:flex; gap:12px; margin-top:10px;">
             <button class="header-action-btn" id="seq-another-btn" style="padding:12px 20px;">
               🔄 Try Another Daily Routine
@@ -288,12 +271,10 @@ class SequencingGame {
       window.smritiSpeech.speak(`Terrific routine sequencing! You scored ${score} percent.`);
 
       document.getElementById('seq-another-btn').addEventListener('click', () => {
-        if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
         this.pickRandomRoutine();
       });
 
       document.getElementById('seq-finish-btn').addEventListener('click', () => {
-        if (window.smritiSpeech) window.smritiSpeech.stopAllAudio();
         if (this.onComplete) this.onComplete(score);
       });
     }, 850);
