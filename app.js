@@ -199,14 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (pinViewForgot) pinViewForgot.style.display = subview === 'forgot' ? 'flex' : 'none';
 
       if (subview === 'unlock') {
-        if (pinModalTitle) pinModalTitle.textContent = '🔒 Caregiver Security Access';
+        if (pinModalTitle) pinModalTitle.textContent = 'Caregiver Security Access';
         if (caretakerPinInput) {
           caretakerPinInput.value = '';
           setTimeout(() => caretakerPinInput.focus(), 100);
         }
         if (pinErrorMsg) pinErrorMsg.style.display = 'none';
       } else if (subview === 'change') {
-        if (pinModalTitle) pinModalTitle.textContent = '🔑 Change Caregiver Passcode';
+        if (pinModalTitle) pinModalTitle.textContent = 'Change Caregiver Passcode';
         if (changePinCurrent) changePinCurrent.value = '';
         if (changePinNew) changePinNew.value = '';
         if (changePinConfirm) changePinConfirm.value = '';
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (changePinSuccessMsg) changePinSuccessMsg.style.display = 'none';
         setTimeout(() => changePinCurrent && changePinCurrent.focus(), 100);
       } else if (subview === 'forgot') {
-        if (pinModalTitle) pinModalTitle.textContent = '📱 Reset Passcode via Phone';
+        if (pinModalTitle) pinModalTitle.textContent = 'Reset Passcode via Phone';
         if (forgotStep1) forgotStep1.style.display = 'flex';
         if (forgotStep2) forgotStep2.style.display = 'none';
         // Prefill registered caretaker phone number for user convenience

@@ -937,3 +937,393 @@ body.caregiver-mode {
     padding: 16px 12px;
   }
 }
+
+/* =========================================================
+   CAREGIVER SECURITY PIN MODAL REDESIGN
+   ========================================================= */
+
+.pin-modal-content {
+  max-width: 480px !important;
+  background: var(--bg-card) !important; /* #FAF4EA Light Ivory */
+  border-radius: var(--radius-card) !important; /* 22px */
+  border: 1.5px solid var(--border) !important;
+  box-shadow: 0 16px 48px rgba(28, 27, 26, 0.16) !important;
+  overflow: hidden;
+}
+
+.pin-modal-header {
+  padding: 18px 24px !important;
+  border-bottom: 1px solid var(--border) !important;
+  background: rgba(184, 82, 65, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pin-modal-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pin-security-badge-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(184, 82, 65, 0.12);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-modal-title {
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--text-primary) !important;
+  margin: 0 !important;
+}
+
+.pin-modal-body {
+  padding: 24px 26px !important;
+}
+
+.pin-subview {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pin-hero-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pin-hero-icon-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(184, 82, 65, 0.08);
+  border: 1.5px solid rgba(184, 82, 65, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.pin-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+}
+
+.pin-subtext {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.pin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pin-input-field-group {
+  display: flex;
+  justify-content: center;
+}
+
+.pin-custom-input {
+  font-size: 2rem !important;
+  text-align: center !important;
+  letter-spacing: 12px !important;
+  font-weight: 800 !important;
+  padding: 12px 16px !important;
+  background: #FFFDF9 !important;
+  border: 2px solid var(--border-strong) !important;
+  border-radius: 16px !important;
+  color: var(--text-primary) !important;
+  transition: all 0.25s ease !important;
+  width: 100% !important;
+}
+
+.pin-custom-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 4px rgba(184, 82, 65, 0.15) !important;
+  outline: none !important;
+  background: #ffffff !important;
+}
+
+.pin-custom-input::placeholder {
+  color: rgba(85, 84, 82, 0.3) !important;
+  letter-spacing: 4px !important;
+  font-size: 1.6rem !important;
+}
+
+.pin-input-sm {
+  background: #FFFDF9 !important;
+  border: 1.5px solid var(--border-strong) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-size: 0.95rem !important;
+  color: var(--text-primary) !important;
+  transition: all 0.2s ease !important;
+}
+
+.pin-input-sm:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(184, 82, 65, 0.12) !important;
+  outline: none !important;
+}
+
+.pin-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.pin-meta-info-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: #F5EDE0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.pin-default-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pin-caregiver-badge {
+  color: var(--primary);
+  font-weight: 700;
+  background: rgba(184, 82, 65, 0.08);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.pin-action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.btn-pin-submit {
+  flex: 1.5;
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-pin-submit:hover {
+  background: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-pin-cancel {
+  flex: 1;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-strong);
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-pin-cancel:hover {
+  background: rgba(184, 82, 65, 0.06);
+  border-color: var(--primary);
+}
+
+.pin-secondary-actions {
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pin-sub-action-btn {
+  background: #FFFDF9;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 11px 16px;
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.pin-sub-action-btn:hover {
+  background: #F5EDE0;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.pin-sub-action-highlight {
+  background: rgba(184, 82, 65, 0.05);
+  border-color: rgba(184, 82, 65, 0.25);
+  color: var(--primary-dark);
+}
+
+.pin-sub-action-highlight:hover {
+  background: rgba(184, 82, 65, 0.1);
+  border-color: var(--primary);
+}
+
+.pin-subview-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.pin-subview-icon-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(184, 82, 65, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pin-subheading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 2px 0;
+}
+
+.pin-alert-error {
+  color: var(--danger);
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: var(--danger-bg);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(184, 59, 59, 0.2);
+  text-align: center;
+}
+
+.pin-alert-success {
+  color: var(--success);
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: var(--success-bg);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(91, 140, 62, 0.2);
+  text-align: center;
+}
+
+.pin-caretaker-info-banner {
+  background: #F5EDE0;
+  border-left: 4px solid var(--primary);
+  padding: 12px 16px;
+  border-radius: 0 12px 12px 0;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.pin-phone-hint {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.pin-otp-banner {
+  background: var(--success-bg);
+  border: 1.5px solid rgba(91, 140, 62, 0.3);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pin-otp-banner-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pin-otp-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--success);
+}
+
+.pin-otp-sub {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.pin-otp-policy-note {
+  background: #ffffff;
+  border: 1px solid rgba(91, 140, 62, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+}
+
+.pin-whatsapp-btn {
+  background: #25D366;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  transition: all 0.2s ease;
+}
+
+.pin-whatsapp-btn:hover {
+  background: #20ba5a;
+  transform: translateY(-1px);
+}
+

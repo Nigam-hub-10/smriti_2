@@ -677,170 +677,204 @@
        CARETAKER PASSCODE / PIN SECURITY MODAL
        ========================================================= -->
   <div class="modal-overlay" id="caretaker-pin-modal" role="dialog" aria-modal="true" aria-labelledby="pin-modal-title">
-    <div class="modal-content" style="max-width: 460px;">
-      <div class="modal-header">
-        <h3 class="modal-title" id="pin-modal-title">🔒 Caregiver Security Access</h3>
+    <div class="modal-content pin-modal-content">
+      <div class="modal-header pin-modal-header">
+        <div class="pin-modal-title-wrapper">
+          <div class="pin-security-badge-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3 class="modal-title pin-modal-title" id="pin-modal-title">Caregiver Security Access</h3>
+        </div>
         <button class="modal-close-btn" id="pin-modal-close" aria-label="Close PIN modal">✕</button>
       </div>
-      <div class="modal-body" style="padding: 24px;">
+      <div class="modal-body pin-modal-body">
 
         <!-- VIEW 1: Standard Unlock Passcode -->
-        <div id="pin-view-unlock" class="pin-subview" style="display: flex; flex-direction: column; gap: 16px;">
-          <div style="text-align: center;">
-            <div style="font-size: 2.2rem; margin-bottom: 4px;">🛡️</div>
-            <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0 0 4px 0;">Enter Caregiver Passcode</h4>
-            <p style="font-size: 0.9rem; color: #64748b; margin: 0;">
+        <div id="pin-view-unlock" class="pin-subview">
+          <div class="pin-hero-head">
+            <div class="pin-hero-icon-badge">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <rect x="9" y="11" width="6" height="5" rx="1"></rect>
+                <path d="M10 11V9a2 2 0 1 1 4 0v2"></path>
+              </svg>
+            </div>
+            <h4 class="pin-heading">Enter Caregiver Passcode</h4>
+            <p class="pin-subtext">
               Access patient cognitive score graphs, trends, and clinical notes.
             </p>
           </div>
 
-          <form id="caretaker-pin-form" style="display: flex; flex-direction: column; gap: 14px;">
-            <input type="password" id="caretaker-pin-input" class="form-control" maxlength="8" placeholder="Enter PIN (e.g. 1234)" style="font-size: 1.8rem; text-align: center; letter-spacing: 6px; padding: 10px; font-weight: 700;" required autofocus>
-            <div id="pin-error-msg" style="color: #dc2626; font-size: 0.92rem; display: none; font-weight: 600; text-align: center; background: #fef2f2; padding: 8px; border-radius: 8px; border: 1px solid #fecaca;">
-              ⚠️ Incorrect passcode. Please try again or use the reset options below.
+          <form id="caretaker-pin-form" class="pin-form">
+            <div class="pin-input-field-group">
+              <input type="password" id="caretaker-pin-input" class="form-control pin-custom-input" maxlength="8" placeholder="••••" required autofocus autocomplete="off">
             </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: #64748b; background: #f8fafc; padding: 8px 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
-              <span>💡 Default passcode: <strong>1234</strong></span>
-              <span id="pin-caregiver-name-badge" style="color: #3b82f6; font-weight: 600;">Sarah Vance</span>
+
+            <div id="pin-error-msg" class="pin-alert-error" style="display: none;">
+              Incorrect passcode. Please try again or use the reset options below.
             </div>
-            <div style="display: flex; gap: 10px; margin-top: 4px;">
-              <button type="button" class="btn-secondary-cancel" id="btn-pin-cancel" style="flex: 1;">Cancel</button>
-              <button type="submit" class="btn-primary-save" style="flex: 1; justify-content: center;">Unlock 🔓</button>
+
+            <div class="pin-meta-info-card">
+              <div class="pin-default-hint">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>Default passcode: <strong>1234</strong></span>
+              </div>
+              <span id="pin-caregiver-name-badge" class="pin-caregiver-badge">Sarah Vance</span>
+            </div>
+
+            <div class="pin-action-buttons">
+              <button type="button" class="btn-pin-cancel" id="btn-pin-cancel">Cancel</button>
+              <button type="submit" class="btn-pin-submit">
+                <span>Unlock Access</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+                </svg>
+              </button>
             </div>
           </form>
 
-          <!-- Navigation to Change PIN or Forgot PIN -->
-          <div style="border-top: 1px solid #e2e8f0; margin-top: 6px; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
-            <button type="button" id="btn-nav-to-change-pin" style="background: none; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 14px; color: #334155; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;">
-              <span>🔑</span> I know previous passcode • <strong>Change Passcode</strong>
+          <!-- Navigation Sub-Actions -->
+          <div class="pin-secondary-actions">
+            <button type="button" id="btn-nav-to-change-pin" class="pin-sub-action-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+              </svg>
+              <span>I know previous passcode • <strong>Change Passcode</strong></span>
             </button>
-            <button type="button" id="btn-nav-to-forgot-pin" style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px 14px; color: #1d4ed8; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;">
-              <span>📱</span> Forgot Passcode? • <strong>Reset via Caretaker Phone</strong>
+            <button type="button" id="btn-nav-to-forgot-pin" class="pin-sub-action-btn pin-sub-action-highlight">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              <span>Forgot Passcode? • <strong>Reset via Caretaker Phone</strong></span>
             </button>
           </div>
         </div>
 
-        <!-- VIEW 2: Change Passcode (When user knows current passcode) -->
-        <div id="pin-view-change" class="pin-subview" style="display: none; flex-direction: column; gap: 16px;">
-          <div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <span style="font-size: 1.5rem;">🔑</span>
-              <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0;">Change Caretaker Passcode</h4>
+        <!-- VIEW 2: Change Passcode -->
+        <div id="pin-view-change" class="pin-subview" style="display: none;">
+          <div class="pin-subview-head">
+            <div class="pin-subview-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+              </svg>
             </div>
-            <p style="font-size: 0.88rem; color: #64748b; margin: 0;">
-              Enter your current passcode followed by your new passcode.
-            </p>
+            <div>
+              <h4 class="pin-subheading">Change Caretaker Passcode</h4>
+              <p class="pin-subtext">Enter your current passcode followed by your new passcode.</p>
+            </div>
           </div>
 
-          <form id="change-pin-form" style="display: flex; flex-direction: column; gap: 12px;">
+          <form id="change-pin-form" class="pin-form">
             <div class="form-group">
-              <label for="change-pin-current" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Current Passcode *</label>
-              <input type="password" id="change-pin-current" class="form-control" maxlength="8" placeholder="Current PIN (e.g. 1234)" required>
-            </div>
-
-            <div class="form-group">
-              <label for="change-pin-new" style="font-size: 0.88rem; font-weight: 600; color: #334155;">New Passcode (4-8 digits) *</label>
-              <input type="password" id="change-pin-new" class="form-control" maxlength="8" placeholder="Enter new PIN" required>
+              <label for="change-pin-current" class="pin-label">Current Passcode *</label>
+              <input type="password" id="change-pin-current" class="form-control pin-input-sm" maxlength="8" placeholder="Current PIN" required>
             </div>
 
             <div class="form-group">
-              <label for="change-pin-confirm" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Confirm New Passcode *</label>
-              <input type="password" id="change-pin-confirm" class="form-control" maxlength="8" placeholder="Re-enter new PIN" required>
+              <label for="change-pin-new" class="pin-label">New Passcode (4-8 digits) *</label>
+              <input type="password" id="change-pin-new" class="form-control pin-input-sm" maxlength="8" placeholder="Enter new PIN" required>
             </div>
 
-            <div id="change-pin-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
+            <div class="form-group">
+              <label for="change-pin-confirm" class="pin-label">Confirm New Passcode *</label>
+              <input type="password" id="change-pin-confirm" class="form-control pin-input-sm" maxlength="8" placeholder="Re-enter new PIN" required>
             </div>
 
-            <div id="change-pin-success-msg" style="color: #15803d; font-size: 0.88rem; display: none; font-weight: 600; background: #f0fdf4; padding: 8px 12px; border-radius: 8px; border: 1px solid #bbf7d0;">
-              ✅ Passcode successfully updated!
+            <div id="change-pin-error-msg" class="pin-alert-error" style="display: none;"></div>
+            <div id="change-pin-success-msg" class="pin-alert-success" style="display: none;">
+              Passcode successfully updated!
             </div>
 
-            <div style="display: flex; gap: 10px; margin-top: 6px;">
-              <button type="button" class="btn-secondary-cancel" id="btn-back-from-change" style="flex: 1;">← Back</button>
-              <button type="submit" class="btn-primary-save" style="flex: 1.5; justify-content: center;">Save Passcode 💾</button>
+            <div class="pin-action-buttons">
+              <button type="button" class="btn-pin-cancel" id="btn-back-from-change">← Back</button>
+              <button type="submit" class="btn-pin-submit">Save Passcode</button>
             </div>
           </form>
         </div>
 
-        <!-- VIEW 3: Forgot Passcode (Reset via Caretaker Phone Number) -->
-        <div id="pin-view-forgot" class="pin-subview" style="display: none; flex-direction: column; gap: 16px;">
-          <div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <span style="font-size: 1.5rem;">📱</span>
-              <h4 style="font-size: 1.15rem; color: #1e293b; margin: 0;">Reset Passcode via Caretaker Phone</h4>
+        <!-- VIEW 3: Forgot Passcode -->
+        <div id="pin-view-forgot" class="pin-subview" style="display: none;">
+          <div class="pin-subview-head">
+            <div class="pin-subview-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B85241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
             </div>
-            <p style="font-size: 0.88rem; color: #64748b; margin: 0;">
-              Verify identity using the registered caretaker phone number.
-            </p>
+            <div>
+              <h4 class="pin-subheading">Reset Passcode via Phone</h4>
+              <p class="pin-subtext">Verify identity using registered caretaker phone number.</p>
+            </div>
           </div>
 
-          <div id="forgot-caretaker-info-box" style="background: #f1f5f9; border-left: 4px solid #3b82f6; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #334155;">
-            Registered Caretaker: <strong id="forgot-info-name">Sarah Vance</strong><br>
-            <span style="color: #64748b;">Hint: Registered phone number ends in <strong id="forgot-info-phone-masked">...4193</strong></span>
+          <div id="forgot-caretaker-info-box" class="pin-caretaker-info-banner">
+            <div>Registered Caretaker: <strong id="forgot-info-name">Sarah Vance</strong></div>
+            <div class="pin-phone-hint">Phone number ends in <strong id="forgot-info-phone-masked">...4193</strong></div>
           </div>
 
-          <!-- Step 1: Verify Phone Number -->
-          <div id="forgot-step-1" style="display: flex; flex-direction: column; gap: 12px;">
+          <!-- Step 1: Verify Phone -->
+          <div id="forgot-step-1" class="pin-form">
             <div class="form-group">
-              <label for="forgot-phone-input" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Enter Caretaker Phone Number *</label>
-              <input type="tel" id="forgot-phone-input" class="form-control" placeholder="e.g. +1 (555) 382-9011 or 5553829011" required>
+              <label for="forgot-phone-input" class="pin-label">Enter Caretaker Phone Number *</label>
+              <input type="tel" id="forgot-phone-input" class="form-control pin-input-sm" placeholder="e.g. +1 (555) 382-9011" required>
             </div>
 
-            <div id="forgot-phone-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
-            </div>
+            <div id="forgot-phone-error-msg" class="pin-alert-error" style="display: none;"></div>
 
-            <div style="display: flex; gap: 10px;">
-              <button type="button" class="btn-secondary-cancel" id="btn-back-from-forgot-1" style="flex: 1;">← Back</button>
-              <button type="button" class="btn-primary-save" id="btn-verify-phone" style="flex: 1.5; justify-content: center;">Send Code 📲</button>
+            <div class="pin-action-buttons">
+              <button type="button" class="btn-pin-cancel" id="btn-back-from-forgot-1">← Back</button>
+              <button type="button" class="btn-pin-submit" id="btn-verify-phone">Send Verification Code</button>
             </div>
           </div>
 
-          <!-- Step 2: Verification Code & Set New Passcode -->
-          <form id="forgot-step-2" style="display: none; flex-direction: column; gap: 14px;">
-            <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
-              <div style="display:flex; align-items:center; gap:12px;">
-                <span style="font-size:2.2rem;">📲</span>
+          <!-- Step 2: Verification Code -->
+          <form id="forgot-step-2" class="pin-form" style="display: none;">
+            <div class="pin-otp-banner">
+              <div class="pin-otp-banner-header">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B8C3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                 <div>
-                  <div style="font-size: 1rem; font-weight: 700; color: #166534;">Code Sent to Caretaker Mobile</div>
-                  <div style="font-size: 0.85rem; color: #374151;">
-                    Target phone: <strong id="forgot-confirmed-phone">+91 ******4193</strong>
-                  </div>
+                  <div class="pin-otp-title">Code Sent to Caretaker Mobile</div>
+                  <div class="pin-otp-sub">Target phone: <strong id="forgot-confirmed-phone">+91 ******4193</strong></div>
                 </div>
               </div>
 
-              <div style="background: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; color: #166534; line-height: 1.45;">
-                🔒 <strong>Security Policy Active:</strong> The verification code is <strong>strictly sent to the caretaker's mobile</strong> and is never revealed on this patient screen.
+              <div class="pin-otp-policy-note">
+                <strong>Security Policy Active:</strong> Verification code sent to caretaker's mobile.
               </div>
 
-              <!-- WhatsApp Mobile Delivery Button -->
               <div>
-                <a id="btn-send-whatsapp-otp" href="#" target="_blank" style="background: #22c55e; color: #ffffff; padding: 11px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 3px 10px rgba(34,197,94,0.3); transition: background 0.2s;">
-                  <span>💬</span> Check / Open Code on WhatsApp
+                <a id="btn-send-whatsapp-otp" href="#" target="_blank" class="pin-whatsapp-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                  <span>Check Code on WhatsApp</span>
                 </a>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="forgot-otp-input" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Enter 4-Digit Code Received on Mobile *</label>
-              <input type="text" id="forgot-otp-input" class="form-control" maxlength="6" placeholder="Enter 4-digit code from phone" style="letter-spacing: 6px; font-weight: 700; text-align: center; font-size: 1.4rem; padding: 10px;" required autofocus>
+              <label for="forgot-otp-input" class="pin-label">Enter 4-Digit Code Received *</label>
+              <input type="text" id="forgot-otp-input" class="form-control pin-custom-input pin-input-otp" maxlength="6" placeholder="••••" required autofocus>
             </div>
 
             <div class="form-group">
-              <label for="forgot-new-pin" style="font-size: 0.88rem; font-weight: 600; color: #334155;">New Passcode *</label>
-              <input type="password" id="forgot-new-pin" class="form-control" maxlength="8" placeholder="New PIN (4-8 digits)" required>
+              <label for="forgot-new-pin" class="pin-label">New Passcode *</label>
+              <input type="password" id="forgot-new-pin" class="form-control pin-input-sm" maxlength="8" placeholder="New PIN (4-8 digits)" required>
             </div>
 
             <div class="form-group">
-              <label for="forgot-confirm-pin" style="font-size: 0.88rem; font-weight: 600; color: #334155;">Confirm New Passcode *</label>
-              <input type="password" id="forgot-confirm-pin" class="form-control" maxlength="8" placeholder="Confirm new PIN" required>
+              <label for="forgot-confirm-pin" class="pin-label">Confirm New Passcode *</label>
+              <input type="password" id="forgot-confirm-pin" class="form-control pin-input-sm" maxlength="8" placeholder="Confirm new PIN" required>
             </div>
 
-            <div id="forgot-step2-error-msg" style="color: #dc2626; font-size: 0.88rem; display: none; font-weight: 600; background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca;">
-            </div>
+            <div id="forgot-step2-error-msg" class="pin-alert-error" style="display: none;"></div>
 
-            <div style="display: flex; gap: 10px; margin-top: 4px;">
-              <button type="button" class="btn-secondary-cancel" id="btn-back-from-forgot-2" style="flex: 1;">← Change Phone</button>
-              <button type="submit" class="btn-primary-save" style="flex: 1.5; justify-content: center;">Reset & Unlock 🔓</button>
+            <div class="pin-action-buttons">
+              <button type="button" class="btn-pin-cancel" id="btn-back-from-forgot-2">← Change Phone</button>
+              <button type="submit" class="btn-pin-submit">Reset & Unlock</button>
             </div>
           </form>
         </div>
