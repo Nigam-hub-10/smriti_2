@@ -1448,13 +1448,11 @@ document.addEventListener('DOMContentLoaded', () => {
       tabBtns.forEach(b => {
         if (b.getAttribute('data-tab') === tabName) {
           b.classList.add('active');
-          b.style.color = '#5b21b6';
-          b.style.borderBottomColor = '#5b21b6';
         } else {
           b.classList.remove('active');
-          b.style.color = '#64748b';
-          b.style.borderBottomColor = 'transparent';
         }
+        b.style.color = '';
+        b.style.borderBottomColor = '';
       });
 
       Object.entries(tabPanels).forEach(([name, panel]) => {
@@ -1567,17 +1565,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       container.innerHTML = contributions.map(item => {
         const tagClass = item.type === 'game' ? 'game' : item.type === 'volunteer' ? 'volunteer' : 'tip';
-        const typeIcon = item.type === 'game' ? '🎮 Game' : item.type === 'volunteer' ? '🙋 Volunteer' : '💡 Tip';
+        const typeLabel = item.type === 'game' ? 'Game' : item.type === 'volunteer' ? 'Volunteer' : 'Tip';
 
         return `
           <div class="community-card" data-id="${item.id}">
             <div class="comm-card-header">
               <div>
-                <span class="comm-card-tag ${tagClass}">${typeIcon} • ${item.category}</span>
+                <span class="comm-card-tag ${tagClass}">${typeLabel} • ${item.category}</span>
                 <h5 class="comm-card-title">${item.title}</h5>
               </div>
               <button type="button" class="btn-upvote" data-id="${item.id}" title="Support this insight">
-                <span>❤️</span> <span>${item.upvotes || 0}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <span>${item.upvotes || 0}</span>
               </button>
             </div>
             <p class="comm-card-body">${item.content}</p>

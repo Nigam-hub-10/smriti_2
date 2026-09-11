@@ -1171,15 +1171,22 @@
        SMRITI COMMUNITY & VOLUNTEER CONTRIBUTION HUB
        ========================================================= -->
   <div class="modal-overlay" id="community-hub-modal" role="dialog" aria-modal="true" aria-labelledby="community-hub-modal-title">
-    <div class="modal-content" style="max-width: 760px; max-height: 90vh; display: flex; flex-direction: column;">
-      <div class="modal-header" style="background: linear-gradient(135deg, #f5f3ff, #ede9fe);">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="font-size:2rem;">🤝</div>
+    <div class="modal-content comm-modal-content">
+      <div class="modal-header comm-modal-header">
+        <div class="comm-header-title-group">
+          <div class="comm-header-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
           <div>
-            <h3 class="modal-title" id="community-hub-modal-title" style="font-size:1.35rem; margin:0; color:#5b21b6;" data-i18n="communityHubTitle">
+            <h3 class="modal-title comm-modal-title" id="community-hub-modal-title" data-i18n="communityHubTitle">
               Smriti Community & Contributor Hub
             </h3>
-            <span style="font-size:0.86rem; color:#6d28d9;" data-i18n="communityHubSubtitle">
+            <span class="comm-modal-subtitle" data-i18n="communityHubSubtitle">
               Share Caregiving Insights, Add Memory Activities & Volunteer Support
             </span>
           </div>
@@ -1188,56 +1195,61 @@
       </div>
 
       <!-- Hub Tab Navigation -->
-      <div class="community-tabs-bar" style="display:flex; background:#f8fafc; border-bottom:1.5px solid #e2e8f0; padding:4px 16px; gap:8px; overflow-x:auto;">
-        <button type="button" class="comm-tab-btn active" data-tab="gallery" style="border:none; background:transparent; padding:10px 14px; font-weight:700; color:#5b21b6; border-bottom:3px solid #5b21b6; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
-          📖 <span data-i18n="tabCommunityFeed">Community Insights</span>
+      <div class="community-tabs-bar">
+        <button type="button" class="comm-tab-btn active" data-tab="gallery">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span data-i18n="tabCommunityFeed">Community Insights</span>
         </button>
-        <button type="button" class="comm-tab-btn" data-tab="tip" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
-          💡 <span data-i18n="tabShareTip">Share Caregiver Tip</span>
+        <button type="button" class="comm-tab-btn" data-tab="tip">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+          <span data-i18n="tabShareTip">Share Caregiver Tip</span>
         </button>
-        <button type="button" class="comm-tab-btn" data-tab="game" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
-          🎮 <span data-i18n="tabSuggestGame">Contribute Memory Activity</span>
+        <button type="button" class="comm-tab-btn" data-tab="game">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span data-i18n="tabSuggestGame">Contribute Memory Activity</span>
         </button>
-        <button type="button" class="comm-tab-btn" data-tab="volunteer" style="border:none; background:transparent; padding:10px 14px; font-weight:600; color:#64748b; border-bottom:3px solid transparent; cursor:pointer; font-size:0.92rem; white-space:nowrap;">
-          🙋 <span data-i18n="tabVolunteer">Volunteer Support</span>
+        <button type="button" class="comm-tab-btn" data-tab="volunteer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span data-i18n="tabVolunteer">Volunteer Support</span>
         </button>
       </div>
 
-      <div class="modal-body" style="padding: 20px; overflow-y: auto; flex: 1;">
+      <div class="modal-body comm-modal-body">
         
         <!-- PANEL 1: Community Insights Feed / Gallery -->
-        <div class="comm-tab-panel active" id="panel-comm-gallery" style="display:flex; flex-direction:column; gap:16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="comm-tab-panel active" id="panel-comm-gallery">
+          <div class="comm-panel-header">
             <div>
-              <h4 style="margin:0; color:#1e293b; font-size:1.1rem;" data-i18n="insightsHeader">Caregiver Community Knowledge Base</h4>
-              <span style="font-size:0.84rem; color:#64748b;" data-i18n="insightsSub">Practical clinical tips & memory exercises shared by families and dementia specialists</span>
+              <h4 class="comm-panel-title" data-i18n="insightsHeader">Caregiver Community Knowledge Base</h4>
+              <span class="comm-panel-sub" data-i18n="insightsSub">Practical clinical tips & memory exercises shared by families and dementia specialists</span>
             </div>
-            <button type="button" class="btn-primary-save" id="btn-quick-share-tip" style="padding:8px 16px; font-size:0.88rem; background:#6d28d9; border-color:#6d28d9;">
-              + <span data-i18n="btnShareNew">Share Your Contribution</span>
+            <button type="button" class="btn-comm-action" id="btn-quick-share-tip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span data-i18n="btnShareNew">Share Your Contribution</span>
             </button>
           </div>
 
-          <div id="community-cards-container" style="display:flex; flex-direction:column; gap:12px;">
+          <div id="community-cards-container" class="comm-cards-stack">
             <!-- Populated dynamically -->
           </div>
         </div>
 
         <!-- PANEL 2: Share Caregiver Tip Form -->
-        <div class="comm-tab-panel" id="panel-comm-tip" style="display:none; flex-direction:column; gap:14px;">
-          <div>
-            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="tipFormHeader">💡 Share Practical Caregiving Insight</h4>
-            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="tipFormSub">Share strategies that helped calm wandering, facilitate sleep, or make daily routines peaceful.</p>
+        <div class="comm-tab-panel" id="panel-comm-tip" style="display:none;">
+          <div class="comm-panel-intro">
+            <h4 class="comm-panel-title" data-i18n="tipFormHeader">Share Practical Caregiving Insight</h4>
+            <p class="comm-panel-sub" data-i18n="tipFormSub">Share strategies that helped calm wandering, facilitate sleep, or make daily routines peaceful.</p>
           </div>
 
-          <form id="form-contrib-tip" style="display:flex; flex-direction:column; gap:12px;">
+          <form id="form-contrib-tip" class="comm-form">
             <div class="profile-grid-2">
               <div class="form-group">
                 <label for="tip-author" data-i18n="authorNameLabel">Your Name *</label>
-                <input type="text" id="tip-author" class="form-control" placeholder="e.g. Priya Nair" required>
+                <input type="text" id="tip-author" class="form-control pin-input-sm" placeholder="e.g. Priya Nair" required>
               </div>
               <div class="form-group">
                 <label for="tip-author-role" data-i18n="authorRoleLabel">Your Role</label>
-                <select id="tip-author-role" class="form-control">
+                <select id="tip-author-role" class="form-control pin-input-sm">
                   <option value="Family Caregiver">Family Caregiver</option>
                   <option value="Nurse / Certified Aide">Nurse / Certified Aide</option>
                   <option value="Occupational Therapist">Occupational Therapist</option>
@@ -1247,7 +1259,7 @@
               </div>
               <div class="form-group">
                 <label for="tip-category" data-i18n="tipCategoryLabel">Category</label>
-                <select id="tip-category" class="form-control">
+                <select id="tip-category" class="form-control pin-input-sm">
                   <option value="Sundowning & Calming">Sundowning & Calming</option>
                   <option value="Morning Routines">Morning Routines</option>
                   <option value="Hydration & Nutrition">Hydration & Nutrition</option>
@@ -1257,37 +1269,38 @@
               </div>
               <div class="form-group">
                 <label for="tip-title" data-i18n="tipTitleLabel">Insight Title *</label>
-                <input type="text" id="tip-title" class="form-control" placeholder="e.g. Soothing Twilight Lamp Technique" required>
+                <input type="text" id="tip-title" class="form-control pin-input-sm" placeholder="e.g. Soothing Twilight Lamp Technique" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="tip-content" data-i18n="tipContentLabel">Your Practical Tip or Strategy *</label>
-              <textarea id="tip-content" class="form-control" rows="4" placeholder="Explain what works and how other caregivers can apply it..." required style="resize:vertical;"></textarea>
+              <textarea id="tip-content" class="form-control cg-textarea" rows="4" placeholder="Explain what works and how other caregivers can apply it..." required></textarea>
             </div>
 
-            <button type="submit" class="btn-primary-save" style="background:#5b21b6; border-color:#5b21b6; align-self:flex-start; padding:10px 24px;">
-              Publish Tip to Community 💡
+            <button type="submit" class="btn-comm-submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <span>Publish Tip to Community</span>
             </button>
           </form>
         </div>
 
         <!-- PANEL 3: Contribute Memory Activity Form -->
-        <div class="comm-tab-panel" id="panel-comm-game" style="display:none; flex-direction:column; gap:14px;">
-          <div>
-            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="gameFormHeader">🎮 Contribute a Memory or Calming Exercise</h4>
-            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="gameFormSub">Propose familiar everyday association games, song recall, or nostalgic touchpoints.</p>
+        <div class="comm-tab-panel" id="panel-comm-game" style="display:none;">
+          <div class="comm-panel-intro">
+            <h4 class="comm-panel-title" data-i18n="gameFormHeader">Contribute a Memory or Calming Exercise</h4>
+            <p class="comm-panel-sub" data-i18n="gameFormSub">Propose familiar everyday association games, song recall, or nostalgic touchpoints.</p>
           </div>
 
-          <form id="form-contrib-game" style="display:flex; flex-direction:column; gap:12px;">
+          <form id="form-contrib-game" class="comm-form">
             <div class="profile-grid-2">
               <div class="form-group">
                 <label for="game-title" data-i18n="gameTitleLabel">Activity Title *</label>
-                <input type="text" id="game-title" class="form-control" placeholder="e.g. Childhood Kitchen Utensils Match" required>
+                <input type="text" id="game-title" class="form-control pin-input-sm" placeholder="e.g. Childhood Kitchen Utensils Match" required>
               </div>
               <div class="form-group">
                 <label for="game-category" data-i18n="gameCategoryLabel">Cognitive Target</label>
-                <select id="game-category" class="form-control">
+                <select id="game-category" class="form-control pin-input-sm">
                   <option value="Object Recognition">Object Recognition</option>
                   <option value="Daily Routine Sequencing">Daily Routine Sequencing</option>
                   <option value="Sensory & Floral Calming">Sensory & Floral Calming</option>
@@ -1296,11 +1309,11 @@
               </div>
               <div class="form-group">
                 <label for="game-author" data-i18n="authorNameLabel">Contributor Name *</label>
-                <input type="text" id="game-author" class="form-control" placeholder="e.g. Dr. Sunita Rao" required>
+                <input type="text" id="game-author" class="form-control pin-input-sm" placeholder="e.g. Dr. Sunita Rao" required>
               </div>
               <div class="form-group">
                 <label for="game-difficulty">Suggested Cognitive Stage</label>
-                <select id="game-difficulty" class="form-control">
+                <select id="game-difficulty" class="form-control pin-input-sm">
                   <option value="Early-Stage (Gentle)">Early-Stage (Gentle)</option>
                   <option value="Mid-Stage (Multi-cue)">Mid-Stage (Multi-cue)</option>
                   <option value="Any Stage (Relaxing)">Any Stage (Relaxing)</option>
@@ -1310,39 +1323,40 @@
 
             <div class="form-group">
               <label for="game-content" data-i18n="gameContentLabel">Activity Description & Prompt Steps *</label>
-              <textarea id="game-content" class="form-control" rows="4" placeholder="Describe the steps, objects to present, and how patients engage..." required style="resize:vertical;"></textarea>
+              <textarea id="game-content" class="form-control cg-textarea" rows="4" placeholder="Describe the steps, objects to present, and how patients engage..." required></textarea>
             </div>
 
-            <button type="submit" class="btn-primary-save" style="background:#0284c7; border-color:#0284c7; align-self:flex-start; padding:10px 24px;">
-              Submit Activity 🎮
+            <button type="submit" class="btn-comm-submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <span>Submit Activity</span>
             </button>
           </form>
         </div>
 
         <!-- PANEL 4: Volunteer Support Signup -->
-        <div class="comm-tab-panel" id="panel-comm-volunteer" style="display:none; flex-direction:column; gap:14px;">
-          <div>
-            <h4 style="margin:0; color:#1e293b; font-size:1.15rem;" data-i18n="volunteerFormHeader">🙋 Join as a Volunteer / Community Supporter</h4>
-            <p style="margin:4px 0 0 0; font-size:0.88rem; color:#64748b;" data-i18n="volunteerFormSub">Offer companionship, daily check-in calls, or respite care assistance to families in need.</p>
+        <div class="comm-tab-panel" id="panel-comm-volunteer" style="display:none;">
+          <div class="comm-panel-intro">
+            <h4 class="comm-panel-title" data-i18n="volunteerFormHeader">Join as a Volunteer / Community Supporter</h4>
+            <p class="comm-panel-sub" data-i18n="volunteerFormSub">Offer companionship, daily check-in calls, or respite care assistance to families in need.</p>
           </div>
 
-          <form id="form-contrib-volunteer" style="display:flex; flex-direction:column; gap:12px;">
+          <form id="form-contrib-volunteer" class="comm-form">
             <div class="profile-grid-2">
               <div class="form-group">
                 <label for="vol-name" data-i18n="authorNameLabel">Volunteer Full Name *</label>
-                <input type="text" id="vol-name" class="form-control" placeholder="e.g. Vikram Singhania" required>
+                <input type="text" id="vol-name" class="form-control pin-input-sm" placeholder="e.g. Vikram Singhania" required>
               </div>
               <div class="form-group">
                 <label for="vol-contact">Phone or WhatsApp Contact *</label>
-                <input type="tel" id="vol-contact" class="form-control" placeholder="e.g. +91 9876543210" required>
+                <input type="tel" id="vol-contact" class="form-control pin-input-sm" placeholder="e.g. +91 9876543210" required>
               </div>
               <div class="form-group">
                 <label for="vol-city">City / Region</label>
-                <input type="text" id="vol-city" class="form-control" placeholder="e.g. New Delhi / Dehradun">
+                <input type="text" id="vol-city" class="form-control pin-input-sm" placeholder="e.g. New Delhi / Dehradun">
               </div>
               <div class="form-group">
                 <label for="vol-service">Support Type Offered</label>
-                <select id="vol-service" class="form-control">
+                <select id="vol-service" class="form-control pin-input-sm">
                   <option value="Friendly Check-in Calls (Tele-visit)">Friendly Check-in Calls (Tele-visit)</option>
                   <option value="Poetry & Story Reading">Poetry & Story Reading</option>
                   <option value="Emergency Caregiver Respite">Emergency Caregiver Respite</option>
@@ -1353,11 +1367,12 @@
 
             <div class="form-group">
               <label for="vol-notes">Availability & Background Note</label>
-              <textarea id="vol-notes" class="form-control" rows="3" placeholder="Share your availability, language fluency, and care background..." required style="resize:vertical;"></textarea>
+              <textarea id="vol-notes" class="form-control cg-textarea" rows="3" placeholder="Share your availability, language fluency, and care background..." required></textarea>
             </div>
 
-            <button type="submit" class="btn-primary-save" style="background:#059669; border-color:#059669; align-self:flex-start; padding:10px 24px;">
-              Register Volunteer Support 🤝
+            <button type="submit" class="btn-comm-submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <span>Register Volunteer Support</span>
             </button>
           </form>
         </div>
