@@ -43,45 +43,57 @@ class FocusGardenGame {
     this.container.innerHTML = `
       <div class="game-arena">
         <div class="game-instruction-banner">
-          <div class="game-instruction-text">
-            <span>🌸 Calming Focus Garden: Select Complexity Level</span>
+          <div class="game-instruction-text" style="display:flex; align-items:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+            <span>Calming Focus Garden: Select Complexity Level</span>
           </div>
-          <button class="read-btn" id="garden-speak-levels">🔊 Read Levels</button>
+          <button class="read-btn" id="garden-speak-levels" style="display:flex; align-items:center; gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            <span>Read Levels</span>
+          </button>
         </div>
 
-        <div style="text-align:center; max-width:740px; margin:16px auto; display:flex; flex-direction:column; gap:20px;">
-          <div>
-            <h3 style="color:#065f46; font-size:1.8rem; font-weight:800; margin-bottom:6px;">Choose Your Garden Sanctuary Level</h3>
-            <p style="color:#4b5563; font-size:1.15rem;">Progress from gentle flower touches to musical pattern sequences and multi-target tracking.</p>
+        <div class="garden-config-wrapper">
+          <div class="garden-config-header">
+            <h3>Choose Your Garden Sanctuary Level</h3>
+            <p>Progress from gentle flower touches to musical pattern sequences and multi-target tracking.</p>
           </div>
 
-          <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
+          <div class="garden-levels-grid">
             <!-- Level 1 -->
-            <button class="game-play-btn" data-g-lvl="1" style="background:#059669; padding:20px; flex-direction:column; gap:8px; border-radius:18px;">
-              <span style="font-size:2.4rem;">🌱</span>
-              <strong style="font-size:1.25rem;">Level 1: Gentle Awakening</strong>
-              <span style="font-size:0.92rem; opacity:0.9;">Touch single blooming flowers with soft cues</span>
+            <button class="garden-level-card" data-g-lvl="1">
+              <div class="garden-level-badge lvl-1">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/></svg>
+              </div>
+              <strong class="garden-level-title">Level 1: Gentle Awakening</strong>
+              <span class="garden-level-desc">Touch single blooming flowers with soft cues</span>
             </button>
 
             <!-- Level 2 -->
-            <button class="game-play-btn" data-g-lvl="2" style="background:#0284c7; padding:20px; flex-direction:column; gap:8px; border-radius:18px;">
-              <span style="font-size:2.4rem;">🦋</span>
-              <strong style="font-size:1.25rem;">Level 2: Fluttering Pollinators</strong>
-              <span style="font-size:0.92rem; opacity:0.9;">Track butterflies & bees landing on blossoms</span>
+            <button class="garden-level-card" data-g-lvl="2">
+              <div class="garden-level-badge lvl-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18M5.3 5.3l13.4 13.4M5.3 18.7L18.7 5.3"/></svg>
+              </div>
+              <strong class="garden-level-title">Level 2: Fluttering Pollinators</strong>
+              <span class="garden-level-desc">Track butterflies &amp; bees landing on blossoms</span>
             </button>
 
             <!-- Level 3 -->
-            <button class="game-play-btn" data-g-lvl="3" style="background:#7c3aed; padding:20px; flex-direction:column; gap:8px; border-radius:18px;">
-              <span style="font-size:2.4rem;">🎶</span>
-              <strong style="font-size:1.25rem;">Level 3: Zen Chime Sequence</strong>
-              <span style="font-size:0.92rem; opacity:0.9;">Remember & repeat melodic flower chime order</span>
+            <button class="garden-level-card" data-g-lvl="3">
+              <div class="garden-level-badge lvl-3">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+              </div>
+              <strong class="garden-level-title">Level 3: Zen Chime Sequence</strong>
+              <span class="garden-level-desc">Remember &amp; repeat melodic flower chime order</span>
             </button>
 
             <!-- Level 4 -->
-            <button class="game-play-btn" data-g-lvl="4" style="background:#ea580c; padding:20px; flex-direction:column; gap:8px; border-radius:18px;">
-              <span style="font-size:2.4rem;">👑</span>
-              <strong style="font-size:1.25rem;">Level 4: Master Botanist</strong>
-              <span style="font-size:0.92rem; opacity:0.9;">9-blossom meadow multi-target category sorting</span>
+            <button class="garden-level-card" data-g-lvl="4">
+              <div class="garden-level-badge lvl-4">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+              <strong class="garden-level-title">Level 4: Master Botanist</strong>
+              <span class="garden-level-desc">9-blossom meadow multi-target category sorting</span>
             </button>
           </div>
         </div>
