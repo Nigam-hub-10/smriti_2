@@ -8,8 +8,9 @@ import http.server
 import json
 import os
 import sys
+import socket
 
-PORT = 8080
+PORT = 8000
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 DB_FILE = os.path.join(DATA_DIR, "smriti_database.json")
 
@@ -83,6 +84,12 @@ class SmritiHTTPHandler(http.server.SimpleHTTPRequestHandler):
                 parsed = json.loads(body)
                 with open(DB_FILE, "w", encoding="utf-8") as f:
                     json.dump(parsed, f, indent=2, ensure_ascii=False)
+                root_db = os.path.join(os.path.dirname(__file__), "smriti_database.json")
+                try:
+                    with open(root_db, "w", encoding="utf-8") as f:
+                        json.dump(parsed, f, indent=2, ensure_ascii=False)
+                except Exception:
+                    pass
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
                 self.end_headers()
@@ -310,10 +317,20 @@ class SmritiHTTPHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(404)
         self.end_headers()
 
+class ReusableHTTPServer(http.server.HTTPServer):
+    allow_reuse_address = True
+    def server_bind(self):
+        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+        except Exception:
+            pass
+        super().server_bind()
+
 if __name__ == "__main__":
-    server_address = ("", PORT)
-    httpd = http.server.HTTPServer(server_address, SmritiHTTPHandler)
-    print(f"Smriti Persistent Server running on port {PORT}...")
+    server_address = ("127.0.0.1", PORT)
+    httpd = ReusableHTTPServer(server_address, SmritiHTTPHandler)
+    print(f"Smriti Persistent Server running on http://127.0.0.1:{PORT}...")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

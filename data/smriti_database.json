@@ -1,0 +1,190 @@
+{
+  "patientProfile": {
+    "name": "Ramesh Sharma",
+    "preferredName": "Ramesh",
+    "age": 72,
+    "gender": "Female",
+    "stage": "Mild Cognitive Impairment (Early Stage)",
+    "caregiverName": "Amit Sharma",
+    "caregiverRelation": "Son",
+    "emergencyPhone": "+91  9638527419",
+    "doctorName": "Family Physician",
+    "doctorPhone": "",
+    "homeAddress": "Home",
+    "notes": "New profile registered."
+  },
+  "caregiverProfile": {
+    "name": "Amit Sharma",
+    "relation": "Son",
+    "phone": "+91  9638527419",
+    "email": "",
+    "pin": "12345",
+    "notes": "Care journey initiated for Ramesh Sharma."
+  },
+  "caregiverPin": "12345",
+  "dailyRecords": [
+    {
+      "date": "2026-09-05",
+      "displayDate": "Sep 6",
+      "weekday": "Sun",
+      "memoryScore": 75,
+      "sequencingScore": 80,
+      "recognitionScore": 85,
+      "gardenScore": 90,
+      "averageScore": 83,
+      "mood": "happy",
+      "gamesCompleted": 4,
+      "notesCount": 0
+    },
+    {
+      "date": "2026-09-06",
+      "displayDate": "Sep 7",
+      "weekday": "Mon",
+      "memoryScore": 70,
+      "sequencingScore": 85,
+      "recognitionScore": 80,
+      "gardenScore": 85,
+      "averageScore": 80,
+      "mood": "calm",
+      "gamesCompleted": 4,
+      "notesCount": 0
+    },
+    {
+      "date": "2026-09-07",
+      "displayDate": "Sep 8",
+      "weekday": "Tue",
+      "memoryScore": 80,
+      "sequencingScore": 75,
+      "recognitionScore": 90,
+      "gardenScore": 95,
+      "averageScore": 85,
+      "mood": "happy",
+      "gamesCompleted": 4,
+      "notesCount": 0
+    },
+    {
+      "date": "2026-09-08",
+      "displayDate": "Sep 9",
+      "weekday": "Wed",
+      "memoryScore": 85,
+      "sequencingScore": 90,
+      "recognitionScore": 85,
+      "gardenScore": 90,
+      "averageScore": 88,
+      "mood": "calm",
+      "gamesCompleted": 4,
+      "notesCount": 0
+    },
+    {
+      "date": "2026-09-09",
+      "displayDate": "Sep 10",
+      "weekday": "Thu",
+      "memoryScore": 80,
+      "sequencingScore": 85,
+      "recognitionScore": 95,
+      "gardenScore": 100,
+      "averageScore": 90,
+      "mood": "happy",
+      "gamesCompleted": 4,
+      "notesCount": 0
+    },
+    {
+      "date": "2026-09-10",
+      "displayDate": "Sep 11",
+      "weekday": "Fri",
+      "memoryScore": 85,
+      "sequencingScore": 90,
+      "recognitionScore": 90,
+      "gardenScore": 95,
+      "averageScore": 90,
+      "mood": "neutral",
+      "gamesCompleted": 4,
+      "notesCount": 0
+    },
+    {
+      "date": "2026-09-11",
+      "displayDate": "Sep 12",
+      "weekday": "Sat",
+      "memoryScore": 75,
+      "sequencingScore": 95,
+      "recognitionScore": 75,
+      "gardenScore": 100,
+      "averageScore": 86,
+      "mood": "calm",
+      "gamesCompleted": 4,
+      "notesCount": 1
+    },
+    {
+      "date": "2026-09-12",
+      "displayDate": "Sep 12",
+      "weekday": "Sat",
+      "memoryScore": 67,
+      "sequencingScore": null,
+      "recognitionScore": 54,
+      "gardenScore": null,
+      "averageScore": 61,
+      "mood": "calm",
+      "gamesCompleted": 2
+    }
+  ],
+  "caregiverNotes": [
+    {
+      "id": 1789161226768,
+      "time": "Today, Just now",
+      "text": "Welcome! Profile registered for Ramesh. Daily cognitive companion routines initialized.",
+      "tags": [
+        "Profile Setup",
+        "Care Started"
+      ]
+    }
+  ],
+  "todayMood": "calm",
+  "userRole": "patient",
+  "communityContributions": [
+    {
+      "id": 1789161336223,
+      "type": "tip",
+      "title": "Afternoon Chamomile & Aromatherapy",
+      "category": "Sundowning & Calming",
+      "author": "Dr. Sunita Rao",
+      "authorRole": "Family Caregiver",
+      "date": "Just now",
+      "upvotes": 1,
+      "content": "Lavender and warm chamomile tea between 3-4 PM significantly reduced restlessness before sunset."
+    },
+    {
+      "id": 1,
+      "type": "tip",
+      "title": "Gentle Morning Musical Awakening",
+      "category": "Sundowning & Calm",
+      "author": "Dr. Arvind Mehta",
+      "authorRole": "Neurologist & Volunteer",
+      "date": "2 days ago",
+      "upvotes": 25,
+      "content": "Playing soft 432Hz ambient melodies or classical Indian sitar upon waking helps reduce morning disorientation and eases the transition into breakfast."
+    },
+    {
+      "id": 2,
+      "type": "game",
+      "title": "Spice & Fragrance Nostalgia",
+      "category": "Sensory & Everyday Recognition",
+      "author": "Pooja Deshmukh",
+      "authorRole": "Caregiver & OT",
+      "date": "3 days ago",
+      "upvotes": 19,
+      "content": "Encourage identifying familiar kitchen spices (cardamom, cinnamon, mint). Olfactory scent pathways are deeply preserved and stimulate spontaneous memory recall."
+    },
+    {
+      "id": 3,
+      "type": "volunteer",
+      "title": "Weekly Companion Calls & Gentle Poetry",
+      "category": "Companion Support",
+      "author": "Rohit Verma",
+      "authorRole": "Senior Companion Volunteer",
+      "date": "Just now",
+      "upvotes": 15,
+      "content": "Available for 15-minute soothing video calls or tele-poetry reading for patients feeling lonely during late afternoons."
+    }
+  ],
+  "lastSaved": "2026-09-11T22:54:44.223Z"
+}

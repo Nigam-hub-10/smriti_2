@@ -1,0 +1,7 @@
+{
+  "fast2sms_api_key": "",
+  "twilio_account_sid": "",
+  "twilio_auth_token": "",
+  "twilio_from_phone": "",
+  "note": "Optional: Add Fast2SMS API key (for Indian mobile numbers) or Twilio API credentials to send automated cellular SMS directly."
+}
