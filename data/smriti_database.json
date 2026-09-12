@@ -123,7 +123,7 @@
       "recognitionScore": 54,
       "gardenScore": null,
       "averageScore": 61,
-      "mood": "calm",
+      "mood": "happy",
       "gamesCompleted": 2
     }
   ],
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "todayMood": "calm",
+  "todayMood": "happy",
   "userRole": "patient",
   "communityContributions": [
     {
@@ -186,5 +186,5 @@
       "content": "Available for 15-minute soothing video calls or tele-poetry reading for patients feeling lonely during late afternoons."
     }
   ],
-  "lastSaved": "2026-09-11T22:54:44.223Z"
+  "lastSaved": "2026-09-12T03:54:51.880Z"
 }
